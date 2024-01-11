@@ -1,16 +1,43 @@
+'use client'
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import style from "./Main.module.sass";
-import { BsArrowUpRightSquareFill } from "react-icons/bs";
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaLinkedin,
-  FaGithub,
-} from "react-icons/fa";
+import { facebook, instagram, linkedin, github, arrowRight} from '../../../imports/reactIcons'
+
+
 export default function Main() {
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-  const curriculo = process.env.NEXT_PUBLIC_CURRICULO;
+  const curriculo: string = process.env.NEXT_PUBLIC_CURRICULO!;
+  const data = new Date(Date.now()).getHours()
+  const [hour, setHour] = useState('')
+  const [download, setDownload] = useState("")
 
+  const handleTextIntro = () => {
+    const hours = {
+      dia: 'Bom dia!',
+      tarde: 'Boa tarde!',
+      noite: 'Boa noite!'
+    }
+    return hours[hour as keyof typeof hours]
+  }
+  const handleDonwload = () => {
+    setDownload(curriculo)
+    setTimeout(() => {
+      setDownload('')
+    }, 3000)
+  }
+  useEffect(() => {
+
+    if (data >= 0 && data < 12) { 
+      setHour('dia'); 
+    }else if ((data >= 12 && data < 19)) {
+       setHour('tarde'); 
+    }else {
+      setHour('noite')
+    }
+
+
+  }, [data])
   return (
     <>
       <div className={style.containerMain}>
@@ -22,7 +49,7 @@ export default function Main() {
             </div>
             <div className={style.containerMainText}>
               <div className={style.containerTextDesc}>
-                <p className={style.textTitle}>Boas vindas</p>
+                <p className={style.textTitle}>{handleTextIntro()}</p>
               </div>
               <div className={style.containerTextMiddle}>
                 <p className={style.textMiddle}>
@@ -45,12 +72,13 @@ export default function Main() {
                     <p>Vamos bater um papo!</p>
                   </span>
                 </Link>
-                <Link href={curriculo} target="_parent">
-                  <span className={style.containerPortfolio}>
+                <span className={style.containerPortfolio}>
+                  <button onClick={() => !download && handleDonwload()}>
                     <p> Baixar Curriculo</p>
-                    <BsArrowUpRightSquareFill size={20} />
-                  </span>
-                </Link>
+                    {arrowRight}
+                  </button>
+                  {download && <iframe src={download} style={{ display: 'none' }}></iframe>}
+                </span>
               </div>
             </div>
           </div>
@@ -69,25 +97,25 @@ export default function Main() {
                     href={"https://www.instagram.com/doug.jansey/"}
                     target="blank"
                   >
-                    <FaInstagram size={25} />
+                    {instagram}
                   </Link>
                   <Link
                     href={"https://www.linkedin.com/in/douglasjansey/"}
                     target="blank"
                   >
-                    <FaLinkedin size={25} />
+                    {linkedin}
                   </Link>
                   <Link
                     href={"https://github.com/DouglasJansey"}
                     target="blank"
                   >
-                    <FaGithub size={25} />
+                    {github}
                   </Link>
                   <Link
                     href={"https://www.facebook.com/douglas.jansey"}
                     target="blank"
                   >
-                    <FaFacebookSquare size={25} />
+                    {facebook}
                   </Link>
                 </span>
               </div>
