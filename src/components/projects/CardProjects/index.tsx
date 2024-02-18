@@ -34,7 +34,8 @@ export default function CardProjects({ value }: CardProjectProps) {
                     {value.desc}
                 </p>
                 <span className={style.containerLanguages} 
-                style={{display: value.languages.frontend.length > 0 ? 'flex' : 'none'}}>
+                style={{display: value.languages.frontend.length > 0 ? 'flex' : 'none'}}
+                >
                     {value.languages.frontend.length > 0 &&
                         (value.languages.frontend.map((name, index) => (
                             <li key={index + 3}>

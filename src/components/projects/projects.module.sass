@@ -8,9 +8,25 @@
       width: 100%
       height: auto
       color: #fff
-      margin-top: 30px
-      background: red
-
+      position: relative
+      &::before
+            content: ""
+            width: 100%
+            height: 100%
+            position: absolute
+            background-image: url("/images/bgProject.jpg")
+            background-size: cover
+            background-position: 100% 100%
+            background-repeat: no-repeat
+            position: absolute
+            opacity: 0.4
+            z-index: 5
+      span
+            display: flex
+            align-items: center
+            width: 100%
+            height: auto
+            margin-top: 35px
 
 .containerIcons
       display: flex
@@ -44,4 +60,12 @@
       white-space: nowrap
       margin: 30px 0px 0px 0px
       z-index: 5
-      text-align: left
+      position: relative
+      &::after
+            content: ""
+            background: #fff
+            width: 50%
+            height: 4.5px
+            position: absolute
+            bottom: -10px
+            left: 0

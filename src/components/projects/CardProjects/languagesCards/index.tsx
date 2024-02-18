@@ -34,7 +34,8 @@ export default function LanguageCards({ value }: CardProjectProps) {
                onMouseOver={(e) => modalImageName(e)}
                onMouseLeave={(e) => modalImageName(e)}>
                 <p className={style.text}
-                    style={{ display: modalLanguage ? 'block' : 'none' }}>
+                    style={{ visibility: modalLanguage ? 'visible' : 'hidden' }}
+                    >
                     {value.name}
                 </p>
                 <figure>
