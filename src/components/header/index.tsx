@@ -5,7 +5,7 @@ import style from "./Header.module.sass";
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const menu = ["Sobre mim", "Projetos", "Habilidades", "Contato", "Formação"];
+  const menu = ["Sobre mim", "Projetos", "Habilidades", "Contato"];
   const pathname = usePathname()
 
   const handleLinkMenu = (menu: string) => {
@@ -15,10 +15,9 @@ export default function Header() {
   const handleLinkClass = (value: string) => {
     const filterPath = pathname.replace('/', '')
     const menuName = value.replace(' ', '').toLowerCase()
-    console.log(filterPath)
+    
     return filterPath === menuName ? style.activePath : style.li 
   }
-  console.log(pathname)
 
   return (
     <div className={style.containerMenu}>

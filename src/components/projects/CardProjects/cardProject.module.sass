@@ -1,0 +1,157 @@
+@import '../../../../styles/_variables'
+@keyframes fadeIn
+      0%
+            opacity: 0
+      100%
+            opacity: 1
+@keyframes fadeOut
+      0%
+            opacity: 1
+      100%
+            opacity: 0
+
+@mixin transition($view: true)
+      @if view
+            animation: fadeIn 1s ease-in-out forwards
+      @else
+            animation: fadeOut 1s ease-in-out forwards
+.container
+      width: 350px
+      height: 240px
+      position: relative
+      border-radius: 15px
+      overflow: hidden
+      &:hover
+            z-index: 11
+            scale: 1.1
+            transition: 0.5s ease-in-out
+
+.icon
+      height: auto
+      width: 350px
+      position: relative
+      background: green
+
+.containerText
+      display: flex
+      flex-direction: column
+      justify-content: flex-start
+      align-items: center
+      position: absolute
+      width: 100%
+      height: 100%
+      z-index: 4
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      margin: auto
+      &::after
+            content: ""
+            width: 100%
+            height: 100%
+            background: transparent
+            position: absolute
+      &:hover
+            z-index: 6
+            &::after
+                  background: $dark-blue
+                  z-index: 1
+                  opacity: 0.9
+                  transition: 0.5s ease-in-out
+
+.containerButton
+      display: flex
+      justify-content: flex-end
+      margin-top: 2px
+      width: 100%
+      height: 50px
+
+.button
+      padding: 10px 25px
+      background: transparent
+      border: none
+      border: 2.5px solid $light-blue
+      border-radius: 10px
+      margin: 5px 15px 5px 0px
+      position: relative
+      overflow: hidden
+      cursor: pointer
+      z-index: 5
+      color: #fff
+      &::after
+            content: ""
+            width: 0%
+      &:hover
+            &::after
+                  content: ""
+                  width: 100%
+                  height: 100%
+                  background: $light-blue
+                  position: absolute
+                  top: 0
+                  left: 0
+                  margin: auto
+                  z-index: -1
+                  transition: 0.2s ease-in-out
+      a
+            color: #fff
+            text-decoration: none
+
+.containerImg
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      margin: 0
+      width: 100%
+      height: 100%
+      top: 0
+      bottom: 0
+      right: 0
+      left: 0
+      margin: auto
+      position: absolute
+      z-index: 6
+      &:hover
+            z-index: 1
+      figure
+            width: 100%
+            height: 100%
+            img
+                  width: 350px
+                  height: 240px
+
+.floatYear
+      position: absolute
+      left: -80px
+      top: 25px
+      bottom: 0
+      margin: auto
+
+.Title
+      font-size: 2rem
+      width: auto
+      white-space: nowrap
+      z-index: 5
+      margin: 10px
+
+.text
+      position: relative
+      width: 98%
+      padding: 0
+      margin: 0
+      z-index: 5
+      text-align: center
+      font-size: 0.8rem
+
+.containerLanguages
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 100%
+      height: 100px
+      z-index: 5
+      gap: 5px
+      margin: 0
+      padding: 0

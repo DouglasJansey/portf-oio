@@ -1,5 +1,6 @@
 
-import { about, skills, main } from '../../imports'
+import { about, skills, main } from '../../imports';
+
 
 export default function Home() {
   return (
