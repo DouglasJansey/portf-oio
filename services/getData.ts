@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { env } from "process";
+
+const TOKEN_GIT = process.env.NEXT_PUBLIC_GIT_TOKEN;
 
 const options = {
   headers: new Headers({
-    Authorization: "token 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",
+    Authorization: `token ${TOKEN_GIT}`,
     "Content-Type": "application/x-www-form-urlencoded",
   }),
 };
