@@ -30,18 +30,18 @@ export default function LanguageCards({ value }: CardProjectProps) {
     }
     return (
         <article>
-            <span className={style.containerLanguages} 
+            <div className={style.containerLanguages} 
                onMouseOver={(e) => modalImageName(e)}
                onMouseLeave={(e) => modalImageName(e)}>
                 <p className={style.text}
-                    style={{ visibility: modalLanguage ? 'visible' : 'hidden' }}
+                    style={{ display: modalLanguage ? 'flex' : 'none' }}
                     >
                     {value.name}
                 </p>
                 <figure>
                     <img src={filterImage()} alt={value.name} />
                 </figure>
-            </span>
+            </div>
         </article>
     )
 }

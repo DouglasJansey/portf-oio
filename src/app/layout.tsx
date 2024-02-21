@@ -1,7 +1,16 @@
 
 //import { Inter } from 'next/font/google'
+'use client'
 import '../../styles/globals.sass'
 import Header from '@/components/header'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 export default function RootLayout({
   children,
@@ -11,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        <Header />
-        {children}
+        <QueryClientProvider client={queryClient}>
+          <Header />
+          {children}
+        </QueryClientProvider>
       </body>
     </html>
   )

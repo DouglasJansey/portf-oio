@@ -6,17 +6,18 @@
       justify-content: flex-start
       align-items: center
       width: 100%
-      height: auto
+      height: 100%
       color: #fff
       position: relative
+      padding: 20px
       &::before
             content: ""
             width: 100%
-            height: 100%
+            height: auto
             position: absolute
             background-image: url("/images/bgProject.jpg")
             background-size: cover
-            background-position: 100% 100%
+            background-position: center
             background-repeat: no-repeat
             position: absolute
             opacity: 0.4
@@ -26,28 +27,27 @@
             align-items: center
             width: 100%
             height: auto
-            margin-top: 35px
 
 .containerIcons
       display: flex
       flex: none
-      justify-content: center
-      align-items: center
-      width: 85%
-      height: auto
+      justify-content: flex-start
+      align-items: flex-start
+      width: 100%
+      height: 100vh
       z-index: 10
       margin-top: 10px
       padding: 0
       position: relative
-      padding: 5px
       ul
             display: flex
             justify-content: flex-start
             flex-wrap: wrap
             align-items: center
             width: 100%
-            height: 80%
-            gap: 20px
+            height: auto
+            margin: 0
+            padding: 0
             li
                   list-style: none
 
@@ -58,7 +58,7 @@
       font-size: 2.2rem
       width: auto
       white-space: nowrap
-      margin: 30px 0px 0px 0px
+      margin: 80px 0px 0px 0px
       z-index: 5
       position: relative
       &::after
@@ -69,3 +69,10 @@
             position: absolute
             bottom: -10px
             left: 0
+
+.containerGitProject
+      display: flex
+      flex-wrap: wrap
+      width: 100%
+      height: auto
+      gap: 10px

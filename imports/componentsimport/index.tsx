@@ -13,6 +13,12 @@ interface CardProps {
     index: number,
 
 }
+export const Card = ({value, index }: CardProps) => {
+    return(
+        <CardSkill value={value} index={index} />
+    )
+}
+
 interface CardProjectProps {
     value: {
         name: string;
@@ -26,18 +32,24 @@ interface CardProjectProps {
             }       
     },
 }
-export const Card = ({value, index }: CardProps) => {
-    return(
-        <CardSkill value={value} index={index} />
-    )
-}
+
 export const CardProjects = ({value}: CardProjectProps) =>{
     return(
         <CardProject value={value} />
     )
 }
-export const GitProjects = () =>{
+
+interface GitProjectProps {
+    name: string;
+    url: string;
+    language: {};
+    desc: string;
+    created_at: string;
+    stars: number;
+}
+
+export const GitProjects = ({name, url, language, desc, created_at, stars}: GitProjectProps) =>{
     return(
-        <GitProject  />
+        <GitProject name={name} url={url} language={language} desc={desc} created_at={created_at} stars={stars} />
     )
 }

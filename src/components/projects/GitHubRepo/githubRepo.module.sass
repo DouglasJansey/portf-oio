@@ -1,159 +1,84 @@
 @import '../../../../styles/_variables'
-@keyframes fadeIn
-      0%
-            opacity: 0
-      100%
-            opacity: 1
-@keyframes fadeOut
-      0%
-            opacity: 1
-      100%
-            opacity: 0
 
-@mixin transition($view: true)
-      @if view
-            animation: fadeIn 1s ease-in-out forwards
-      @else
-            animation: fadeOut 1s ease-in-out forwards
 .container
-      width: 350px
-      height: 240px
-      position: relative
-      border-radius: 15px
-      overflow: hidden
-      &:hover
-            z-index: 11
-            scale: 1.1
-            transition: 0.5s ease-in-out
-
-.icon
-      height: auto
-      width: 350px
-      position: relative
-      background: green
-
-.containerText
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      position: absolute
       width: 100%
       height: 100%
-      z-index: 5
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-      margin: auto
-      &::after
-            content: ""
-            width: 100%
-            height: 100%
-            background: transparent
-            position: absolute
-      &:hover
-            &::after
-                  background: $dark-blue
-                  z-index: 1
-                  opacity: 0.8
-                  transition: 0.5s ease-in-out
-            z-index: 6
-
-.containerButton
-      display: flex
-      justify-content: flex-end
-      margin-top: 35px
-      width: 100%
-
-.button
-      padding: 10px 25px
-      background: transparent
-      border: none
-      border: 2.5px solid $light-blue
-      border-radius: 10px
-      margin: 5px 15px 35px 0px
       position: relative
-      overflow: hidden
-      cursor: pointer
-      z-index: 5
-      color: #fff
-      &::after
-            content: ""
-            width: 0%
-      &:hover
-            &::after
-                  content: ""
-                  width: 100%
-                  height: 100%
-                  background: $light-blue
-                  position: absolute
-                  top: 0
-                  left: 0
-                  margin: auto
-                  z-index: -1
-                  transition: 0.2s ease-in-out
-      a
-            color: #fff
-            text-decoration: none
-
-.containerImg
+      margin-top: 20px
+      background: red
+.card
       display: flex
       flex-direction: column
+      width: 450px
+      height: 200px
+      background: #000
+      color: #fff
+      overflow: hidden
+      border: 2px solid $dark-gray
+.flex
+      display: flex
+      width: 100%
+      height: auto
       justify-content: center
       align-items: center
       margin: 0
-      width: 100%
-      height: 100%
-      z-index: 3
-      top: 0
-      bottom: 0
-      right: 0
-      left: 0
-      margin: auto
-      position: absolute
-      z-index: 6
-      &:hover
-            z-index: 1
-      figure
-            width: 100%
-            height: 100%
-            
-            &::after
-                  content: ""
-                  background: #000
-                  width: 100%
-                  height: 100%
-                  position: absolute
-                  opacity: 0.5
-                  top: 0
-                  bottom: 0
-                  right: 0
-                  left: 0
-                  margin: auto
-            img
-                  width: 100%
-                  height: 100%
-
-.floatYear
-      position: absolute
-      left: -80px
-      top: 25px
-      bottom: 0
-      margin: auto
+      padding: 0
 
 .Title
-      font-size: 2rem
-      width: auto
+      font-size: 1.2rem
+      width: 80%
+      height: 70%
       white-space: nowrap
       z-index: 5
       margin-bottom: 10px
+      background: green
+      margin: 5px
+      padding: 0
 
+.containerLanguages
+      @extend .flex
+      margin-top: 10px
 .text
       position: relative
       width: 100%
+      height: 60px
       padding: 0
       margin: 0
       z-index: 5
-      text-align: center
-      font-size: 1rem
+      text-align: left
+      background: purple
+      font-size: .8rem
+      color: $dark-gray
+
+.containerTitle
+      display: flex
+      justify-content: flex-start
+      align-items: flex-start
+      background: blue
+      height: auto
+      padding: 10px
+      margin: 0
+
+.containerImg
+      display: block
+      justify-content: center
+      align-items: center
+      width: 80px
+      height: 80px
+      border-radius: 100%
+      background: yellow
+      overflow: hidden
+      margin: 0
+      padding: 0
+      img
+            width: 100%
+.containerLanguageImg
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 20px
+      height: 20px
+      margin: 0
+      padding: 0
+      img
+            width: 100%
