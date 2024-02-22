@@ -11,18 +11,28 @@ import { projects } from '../../../info'
 import { useEffect, useState } from "react";
 import { GetDataRepository } from "../../../services/getData";
 
-interface ButtonProps extends React.MouseEvent<HTMLElement> {
-  target: HTMLButtonElement & {
-    name: string
-  }
-}
-interface RepoProps {
-  params: string;
+interface ProjectProps {
+  repo: any,
+  languages: any
+  contributors: []
 }
 
-export default async function Projects() {
-  const repo = await GetDataRepository('https://api.github.com/users/DouglasJansey/repos');
-  const repositorys = Object.values(repo)
+export default function Projects() {
+  const [repoData, setRepoData] = useState<ProjectProps[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data: ProjectProps[] = await GetDataRepository('https://api.github.com/users/DouglasJansey/repos');
+        setRepoData(data); // Define o estado com os dados obtidos da requisição
+      } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+        // Lidar com erros
+      }
+    };
+
+    fetchData(); // Chama a função para buscar os dados quando o componente monta
+  }, []);
   return (
     <>
       <section className={style.mainContainer}>
@@ -45,17 +55,23 @@ export default async function Projects() {
       </section>
       <article>
         <aside className={style.containerGitProject}>
+          <span>
+            <p className={style.Title}>Repositórios GitHub</p>
+          </span>
           <ul className={style.containerGitProject}>
-            {(typeof repo !== 'string') ? repositorys.map((repos, index) => (
-              <li key={index + 2}>{<GitProjects 
-                name={repos.repo.name} 
-                url={repos.repo.url} 
-                language={repos.languages} 
-                desc={repos.repo.description} 
+            {repoData !== undefined && repoData.map((repos, index) => (
+              <li key={index + 2}>{<GitProjects
+                name={repos.repo.full_name}
+                url={repos.repo.html_url}
+                language={repos.languages}
+                desc={repos.repo.description}
                 created_at={repos.repo.created_at}
-                stars={repos.repo.stargazers_count}
-                />}</li>
-            )): 'loading'}
+                gitIcons={[{ value: repos.repo.forks_count, name: 'fork' },
+                { value: repos.repo.open_issues, name: 'issue' },
+                { value: repos.repo.stargazers_count, name: 'star' },
+                { value: repos.contributors.length, name: 'contributors' }]}
+              />}</li>
+            ))}
           </ul>
         </aside>
       </article>

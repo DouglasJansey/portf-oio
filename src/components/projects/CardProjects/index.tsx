@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import style from './cardProject.module.sass';
 import LanguageCard from './languagesCards'
+import { Button } from '@/components/buttons/button';
+
 
 interface CardProjectProps {
     value: {
@@ -19,7 +21,6 @@ interface CardProjectProps {
 
 export default function CardProjects({ value }: CardProjectProps) {
     const cardName = value.name.toLowerCase().replace(/[^a-z]/, '').replace(' ', '')
-    const [modalLanguage, setModalLanguage] = useState('')
 
     return (
         <article className={style.container}>
@@ -55,11 +56,9 @@ export default function CardProjects({ value }: CardProjectProps) {
                     }
                 </span>
                 <div className={style.containerButton}>
-                    <a href={value.url} target='blank'>
-                        <button type='button' className={style.button}>
+                        <Button to={value.url} target='_blank'>
                             Visite o site
-                        </button>
-                    </a>
+                        </Button>
                 </div>
             </aside>
         </article>

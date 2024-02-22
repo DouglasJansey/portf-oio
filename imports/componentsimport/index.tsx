@@ -45,11 +45,12 @@ interface GitProjectProps {
     language: {};
     desc: string;
     created_at: string;
-    stars: number;
+    gitIcons: any[]
+
 }
 
-export const GitProjects = ({name, url, language, desc, created_at, stars}: GitProjectProps) =>{
+export const GitProjects = ({name, url, language, desc, created_at, gitIcons}: GitProjectProps) =>{
     return(
-        <GitProject name={name} url={url} language={language} desc={desc} created_at={created_at} stars={stars} />
+        <GitProject name={name} url={url} language={language} desc={desc} created_at={created_at} gitIcons={gitIcons} />
     )
 }

@@ -1,26 +1,27 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 'use client'
-import { CSSProperties, Key, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import style from './githubRepo.module.sass';
-import { GetDataRepository } from '../../../../services/getData'
-
+import { arrowRight } from '../../../../imports/reactIcons'
+import { Button } from '@/components/buttons/button';
+import CardGit from './cardGitIcons'
 interface GitProjectProps {
-        name: string;
-        url: string;
-        language: {};
-        desc: string;
-        created_at: string;
-        stars: number;
+    name: string;
+    url: string;
+    language: {};
+    desc: string;
+    created_at: string;
+    gitIcons: any[]
 
 }
 
-export default function GitHubProjects({name, url, language, desc, created_at, stars}: GitProjectProps) {
+export default function GitHubProjects({ name, url, language, desc, created_at, gitIcons }: GitProjectProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [spanWidth, setSpanWidth] = useState(0)
+    const gitIconsList = gitIcons
     const valueLanguage: any[] = Object.values(language)
     const nameLanguage: any[] = Object.keys(language)
-
-    console.log(nameLanguage, name)
-
     const calculateWidth = () => {
         const arraySort = valueLanguage.sort((a, b) => b - a)
         const totalValue = arraySort.reduce((acc, curr) => acc + curr, 0);
@@ -28,13 +29,15 @@ export default function GitHubProjects({name, url, language, desc, created_at, s
         const widths = totalPercent.map(percent => percent * spanWidth);
         return widths
     }
-    const setImageLanguage = (name: string) =>{
+    const setImageLanguage = (name: string) => {
         const imgLanguage = {
             HTML: 'html5',
             CSS: 'css3',
             'C#': 'csharp',
-        }
-        return imgLanguage[name as keyof typeof imgLanguage]
+            Java: 'openjdk',
+        };
+
+        return (name === 'HTML' || name === 'CSS' || name === 'C#' || name === 'Java') && imgLanguage[name as keyof typeof imgLanguage] || name
     }
     const languagesSpanWidth = () => {
         const width = calculateWidth()
@@ -45,15 +48,15 @@ export default function GitHubProjects({name, url, language, desc, created_at, s
             typescript: '#3178C6',
             ejs: '#B4CA65',
             java: '#CC0000',
-            shell: '#FFD500',
+            shell: '#ffb300',
             sass: '#CC6699',
             "c#": '#512BD4',
         }
 
         return nameLanguage.map((item, index) => (
             {
-                width: `${width[index]}px`,
-                height: '10px',
+                width: `${width[index]}%`,
+                height: '5px',
                 background: colors[item.toLowerCase() as keyof typeof colors],
             }
         ))
@@ -75,17 +78,31 @@ export default function GitHubProjects({name, url, language, desc, created_at, s
         <article>
             <div className={style.card}>
                 <aside className={style.containerTitle}>
-                    <h1 className={style.Title}>{name}</h1>
+                    <div className={style.Title}>
+                        <h1>{name}</h1>
+                    </div>
                     <figure className={style.containerImg}>
                         <img src='https://avatars.githubusercontent.com/u/87612240?v=4' alt='' />
                     </figure>
                 </aside>
                 <aside>
-                    <p className={style.text}>descrição do repositório</p>
-                    <div className={style.flex}>
+                    <div className={style.containerDesc}>
+                        <p className={style.text}>{desc}</p>
+                        <Button to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> { arrowRight } </Button>
+                    </div>
+                    <div className={style.flex} style={{ gap: '15px', justifyContent: 'flex-end', width: '98%' }}>
+                        <div className={style.containerGitIcons}>
+                            <ul>
+                                {gitIconsList && gitIconsList.map((item, index) => (
+                                    <li key={index + 4}>
+                                        <CardGit item={item} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                         {nameLanguage.map((lang, index) => (
                             <figure className={style.containerLanguageImg} key={index + 4}>
-                                <img src={`https://cdn.simpleicons.org/${lang === 'HTML' || lang === 'CSS' || lang === 'C#' ? setImageLanguage(lang) : lang}`} />
+                                <img src={`https://cdn.simpleicons.org/${setImageLanguage(lang)}`} />
                             </figure>
                         ))}
                     </div>
