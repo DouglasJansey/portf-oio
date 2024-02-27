@@ -4,9 +4,6 @@
 import '../../styles/globals.sass'
 import Header from '@/components/header'
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'

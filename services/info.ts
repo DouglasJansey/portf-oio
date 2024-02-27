@@ -201,8 +201,8 @@ export const projects = [
     desc: `Aplicação web para cadastrar clientes, efetuar pedidos através do cardápio disponível 
     e enviado para whatsapp da empresa com todas as informações do pedido e do cliente.`,
     languages: {
-      frontend: ["Typescript", "Next.js", "Zustand", "Sass"],
-      backend: ["Node.js", "Prisma", "PostgreSql", "Bcrypt", "JSON Web Tokens"],
+      frontend: ["Typescript", "Next.js", "zustand", "Sass"],
+      backend: ["Node.js", "Prisma", "PostgreSql", "bcrypt", "JSON Web Tokens"],
     },
   },
   {

@@ -31,7 +31,6 @@
       display: flex
       width: 100%
       align-items: center
-      margin: 120px 0px 30px 0px
       p
             font-size: 3rem
 
@@ -67,7 +66,6 @@
       margin: 0
       padding: 0
       background: #000
-      z-index: 5
       border: none
       color: #fff
       opacity: 0.6
@@ -117,7 +115,6 @@
       padding: 0
       z-index: 5
       position: relative
-      padding: 5px
       ul
             display: flex
             justify-content: flex-start
@@ -219,16 +216,16 @@
 @media screen and ( max-width: 800px )
       .mainContainer
             flex-wrap: wrap
-            span
-                  margin-top: 170px
       .subContainer
             flex-wrap: wrap
       .containerText
+            justify-content: center
+            align-items: center
             width: 100%
       .containerTitle
             white-space: nowrap
             justify-content: center
-            padding: 5px
+            width: auto
             h1
                   font-size: 2.6rem
       .containerImg
@@ -243,9 +240,13 @@
       .Title
             font-size: 2rem
             text-align: center
+            white-space: break-spaces
             padding: 0
       .containerButton
             justify-content: center
             align-items: center
+            gap: 25px
+      .button
+            margin: 0
 
       

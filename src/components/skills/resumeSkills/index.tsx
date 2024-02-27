@@ -13,11 +13,7 @@ import { changeState } from '../../../../state'
 import Course from "../course";
 
 import style from "./skills.module.sass";
-interface ButtonProps extends React.MouseEvent<HTMLElement> {
-  target: HTMLButtonElement & {
-    name: string
-  }
-}
+
 
 export default function Skills() {
   const [positionX, setPositionX] = useState(0)
@@ -102,7 +98,7 @@ export default function Skills() {
 
   return (
     <section className={style.mainContainer}>
-      <span className={style.containerTitle}>
+      <span className={style.containerTitle} style={{marginTop: pathname === '/' ? '60px' : '170px'}}>
         <h1>Habilidades</h1>
       </span>
       <article className={style.subContainer}>
@@ -114,7 +110,7 @@ export default function Skills() {
         </aside>
         <aside className={style.containerText}>
           <h1 className={style.Title}>
-            Experiência - {exp}
+            Experiência: {exp}
           </h1>
           <p className={style.text}>Lorem ipsum dolor,
             sit amet consectetur adipisicing elit.
@@ -148,7 +144,7 @@ export default function Skills() {
         </button>
         <button className={style.containerArrow}
           type="button"
-          style={{ right: 0 }}
+          style={{ right: 0}}
           name="right"
           onClick={(e) => handleButtonPosition(e, +90)}
         >

@@ -109,7 +109,7 @@
     flex-direction: column
     justify-content: center
     align-items: center
-    width: 50%
+    width: 100%
     height: 100%
     z-index: 5
     font-weight: bold
@@ -163,16 +163,18 @@
             transition: 0.2s ease
             z-index: -1
                 
-@media screen and ( max-width: 850px )
+@media screen and ( max-width: 630px )
   .mainContainer
     align-items: flex-start
   .containerImage
     justify-content: center
     img
       width: 100%
-      height: 50%
-      bottom: -55%
+      height: 100%
+      bottom: 0
+      opacity: 0.2
       top: 0
+      right: -30%
       margin: auto
   .containerText
     width: 100%
@@ -189,13 +191,16 @@
       margin: 0
       padding: 5px
       p
-        font-size: 1.8rem
+        font-size: 1.2rem
   .mainContainer
     p
       font-size: 2rem
   .buttonAbout
     margin-top: 30px
-    padding: 5px 35px
+    padding: 5px 20px
     margin: 35px 0px 0px 0px
+    background: $dark-blue
+    a
+      color: #fff
     p
       font-size: 1.3rem

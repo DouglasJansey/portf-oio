@@ -76,7 +76,6 @@ export default function Main() {
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    padding: '15px 70px',
                     background: 'blue',
                   }}
                 >
