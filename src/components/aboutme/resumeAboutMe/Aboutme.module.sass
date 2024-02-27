@@ -59,7 +59,7 @@
         height: 100%
         position: absolute
         background-image: url("../../../../public/images/background2.png")
-        background-size: contain
+        background-size: 100% 100%
         background-position: left
         background-repeat: no-repeat
         @include animate(fadeBackground, 1.8s, ease-in-out, forwards, running)   
@@ -72,7 +72,7 @@
         right: -5%
         top: -15%
         position: absolute
-        z-index: 2
+        z-index: -1
 
 .animation
     @include animate(fadeRight, 2s, ease-in-out, forwards, running)
@@ -163,5 +163,39 @@
             transition: 0.2s ease
             z-index: -1
                 
-        
-            
+@media screen and ( max-width: 850px )
+  .mainContainer
+    align-items: flex-start
+  .containerImage
+    justify-content: center
+    img
+      width: 100%
+      height: 50%
+      bottom: -55%
+      top: 0
+      margin: auto
+  .containerText
+    width: 100%
+  .containerTitle
+    margin: 0
+  .containerText
+    justify-content: flex-start
+    h1
+      font-size: 3rem
+      margin-bottom: 30px
+    span
+      width: 95%
+      height: 35%
+      margin: 0
+      padding: 5px
+      p
+        font-size: 1.8rem
+  .mainContainer
+    p
+      font-size: 2rem
+  .buttonAbout
+    margin-top: 30px
+    padding: 5px 35px
+    margin: 35px 0px 0px 0px
+    p
+      font-size: 1.3rem

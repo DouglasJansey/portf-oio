@@ -3,15 +3,16 @@
 .button
     padding: 10px 25px
     background: transparent
-    border: none
     border: 2.5px solid $light-blue
     border-radius: 10px
     margin: 5px 15px 5px 0px
     position: relative
     overflow: hidden
     cursor: pointer
+    box-sizing: border-box
     text-decoration: none
     z-index: 5
+    overflow: hidden
     color: #fff
     &::after
         content: ""
@@ -19,8 +20,8 @@
     &:hover
         &::after
             content: ""
-            width: 100%
-            height: 100%
+            width: 105%
+            height: 105%
             background: $light-blue
             position: absolute
             top: 0

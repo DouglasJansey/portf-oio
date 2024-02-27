@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import style from "./course.module.sass";
-import { course } from '../../../../info'
+import { course } from '../../../../services/info'
 
 export default function Course() {
   

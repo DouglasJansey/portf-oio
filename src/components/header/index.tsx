@@ -15,12 +15,17 @@ export default function Header() {
   const handleLinkClass = (value: string) => {
     const filterPath = pathname.replace('/', '')
     const menuName = value.replace(' ', '').toLowerCase()
-    
-    return filterPath === menuName ? style.activePath : style.li 
+
+    return filterPath === menuName ? style.activePath : style.li
   }
 
   return (
     <div className={style.containerMenu}>
+      <figure className={style.containerImg}>
+        <Link href={'/'}>
+          <img src='/images/douglasjansey.png' alt='' />
+        </Link>
+      </figure>
       <nav className={style.containerNav}>
         <ul className={style.ul}>
           {menu.map((item, index) => (

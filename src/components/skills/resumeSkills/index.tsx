@@ -6,14 +6,13 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
 import { arrowRight } from '../../../../imports/reactIcons';
-import { skills } from '../../../../info'
+import { skills } from '../../../../services/info'
 import { Card } from '../../../../imports/componentsimport'
 import { usePathname } from "next/navigation";
 import { changeState } from '../../../../state'
 import Course from "../course";
 
 import style from "./skills.module.sass";
-import { BsArrow90DegDown } from "react-icons/bs";
 interface ButtonProps extends React.MouseEvent<HTMLElement> {
   target: HTMLButtonElement & {
     name: string
@@ -42,7 +41,6 @@ export default function Skills() {
     setPositionX(position)
 
   };
-  console.log(pathname.replace(/[^\w\s]/, ''))
   //UTILIZANDO A REFERÊNCIA PARA AVANÇAR AUTOMATICAMENTE QUANDO O CARD  SELECIONADO SAIR DA TELA
   const handleNextAndBackButton = (increment: number, e: any) => {
     const buttonName = e.target.name;
@@ -104,12 +102,12 @@ export default function Skills() {
 
   return (
     <section className={style.mainContainer}>
-      <span>
-        <p className={style.Title}>Habilidades</p>
+      <span className={style.containerTitle}>
+        <h1>Habilidades</h1>
       </span>
       <article className={style.subContainer}>
         <aside className={style.containerImg}>
-          <p className={style.Title}>{name}</p>
+          <h1 className={style.Title}>{name}</h1>
           <figure>
             <img src={`https://cdn.simpleicons.org/${name.toLocaleLowerCase().replace('-', '')}/${changeColorImage(name.toLocaleLowerCase().replace('-', ''))}`} />
           </figure>
@@ -169,7 +167,7 @@ export default function Skills() {
         </div>
       </div>
       {pathname.replace(/[^\w\s]/, '') === 'habilidades' && <Course />}
-      
+
     </section>
   );
 

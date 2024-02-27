@@ -4,7 +4,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
-import { info } from '../../../../info'
+import { info } from '../../../../services/info'
 import style from "./Aboutme.module.sass";
 import Link from "next/link";
 

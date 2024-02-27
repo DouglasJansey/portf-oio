@@ -7,17 +7,19 @@ import style from "./Aboutme.module.sass";
 
 export default function AboutMe() {
 
-return (
+  return (
     <section className={style.mainContainer}>
       <div className={style.subContainer}>
         <figure className={style.containerImg}>
-          <img src="/images/color.jpg" alt="" />
+          <div>
+            <img src="/images/color.jpg" alt="" />
+          </div>
         </figure>
         <article className={style.containerText}>
           <div>
             <h1 className={style.textTitle}>Sobre mim</h1>
             <p className={style.subTitle}>Douglas Jansey</p>
-            <p className={style.text}>Desenvolvedor web</p>
+            <p className={style.text}>Desenvolvedor Full Stack</p>
             <p>
               Sou formado em Análise e Desenvolvimento de Sistemas,
               tenho 33 anos e sou um apaixonado por tecnologia e programação desde meus 14 anos,

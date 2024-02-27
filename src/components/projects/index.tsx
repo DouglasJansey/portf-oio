@@ -7,7 +7,7 @@
 'use client'
 import style from "./projects.module.sass";
 import { CardProjects, GitProjects } from '../../../imports/componentsimport'
-import { projects } from '../../../info'
+import { projects } from '../../../services/info'
 import { useEffect, useState } from "react";
 import { GetDataRepository } from "../../../services/getData";
 

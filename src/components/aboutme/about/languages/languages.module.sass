@@ -4,14 +4,14 @@
   0%
     transform: translateX(-100%)
     opacity: 0
-    
+
   100%
     transform: translateX(0)
     opacity: 1
 
 @keyframes fadeLeft
   0%
-    transform: translateX(100%) 
+    transform: translateX(100%)
     opacity: 0
   100%
     transform: translateX(0)
@@ -19,7 +19,7 @@
 
 @keyframes fadeBackground
   0%
-    transform: translateX(-100%) 
+    transform: translateX(-100%)
     opacity: 0
   100%
     transform: translateX(0)
@@ -30,85 +30,93 @@
     width: 0%
   100%
     width: 100%
-        
 
 @mixin animate($animation, $duration, $ease, $mode, $type)
-   animation: $animation $duration $ease $mode $type
+  animation: $animation $duration $ease $mode $type
 
 .mainContainer
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: center
-    width: 100%
-    height: auto
-    color: #fff
-    background: $dark-blue-2
-    margin-top: 50px
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  width: 100%
+  height: 100%
+  color: #fff
+  background: $dark-blue-2
+  margin-top: 50px
 
 .subContainer
-    display: flex
-    justify-content: center
-    align-items: center
-    flex: none
+  display: flex
+  justify-content: center
+  align-items: center
+  flex: none
+  width: 100%
+  height: auto
+  position: relative
+  &::before
+    content: ""
     width: 100%
-    height: auto
-    position: relative
-    &::before
-      content: ""
-      width: 100%
-      height: 100%
-      background-image: url("/images/lgbackground.png")
-      opacity: 0.4
-      mix-blend-mode: multiply
-      background-position: center
-      background-size: 100% 100%
-      background-repeat: no-repeat
-      position: absolute
-      z-index: 1
+    height: 100%
+    background-image: url("/images/lgbackground.png")
+    opacity: 0.4
+    mix-blend-mode: multiply
+    background-position: center
+    background-size: 100% 100%
+    background-repeat: no-repeat
+    position: absolute
+    z-index: 1
 
 .containerImg
-    width: 400px
-    height: 400px
-    z-index: 2
-    img
-      height: 100%
-      filter: invert(100%)
+  width: 400px
+  height: 400px
+  z-index: 2
+  img
+    height: 100%
+    filter: invert(100%)
 
 .containerText
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 90%
+  background: transparent
+  z-index: 1
+  div
     display: flex
-    justify-content: center
-    align-items: center
-    width: 100%
-    height: 90%
-    background: transparent
-    z-index: 1
-    div
-      display: flex
-      flex-direction: column
-      align-items: flex-start
-      justify-content: flex-start
-      margin: 0
-      width: 50%  
-      height: 98%
-      padding: 20px
+    flex-direction: column
+    align-items: flex-start
+    justify-content: flex-start
+    margin: 0
+    width: 50%
+    height: 98%
+    padding: 20px
 
 .subTitle
-      font-size: 1.5rem
-      margin: 0
+  font-size: 1.5rem
+  margin: 0
 
 .textTitle
-      position: relative
-      height: 40px
-      width: auto
-      padding: 5px
-      margin: 5px 0px 15px
-      font-size: 2rem
-      &::before
-        content: ""
-        width: 45%
-        height: 3.5px
-        background: #fff
-        position: absolute
-        margin: auto
-        bottom: 0
+  position: relative
+  height: 40px
+  width: auto
+  padding: 5px
+  margin: 5px 0px 15px
+  font-size: 2rem
+  &::before
+    content: ""
+    width: 45%
+    height: 3.5px
+    background: #fff
+    position: absolute
+    margin: auto
+    bottom: 0
+
+@media screen and ( max-width: 800px )
+  .containerText
+    flex-wrap: wrap
+    div
+      width: 90%
+  .containerImg
+    width: 200px
+    height: 200px

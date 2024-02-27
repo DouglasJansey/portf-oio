@@ -1,135 +1,125 @@
 @import '../../../../styles/_variables'
 
-@keyframes fadeRight
-  0%
-    transform: translateX(-100%)
-    opacity: 0
-    
-  100%
-    transform: translateX(0)
-    opacity: 1
-
-@keyframes fadeLeft
-  0%
-    transform: translateX(100%) 
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 1
-
-@keyframes fadeBackground
-  0%
-    transform: translateX(-100%) 
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 0.3
-
-@keyframes borderLine
-  0%
-    width: 0%
-  100%
-    width: 100%
-        
-
-@mixin animate($animation, $duration, $ease, $mode, $type)
-   animation: $animation $duration $ease $mode $type
-
 .mainContainer
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: center
-    width: 100%
-    height: 100%
-    color: #fff
-    background: #000
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  width: 100%
+  height: auto
+  color: #fff
+  background: #000
 
 .subContainer
-    display: flex
-    justify-content: center
-    align-items: center
-    flex: none
-    width: 60%
-    height: auto
-    margin-top: 80px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex: none
+  width: 80%
+  height: 400px
+  padding: 0
+  position: relative
+  margin-top: 110px
 
 .containerImg
-    width: 300px
-    height: 300px
+  display: flex
+  align-items: center
+  flex: none
+  z-index: 2
+  height: 100%
+  margin: 0
+  position: relative
+  &::after
+    content: ""
+    width: 50%
+    height: 100%
+    background: #03275d
+    opacity: 0.5
+    position: absolute
+    right: 0
+    top: 0
+    bottom: 0
+    right: 0
+    margin: auto
+    z-index: -1
+  div
+    height: 350px
+    width: 350px
     border-radius: 100%
-    z-index: 2
     overflow: hidden
-    img
-      height: 100%
+  img
+    width: 100%
 
 .containerText
+  display: flex
+  justify-content: center
+  width: 100%
+  height: 100%
+  background: transparent
+  position: relative
+  padding: 0
+  z-index: 1
+  div
     display: flex
-    justify-content: flex-end
-    width: 60%
-    height: 90%
-    background: transparent
-    position: relative
-    z-index: 1
-    div
-      display: flex
-      flex-direction: column
-      align-items: flex-start
-      justify-content: center
-      margin: 0
-      width: 95%  
-      height: 98%
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+    margin: 0
+    padding: 0
+    width: 95%
+    height: 98%
     &::before
       content: ""
-      width: 140%
-      height: 115%
+      width: 100%
+      height: 100%
       background: #03275d
       opacity: 0.5
       position: absolute
       right: 0
       top: 0
       bottom: 0
+      right: 0
       margin: auto
       z-index: -1
 
 .subTitle
-      font-size: 1.5rem
-      margin: 0
+  font-size: 1.5rem
+  margin: 0
 
 .text
-      font-size: 0.9rem
-      margin: 0
-      color: $gray
-      opacity: 0.6
+  font-size: 0.9rem
+  margin: 0
+  color: $gray
+  opacity: 0.6
 
 .textTitle
-      position: relative
-      height: 40px
-      width: auto
-      padding: 5px
-      margin: 5px 0px 15px
-      font-size: 2rem
-      &::before
-        content: ""
-        width: 45%
-        height: 3.5px
-        background: #fff
-        position: absolute
-        margin: auto
-        bottom: 0
+  position: relative
+  height: 40px
+  width: auto
+  padding: 5px
+  margin: 5px 0px 15px
+  font-size: 2rem
+  &::before
+    content: ""
+    width: 45%
+    height: 3.5px
+    background: #fff
+    position: absolute
+    margin: auto
+    bottom: 0
 
 .containerSkills
+  display: flex
+  justify-content: center
+  align-items: center
+  background: $dark-blue
+  width: 100%
+  height: 100%
+  padding: 10px
+  span
     display: flex
-    justify-content: center
-    align-items: center
-    background: $dark-blue
-    width: 100%
+    width: 80%
     height: 100%
-    padding: 10px
-    span
-      display: flex
-      width: 80%
-      height: 100%
 
 .textDecoration
   position: relative
@@ -142,18 +132,28 @@
     margin: auto
     left: 0
     bottom: -5px
-   
-.containerLanguages
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    border-right: 2px solid #fff
-    width: auto
-    height: 100%
-    padding: 10px
-    li
-      list-style: none
-      padding-bottom: 10px
 
-            
+.containerLanguages
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  border-right: 2px solid #fff
+  width: auto
+  height: 100%
+  padding: 10px
+  li
+    list-style: none
+    padding-bottom: 10px
+
+@media only screen and (max-width: 630px)
+  .subContainer
+    flex-wrap: wrap
+    height: auto
+
+  .containerImg
+    &::after
+      background: transparent
+
+  .subContainer
+    margin-top: 150px

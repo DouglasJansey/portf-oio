@@ -31,6 +31,7 @@
       display: flex
       width: 100%
       align-items: center
+      margin: 120px 0px 30px 0px
       p
             font-size: 3rem
 
@@ -52,7 +53,6 @@
     align-items: flex-start
     width: 60%
     height: 90%
-    min-height: 400px
     z-index: 2
     padding: 5px
     position: relative
@@ -82,6 +82,27 @@
             z-index: 1
             opacity: 0.4
    
+.containerTitle
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      width: 100%
+      height: 40px
+      margin-top: 90px
+      z-index: 2
+      h1
+            font-size: 2.8rem
+            width: auto
+            height: 70px
+            position: relative
+            &::before
+                  content: ""
+                  width: 40%
+                  height: 4px
+                  background: #fff
+                  position: absolute
+                  z-index: 1
+                  bottom: 0
 
 .containerIcons
       display: flex
@@ -195,5 +216,36 @@
       margin: 15px 35px 0px
       font-size: 1.4rem
 
+@media screen and ( max-width: 800px )
+      .mainContainer
+            flex-wrap: wrap
+            span
+                  margin-top: 170px
+      .subContainer
+            flex-wrap: wrap
+      .containerText
+            width: 100%
+      .containerTitle
+            white-space: nowrap
+            justify-content: center
+            padding: 5px
+            h1
+                  font-size: 2.6rem
+      .containerImg
+            &::before
+                  display: none
+      .text
+            font-size: 1.2rem
+            width: 95%
+            margin: 10px 0px 0px 0px
+            padding: 0
+            text-align: center
+      .Title
+            font-size: 2rem
+            text-align: center
+            padding: 0
+      .containerButton
+            justify-content: center
+            align-items: center
 
- 
+      

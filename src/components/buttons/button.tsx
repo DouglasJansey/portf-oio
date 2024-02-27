@@ -5,7 +5,7 @@ import Link from "next/link"
 interface ButtonProps {
     children: ReactNode,
     to: string
-    target: string
+    target?: string
     style?: {}
 }
 export const Button = ({children, to, target, style}:ButtonProps) => {

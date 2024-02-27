@@ -5,29 +5,34 @@
     justify-content: center
     align-items: center
     width: 100%
-    height: 100vh
+    height: 100%
     color: #fff
     position: relative
     font-family: $Roboto
+    &::after
+        content: ""
+        width: 100%
+        height: 100%
+        background: linear-gradient(to top, transparent 50%, #000)
+        position: absolute
+        z-index: -1
+    &::before
+        content: ""
+        width: 100%
+        height: 100%
+        background-image: url("/images/background.jpg")
+        opacity: 0.9
+        background-position: center
+        background-size: 100% 100%
+        background-repeat: no-repeat
+        position: absolute
+        z-index: -2
     img
         transform: scaleX(-1)
         width: 100%
         height: 100%
 .textshadow
     text-shadow: 2px 2px 4px rgba(0,0 ,0 , 0.5 )
-    
-.containerLeft
-    display: flex
-    justify-content: space-between
-    width: 95%
-    height: 90%
-    z-index: 10
-    position: absolute
-    top: 50px
-    bottom: 0
-    left: 0
-    right: 0
-    margin: auto
 
 .containerPhoto
     position: absolute
@@ -55,49 +60,46 @@
         margin-top: 5px
         height: 100%
         width: auto
-        
 
 .containerRight
     width: 50%
     height: 100%
 .containerSocial
     display: flex
-    flex-direction: column
     justify-content: center
     align-items: center
-    width: 100%
-    height: 10%
+    width: 80%
+    height: 50px
     position: relative
     p
-        position: absolute
         font-size: 1.2rem
-        top: 5%
-        left: 17%
         margin: 0
         padding: 0
+        position: relative
+        &::before
+            content: ''
+            background: #fff
+            width: 100%
+            height: 2px
+            position: absolute
+            right: -50%
+            bottom: -10px
+            margin: auto
 
 .containerLinkSocial
     display: flex
-    margin-left: 40px 
-    width: 50%
-    position: relative
+    width: 30%
     align-items: center
     justify-content: flex-end
     span
         display: flex
         gap: 3%
-        width: 50%
+        width: auto
+        position: relative
         a
             text-decoration: none
             color: #fff
-    &::before
-        content: ''
-        background: #fff
-        width: 150px
-        height: 2px
-        position: absolute
-        left: 0
-    
+
 .containerImage
     display: flex
     flex-direction: column
@@ -124,14 +126,14 @@
     justify-content: flex-end
     align-items: center
     width: 43%
-    position: relative
     p
+        position: relative
         &::before
             content: ''
             background: #fff
-            width: 125px
+            width: 65%
             height: 2px
-            left: 0
+            left: -70%
             top: 0
             bottom: 0
             margin: auto
@@ -161,7 +163,6 @@
     margin: 0
     padding: 0
     @extend .textshadow
-
 
 .containerTextDesc
     width: 80%
@@ -218,3 +219,37 @@
         left: 0
         right: 0
         margin: auto
+
+@media screen and ( max-width: 850px )
+    .containerText
+        width: 100%
+        justify-content: center
+        align-items: center
+    .containerTextDesc
+        width: 100%
+        display: flex
+    .containerTextMiddle
+        display: flex
+        width: 100%
+    .containerImage
+        display: none
+    .containerMain
+        flex-direction: column
+        margin-top: 140px
+        padding: 5px
+    .containerLinkSocial
+        width: auto
+    .containerSocial
+        white-space: nowrap
+        justify-content: space-between
+        width: 100%
+    .containerRight
+        width: 80%
+        margin-top: 25px
+    .containerLinks
+        width: 100%
+    .containerContato
+        width: 200px
+        &::after
+            padding: 2px
+    

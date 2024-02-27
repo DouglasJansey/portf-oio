@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import style from "./experience.module.sass";
-import { experience } from '../../../../../info'
+import { experience } from '../../../../../services/info'
 
 export default function Languages() {
   const existYear: string[] = [];
