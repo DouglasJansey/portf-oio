@@ -1,11 +1,22 @@
 @import '../../../styles/_variables'
 @import '../../../styles/_typography'
+@import '../../../styles/_animation'
+
+
+
+@keyframes fadeBackground
+    0%
+        opacity: 0
+    100%
+        opacity: 0.9
+
+
 .containerMain
     display: flex
     justify-content: center
     align-items: center
     width: auto
-    height: 100%
+    height: 100vh
     color: #fff
     position: relative
     font-family: $Roboto
@@ -29,6 +40,7 @@
         background-size: 100% 100%
         background-repeat: no-repeat
         position: absolute
+        animation: fadeBackground 1s ease-in-out forwards
         z-index: -2
         padding: 0
     img
@@ -68,6 +80,7 @@
 .containerRight
     width: 50%
     height: 100%
+    animation: fadeLeft 1s ease-in-out forwards
 .containerSocial
     display: flex
     justify-content: center
@@ -80,6 +93,7 @@
         margin: 0
         padding: 0
         position: relative
+        @include animation-fade(fadeRight, 0.5s)
         &::before
             content: ''
             background: #fff
@@ -95,6 +109,10 @@
     width: 30%
     align-items: center
     justify-content: flex-end
+    animation: fadeLeft 1.4s ease-in-out forwards
+    p
+        animation: fadeLeft 1.5s ease-in-out forwards
+
     span
         display: flex
         gap: 3%
@@ -131,6 +149,7 @@
     align-items: center
     width: 43%
     p
+        animation: fadeRight 1s ease-in-out forwards
         position: relative
         &::before
             content: ''
@@ -141,6 +160,7 @@
             top: 0
             bottom: 0
             margin: auto
+            animation: fadeRight 2s ease-in-out forwards
             position: absolute
 
 .containerMainText
@@ -154,6 +174,7 @@
     font-size: 5rem
     white-space: nowrap
     margin: 0
+    animation: fadeRight 2.7s ease-in-out forwards
     @extend .textshadow
 
 .containerTextMiddle
@@ -166,12 +187,14 @@
     font-size: 2.5rem
     margin: 0
     padding: 0
+    animation: fadeRight 1.8s ease-in-out forwards
     @extend .textshadow
 
 .containerTextDesc
     width: 80%
 .textDesc
     font-size: 1.2rem
+    animation: fadeRight 1.5s ease-in-out forwards
     @extend .textshadow
 
 .containerLinks
@@ -179,26 +202,34 @@
     justify-content: space-around
     align-items: center
     width: 100%
+    animation: fadeRight 2.5s ease-in-out forwards
+
     a
         text-decoration: none
 
 .containerPortfolio
     display: flex
-    justify-content: space-around
+    justify-content: space-between
     align-items: center
-    width: 150px
+    width: auto
     height: auto
     gap: 5%
     color: #fff
+    animation: fadeRight 2s ease-in-out forwards
     p
         white-space: nowrap
-        font-weight: bold
-        margin: 0
+        margin: 10px
     button
         background: none
         border: none
         @extend .containerPortfolio
         cursor: pointer
+    a
+        display: flex
+        justify-content: center
+        width: 100%
+        margin: 0
+        padding: 10px 25px
 
 .containerContato
     display: flex
@@ -224,7 +255,7 @@
         right: 0
         margin: auto
 
-@media screen and ( max-width: 630px )
+@media screen and ( max-width: 530px )
     .containerText
         width: 100%
         justify-content: center
@@ -235,6 +266,8 @@
         padding: 0
         a
             padding: 15px 10px
+            display: flex
+            justify-content: center
     .containerTextDesc
         width: 100%
         display: flex

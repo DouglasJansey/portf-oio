@@ -1,0 +1,18 @@
+@keyframes fadeRight
+    0%
+        transform: translateX(-100%)
+        opacity: 0
+    100%
+        transform: translateX(0%)
+        opacity: 1
+        git st
+@keyframes fadeLeft
+    0%
+        transform: translateX(100%)
+        opacity: 0
+    100%
+        transform: translateX(0%)
+        opacity: 1
+
+@mixin animation-fade($name, $duration)
+    animation: $name $duration ease-in-out forwards

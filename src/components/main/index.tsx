@@ -52,7 +52,7 @@ export default function Main() {
             </div>
             <div className={style.containerTextMiddle}>
               <p className={style.textMiddle}>
-                Olá, me chamo Douglas Jansey e sou um Desenvolvedor Web
+                Me chamo Douglas Jansey e sou um Desenvolvedor Full Stack
               </p>
             </div>
             <div className={style.containerTextDesc}>
@@ -63,22 +63,14 @@ export default function Main() {
               </p>
             </div>
             <div className={style.containerLinks}>
-              <Link
-                href={`https://wa.me//55${phoneNumber}?text=`}
+              <Button
+                to={`https://wa.me//55${phoneNumber}?text=`}
                 target="blank"
-              >
-                <span className={style.containerContato}>
+              > 
                   <p>Vamos bater um papo!</p>
-                </span>
-              </Link>
+              </Button>
               <span className={style.containerPortfolio}>
-                <Button to={curriculo}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    background: 'blue',
-                  }}
-                >
+                <Button to={curriculo}>
                   <p>Baixar Curriculo</p>
                   {arrowRight}
                 </Button>
