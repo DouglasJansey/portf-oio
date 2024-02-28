@@ -12,7 +12,6 @@ interface CardProps {
 }
 
 export default function CardSkill({ value, index }: CardProps) {
-    const [cardPosX, setCardPosX] = useState<number>(0)
     const skillName = value.name.toLowerCase().replace('-', '')
     const refCard = useRef<HTMLLabelElement>(null);
     const [setCardPosition, cardPosition] = changeState((state) => [state.setCardPosition, state.cardPosition])
@@ -26,6 +25,8 @@ export default function CardSkill({ value, index }: CardProps) {
             setCardPosition(cardPositionX);
         }
     }, [index, imgIndex, cardPosition, setCardPosition]);
+
+
     return (
         <>
             <li className={style.list}>

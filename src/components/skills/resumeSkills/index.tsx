@@ -24,6 +24,8 @@ export default function Skills() {
   state.setIndexImage, state.cardPosition, state.setCardPosition])
   const ref = useRef<HTMLDivElement>(null)
   const { name, exp, time } = skills[imgIndex]
+  const [animation, setAnimation] = useState('')
+
 
   const handleButtonPosition = (e: any, increment: number) => {
 
@@ -71,6 +73,13 @@ export default function Skills() {
       ''
     return changed
   }
+
+  const CalcEmptySpace = () => {
+    const emptySpace = ((positionX + (2 * -positionX)) - listWidth!) + bodyWidth
+    if (emptySpace > 20) {
+      setPositionX(positionX + emptySpace);
+    }
+  }
   useEffect(() => {
     const handleResize = () => {
       const body = document.body.clientWidth;
@@ -85,26 +94,30 @@ export default function Skills() {
       window.removeEventListener('resize', handleResize);
     };
   }, [])
-  const CalcEmptySpace = () => {
-    const emptySpace = ((positionX + (2 * -positionX)) - listWidth!) + bodyWidth
-    if (emptySpace > 20) {
-      setPositionX(positionX + emptySpace);
-    }
-  }
   //redimensiona o lista caso haja um espaço vazio
   useEffect(() => {
     CalcEmptySpace()
   }, [bodyWidth])
 
+  useEffect(() => {
+    setAnimation('');
+
+    const animationTimeout = setTimeout(() => {
+      setAnimation(style.animation);
+    }, 0); // Tempo em milissegundos da sua animação
+    return () => clearTimeout(animationTimeout);
+
+  }, [imgIndex]);
+
   return (
     <section className={style.mainContainer}>
-      <span className={style.containerTitle} style={{marginTop: pathname === '/' ? '60px' : '170px'}}>
+      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '170px' }}>
         <h1>Habilidades</h1>
       </span>
       <article className={style.subContainer}>
         <aside className={style.containerImg}>
-          <h1 className={style.Title}>{name}</h1>
-          <figure>
+          <h1 className={animation}>{name}</h1>
+          <figure className={animation}>
             <img src={`https://cdn.simpleicons.org/${name.toLocaleLowerCase().replace('-', '')}/${changeColorImage(name.toLocaleLowerCase().replace('-', ''))}`} />
           </figure>
         </aside>
@@ -144,7 +157,7 @@ export default function Skills() {
         </button>
         <button className={style.containerArrow}
           type="button"
-          style={{ right: 0}}
+          style={{ right: 0 }}
           name="right"
           onClick={(e) => handleButtonPosition(e, +90)}
         >

@@ -1,36 +1,11 @@
 @import '../../../../styles/_variables'
+@import '../../../../styles/_animation'
 
-@keyframes fadeRight
-  0%
-    transform: translateX(-100%)
-    opacity: 0
-    
-  100%
-    transform: translateX(0)
-    opacity: 1
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeBackground, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.3)
+@include borderAnimate($animationName: borderLine, $widthFrom: 0% , $widthTo: 100%)
 
-@keyframes fadeLeft
-  0%
-    transform: translateX(100%) 
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 1
-
-@keyframes fadeBackground
-  0%
-    transform: translateX(-100%) 
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 0.3
-
-@keyframes borderLine
-  0%
-    width: 0%
-  100%
-    width: 100%
-        
 
 @mixin animate($animation, $duration, $ease, $mode, $type)
    animation: $animation $duration $ease $mode $type
@@ -62,7 +37,7 @@
         background-size: 100% 100%
         background-position: left
         background-repeat: no-repeat
-        @include animate(fadeBackground, 1.8s, ease-in-out, forwards, running)   
+        animation: fadeBackground 1.8s ease-in-out forwards running   
         opacity: 0.2 
         z-index: 1
         left: 0
@@ -90,7 +65,7 @@
     &::after
         content: ''
         width: 0%
-        @include animate(borderLine, 1.8s, ease-in-out, forwards, running)   
+        animation: borderLine 1.8s ease-in-out forwards, running   
         height: 4px
         background: $dark-blue
         position: absolute
@@ -108,11 +83,15 @@
     display: flex
     flex-direction: column
     justify-content: center
-    align-items: center
-    width: 100%
+    align-items: flex-start
+    width: 80%
     height: 100%
     z-index: 5
     font-weight: bold
+    div
+      display: flex
+      width: 70%
+      justify-content: flex-end
     h1
         font-size: 3rem
         margin-left: 20px
@@ -131,7 +110,6 @@
     padding: 5px 55px
     position: relative
     cursor: pointer
-    font-weight: bold
     margin: -35px 0px 0px 65px
     a
       display: flex
