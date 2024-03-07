@@ -1,7 +1,14 @@
 @import '../styles/_typography'
+@import '../styles/_variables'
 
 body
     background: #000
     margin: 0
     padding: 0
     font-family: $Roboto
+    &::-webkit-scrollbar
+        width: 10px
+        opacity: 0.6
+    &::-webkit-scrollbar-thumb
+        background: $light-blue
+        border-radius: 25px

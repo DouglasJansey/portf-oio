@@ -1,0 +1,60 @@
+@import '../../../styles/_variables'
+@import '../../../styles/_animation'
+
+.flex
+    display: flex
+    width: 100%
+    height: 100%
+    justify-content: center
+    align-items: center
+.container
+    @extend .flex
+    height: 100vh
+    position: relative
+    &::before
+        content: ""
+        width: 100%
+        height: 100%
+        background-image: url("/images/backgroundContato.jpg")
+        opacity: 0.5
+        background-position: center
+        background-size: 100% 100%
+        background-repeat: no-repeat
+        animation: bgFade 4s ease-in-out forwards
+        position: absolute
+        z-index: 1
+.containerForm
+    @extend .flex
+    width: 50%
+    flex-direction: column
+    background: transparent
+    &::after
+        content: ''
+        width
+.containerLabel
+    @extend .flex
+    flex-direction: column
+    justify-content: flex-start
+    background: red
+    height: auto
+    margin: 10px
+    color: #fff
+    font-size: .8rem
+    text-align: left
+.containerContact
+    margin-top: 55px
+    width: 80%
+    height: 80%
+    background: transparent
+    z-index: 2
+.inputText
+    width: 70%
+    height: 25px
+    border-radius: 10px
+    outline: none
+    border: 2px solid $dark-blue-2
+    background: #011040
+    &:focus
+        border: 2px solid $light-blue
+    &::placeholder
+        text-align: center

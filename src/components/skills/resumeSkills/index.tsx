@@ -19,12 +19,14 @@ export default function Skills() {
   const [positionX, setPositionX] = useState(0)
   const [listWidth, setListWidth] = useState<number | null>(null)
   const [bodyWidth, setBodyWidth] = useState<number>(0)
+  const [active, setActive] = useState(false)
+  const [animation, setAnimation] = useState('')
   const pathname = usePathname();
   const [imgIndex, setIndexImage, cardPosition, setCardPosition] = changeState((state) => [state.imgIndex,
   state.setIndexImage, state.cardPosition, state.setCardPosition])
   const ref = useRef<HTMLDivElement>(null)
   const { name, exp, time } = skills[imgIndex]
-  const [animation, setAnimation] = useState('')
+
 
 
   const handleButtonPosition = (e: any, increment: number) => {
@@ -80,6 +82,10 @@ export default function Skills() {
       setPositionX(positionX + emptySpace);
     }
   }
+  const scrollAnaimation = () => {
+    scrollY >= 140 && setActive(true)
+    scrollY === 0 && setActive(false)
+  }
   useEffect(() => {
     const handleResize = () => {
       const body = document.body.clientWidth;
@@ -105,13 +111,18 @@ export default function Skills() {
     const animationTimeout = setTimeout(() => {
       setAnimation(style.animation);
     }, 0); // Tempo em milissegundos da sua animação
-    return () => clearTimeout(animationTimeout);
+
+    window.addEventListener('scroll', scrollAnaimation);
+    return () => {
+      window.removeEventListener('scroll', scrollAnaimation);
+      clearTimeout(animationTimeout);
+    };
+    
 
   }, [imgIndex]);
-
   return (
     <section className={style.mainContainer}>
-      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '170px' }}>
+      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '120px' }}>
         <h1>Habilidades</h1>
       </span>
       <article className={style.subContainer}>
@@ -175,7 +186,7 @@ export default function Skills() {
           </ul>
         </div>
       </div>
-      {pathname.replace(/[^\w\s]/, '') === 'habilidades' && <Course />}
+      {(active && pathname === '/habilidades') ? <Course /> : ''}
 
     </section>
   );

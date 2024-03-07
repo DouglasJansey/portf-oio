@@ -1,5 +1,13 @@
 @import '../../../../styles/_variables'
 
+@import '../../../../styles/_animation'
+
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: buttonFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.3)
+@include borderAnimate($animationName: borderFade, $widthFrom: 0%, $widthTo: 50%)
+
 .mainContainer
   display: flex
   flex-direction: column
@@ -29,13 +37,16 @@
   height: 100%
   margin: 0
   position: relative
+  animation: fadeRight 2s ease-in-out forwards
   &::after
     content: ""
-    width: 50%
+    width: 0%
     height: 100%
     background: #03275d
     opacity: 0.5
     position: absolute
+    animation: borderFade 2s ease-in-out forwards
+    animation-delay: 2s
     right: 0
     top: 0
     bottom: 0

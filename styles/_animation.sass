@@ -12,10 +12,17 @@
 @mixin borderAnimate($animationName, $widthFrom, $widthTo)
     @keyframes #{$animationName}
         0%
-           width: $widthFrom
+            width: $widthFrom
 
         100%
             width: $widthTo
+@mixin borderAnimateHeight($animationName, $heightFrom, $heightTo)
+    @keyframes #{$animationName}
+        0%
+            height: $heightFrom
+
+        100%
+            height: $heightTo
 
 @mixin animation-fade($name, $duration)
     animation: $name $duration ease-in-out forwards
