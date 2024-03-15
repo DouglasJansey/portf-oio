@@ -1,38 +1,12 @@
 @import '../../../../../styles/_variables'
 
-@keyframes fadeRight
-  0%
-    transform: translateX(-100%)
-    opacity: 0
+@import '../../../../../styles/_animation'
 
-  100%
-    transform: translateX(0)
-    opacity: 1
-
-@keyframes fadeLeft
-  0%
-    transform: translateX(100%)
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 1
-
-@keyframes fadeBackground
-  0%
-    transform: translateX(-100%)
-    opacity: 0
-  100%
-    transform: translateX(0)
-    opacity: 0.3
-
-@keyframes borderLine
-  0%
-    width: 0%
-  100%
-    width: 100%
-
-@mixin animate($animation, $duration, $ease, $mode, $type)
-  animation: $animation $duration $ease $mode $type
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: buttonFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.8)
+@include borderAnimate($animationName: borderFade, $widthFrom: 0%, $widthTo: 50%)
 
 .mainContainer
   display: flex
@@ -40,16 +14,23 @@
   justify-content: flex-start
   align-items: center
   width: 100%
-  height: 100%
+  height: auto
   color: #fff
-  background: $dark-blue-2
   margin-top: 50px
+  position: relative
+  &::before
+    content: ""
+    width: 100%
+    height: 100%
+    animation: bgFade 2s ease-in-out forwards
+    background: $dark-blue-2
+    position: absolute
+    z-index: 1
 
 .subContainer
   display: flex
   justify-content: center
   align-items: center
-  flex: none
   width: 100%
   height: auto
   position: relative
@@ -58,7 +39,7 @@
     width: 100%
     height: 100%
     background-image: url("/images/lgbackground.png")
-    opacity: 0.4
+    animation: bgFade 2s ease-in-out forwards
     mix-blend-mode: multiply
     background-position: center
     background-size: 100% 100%
@@ -70,6 +51,7 @@
   width: 400px
   height: 400px
   z-index: 2
+  animation: fadeLeft 2s ease-in-out forwards
   img
     height: 100%
     filter: invert(100%)
@@ -87,10 +69,10 @@
     flex-direction: column
     align-items: flex-start
     justify-content: flex-start
+    animation: fadeRight 2s ease-in-out forwards
     margin: 0
     width: 50%
     height: 98%
-    padding: 20px
 
 .subTitle
   font-size: 1.5rem

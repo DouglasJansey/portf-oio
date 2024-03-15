@@ -83,8 +83,8 @@ export default function Skills() {
     }
   }
   const scrollAnaimation = () => {
-    scrollY >= 140 && setActive(true)
-    scrollY === 0 && setActive(false)
+     console.log(scrollY)
+     scrollY > 10 ? setActive(true) : setActive(false)
   }
   useEffect(() => {
     const handleResize = () => {

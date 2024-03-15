@@ -2,11 +2,28 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
+import { useEffect, useState } from 'react';
 import { languages, experience } from '../../../../imports'
 import style from "./Aboutme.module.sass";
 
 export default function AboutMe() {
+  const [activeLanguage, setActiveLanguage] = useState(false)
+  const [activeCourse, setActiveCourse] = useState(false)
 
+  const scrollAnaimation = () => {
+    console.log(scrollY)
+    scrollY > 0 ? setActiveLanguage(true) : setActiveLanguage(false);
+    scrollY > 300 ? setActiveCourse(true) : setActiveCourse(false);
+  }
+  useEffect(() => {
+    // Tempo em milissegundos da sua animação
+    window.addEventListener('scroll', scrollAnaimation);
+    return () => {
+      window.removeEventListener('scroll', scrollAnaimation);
+    };
+
+
+  }, []);
   return (
     <section className={style.mainContainer}>
       <div className={style.subContainer}>
@@ -31,8 +48,8 @@ export default function AboutMe() {
           </div>
         </article>
       </div>
-      {languages}
-      {experience}
+      {activeLanguage ? languages : ''}
+      {activeCourse && experience}
     </section>
   );
 }

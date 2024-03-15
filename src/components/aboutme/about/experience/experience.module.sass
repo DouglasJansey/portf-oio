@@ -1,5 +1,14 @@
 @import '../../../../../styles/_variables'
 
+@import '../../../../../styles/_animation'
+
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeFloatYear, $from: 0%, $to: -60px, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
+@include animateFade($animationName: iconFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include borderAnimateHeight($animationName: borderHeight, $heightFrom: 0%, $heightTo: 100%)
+
 .mainContainer
       display: flex
       flex-direction: column
@@ -21,10 +30,10 @@
             width: 100%
             height: 100%
             background-image: url("/images/workBg.jpg")
-            opacity: 0.4
             background-position: center
             background-size: 100% 100%
             background-repeat: no-repeat
+            animation: bgFade 2s ease-in-out forwards
             position: absolute
             z-index: 1
 
@@ -41,6 +50,7 @@
       width: 20%
       height: 250px
       z-index: 2
+      animation: fadeRight 2s ease-in-out forwards
       img
             margin-left: -50px
             height: 100%
@@ -51,10 +61,21 @@
       justify-content: flex-start
       align-items: center
       width: 60%
-      height: 90%
+      height: auto
       z-index: 2
-      border-left: 5px solid #fff
       position: relative
+      &::after
+            content: ''
+            width: 5px
+            height: 0%
+            background: #fff
+            top: 0
+            left: 0
+            margin: auto
+            position: absolute
+            animation: borderHeight 2s ease-in-out forwards
+            animation-delay: 2.4s
+            z-index: -1
       &::before
             content: ""
             width: 60px
@@ -64,8 +85,11 @@
             background-size: 100% 100%
             background-repeat: no-repeat
             position: absolute
+            opacity: 0
+            animation: iconFade 1s ease-in-out forwards
+            animation-delay: 1.5s
             top: -60px
-            left: -32px
+            left: -27.4px
       div
             display: flex
             flex-direction: column
@@ -85,6 +109,7 @@
       background: $dark-gray
       margin-top: 25px
       z-index: 2
+      animation: fadeRight 2s ease-in-out forwards
       h1
             font-size: 2rem
             width: 55%
@@ -95,21 +120,27 @@
             flex-wrap: wrap
             margin-bottom: 5px
             width: 100%
+            height: auto
             position: relative
       ul
             margin: 2px
             width: auto
             height: auto
+
       li
             margin: 0
             padding: 0
+            animation: fadeLeft 2s ease-in-out forwards
 
 .floatYear
       position: absolute
-      left: -80px
+      left: -20px
+      opacity: 0
       top: 50px
       bottom: 0
       margin: auto
+      animation: fadeFloatYear 2s ease-in-out forwards
+      animation-delay: 2.7s
 
 .subTitle
       display: flex
@@ -118,6 +149,7 @@
       white-space: break-spaces
       position: relative
       margin-left: 10px
+      animation: fadeLeft 2s ease-in-out forwards
       &::before
             content: ""
             border-radius: 100%
@@ -128,7 +160,7 @@
             margin: auto
             top: 0
             bottom: 0
-            left: -62px
+            left: -58px
 
 .subText
       position: relative
@@ -136,12 +168,15 @@
       padding: 5px
       margin: 2px 15px 0px
       font-size: 1rem
+      animation: fadeLeft 2.5s ease-in-out forwards
+
 .text
       position: relative
       width: auto
       padding: 5px
       margin: 15px 35px 0px
       font-size: 0.8rem
+      animation: fadeLeft 2.3s ease-in-out forwards
 
 @media screen and ( max-width: 800px )
       .margin

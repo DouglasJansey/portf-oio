@@ -3,7 +3,7 @@
 @import '../../../../styles/_animation'
 
 @include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
-@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
 @include animateFade($animationName: buttonFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
 @include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.3)
 @include borderAnimate($animationName: borderFade, $widthFrom: 0%, $widthTo: 50%)
@@ -11,7 +11,7 @@
 .mainContainer
   display: flex
   flex-direction: column
-  justify-content: flex-start
+  justify-content: center
   align-items: center
   width: 100%
   height: auto
@@ -27,7 +27,7 @@
   height: 400px
   padding: 0
   position: relative
-  margin-top: 110px
+  margin-top: 0px
 
 .containerImg
   display: flex
@@ -45,8 +45,8 @@
     background: #03275d
     opacity: 0.5
     position: absolute
-    animation: borderFade 2s ease-in-out forwards
-    animation-delay: 2s
+    animation: borderFade 1s ease-in forwards
+    animation-delay: 1.88s
     right: 0
     top: 0
     bottom: 0
@@ -80,6 +80,7 @@
     width: 95%
     height: 98%
     &::before
+      animation: fadeLeft 1.8s forwards
       content: ""
       width: 100%
       height: 100%
@@ -163,6 +164,9 @@
     height: auto
 
   .containerImg
+    div
+      width: 250px
+      height: 250px
     &::after
       background: transparent
 
