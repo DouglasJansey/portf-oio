@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import  CardSkill  from '../../src/components/skills/cardSkill';
 import  CardProject  from '../../src/components/projects/CardProjects';
 import  GitProject  from '../../src/components/projects/GitHubRepo';
+import  LoadingCard  from '../../src/components/Loading';
 
 interface CardProps {
     value: {
@@ -13,6 +14,7 @@ interface CardProps {
     index: number,
 
 }
+
 export const Card = ({value, index }: CardProps) => {
     return(
         <CardSkill value={value} index={index} />
@@ -54,3 +56,5 @@ export const GitProjects = ({name, url, language, desc, created_at, gitIcons}: G
         <GitProject name={name} url={url} language={language} desc={desc} created_at={created_at} gitIcons={gitIcons} />
     )
 }
+
+export const loading = <LoadingCard />

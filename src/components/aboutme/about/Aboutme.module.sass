@@ -13,10 +13,11 @@
   flex-direction: column
   justify-content: center
   align-items: center
-  width: 100%
-  height: auto
+  width: 100vw
+  height: 100%
   color: #fff
   background: #000
+
 
 .subContainer
   display: flex
@@ -24,10 +25,10 @@
   align-items: center
   flex: none
   width: 80%
-  height: 400px
+  height: 100vh
   padding: 0
   position: relative
-  margin-top: 0px
+  margin-top: 80px
 
 .containerImg
   display: flex
@@ -41,7 +42,7 @@
   &::after
     content: ""
     width: 0%
-    height: 100%
+    height: 70%
     background: #03275d
     opacity: 0.5
     position: absolute
@@ -64,7 +65,7 @@
 .containerText
   display: flex
   justify-content: center
-  width: 100%
+  width: 80%
   height: 100%
   background: transparent
   position: relative
@@ -77,13 +78,13 @@
     justify-content: center
     margin: 0
     padding: 0
-    width: 95%
+    width: 80%
     height: 98%
     &::before
       animation: fadeLeft 1.8s forwards
       content: ""
       width: 100%
-      height: 100%
+      height: 70%
       background: #03275d
       opacity: 0.5
       position: absolute

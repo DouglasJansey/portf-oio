@@ -4,16 +4,17 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { languages, experience } from '../../../../imports'
+import Languages from './languages';
+import Experience from './experience';
 import style from "./Aboutme.module.sass";
+
 
 export default function AboutMe() {
   const [activeLanguage, setActiveLanguage] = useState(false)
-  const [activeCourse, setActiveCourse] = useState(false)
-
+  const [activeExperience, setActiveExperience] = useState(false)
   const scrollAnaimation = () => {
-    console.log(scrollY)
     scrollY > 0 ? setActiveLanguage(true) : setActiveLanguage(false);
-    scrollY > 300 ? setActiveCourse(true) : setActiveCourse(false);
+    scrollY > screen.height * 2 ? setActiveExperience(true) : setActiveExperience(false);
   }
   useEffect(() => {
     // Tempo em milissegundos da sua animação
@@ -48,8 +49,8 @@ export default function AboutMe() {
           </div>
         </article>
       </div>
-      {activeLanguage ? languages : ''}
-      {activeCourse && experience}
+        {activeLanguage && languages}
+        {activeExperience && <Experience />}
     </section>
   );
 }

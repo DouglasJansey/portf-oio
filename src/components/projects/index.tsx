@@ -6,7 +6,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import style from "./projects.module.sass";
-import { CardProjects, GitProjects } from '../../../imports/componentsimport'
+import { CardProjects, GitProjects, loading } from '../../../imports/componentsimport'
 import { projects } from '../../../services/info'
 import { useEffect, useState } from "react";
 import { GetDataRepository } from "../../../services/getData";
@@ -19,7 +19,6 @@ interface ProjectProps {
 
 export default function Projects() {
   const [repoData, setRepoData] = useState<ProjectProps[]>([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,8 +57,8 @@ export default function Projects() {
           <span>
             <p className={style.Title}>Repositórios GitHub</p>
           </span>
-          <ul className={style.containerGitProject}>
-            {repoData !== undefined && repoData.map((repos, index) => (
+          <ul className={style.containerUl}>
+            {repoData.length > 0 ? repoData.map((repos, index) => (
               <li key={index + 2}>{<GitProjects
                 name={repos.repo.full_name}
                 url={repos.repo.html_url}
@@ -71,7 +70,7 @@ export default function Projects() {
                 { value: repos.repo.stargazers_count, name: 'star' },
                 { value: repos.contributors.length, name: 'contributors' }]}
               />}</li>
-            ))}
+            )) : loading}
           </ul>
         </aside>
       </article>

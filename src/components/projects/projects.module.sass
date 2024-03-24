@@ -1,14 +1,24 @@
 @import '../../../styles/_variables'
 
+@import '../../../styles/_animation'
+
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeFloatYear, $from: 0%, $to: -60px, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
+@include animateFade($animationName: iconFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include borderAnimateHeight($animationName: borderHeight, $heightFrom: 0%, $heightTo: 100%)
+
 .mainContainer
       display: flex
       flex-direction: column
       justify-content: center
       align-items: center
-      width: 100%
+      width: 100vw
       height: 100%
       color: #fff
       position: relative
+      overflow: hidden
       padding: 0
       &::before
             content: ""
@@ -19,6 +29,7 @@
             background-size: cover
             background-position: center
             background-repeat: no-repeat
+            animation: bgFade 2s ease-in-out forwards
             position: absolute
             opacity: 0.4
             z-index: 1
@@ -32,8 +43,8 @@
       span
             display: flex
             align-items: center
-            justify-content: center
-            width: 100%
+            justify-content: flex-start
+            width: 100vw
             height: auto
 
 .containerIcons
@@ -41,10 +52,11 @@
       flex: none
       justify-content: center
       align-items: center
-      width: 100%
+      width: 100vw
       height: auto
       z-index: 10
       margin-top: 35px
+      overflow: hidden
       padding: 0
       position: relative
       ul
@@ -56,6 +68,10 @@
             gap: 10px
             height: auto
             padding: 0
+            div:nth-child(2n)
+                  animation: fadeLeft 2s ease-in-out forwards
+            div:nth-child(2n + 1)
+                  animation: fadeRight 2s ease-in-out forwards
             li
                   list-style: none
 
@@ -77,6 +93,19 @@
             position: absolute
             bottom: -10px
             left: 0
+.containerUl
+      display: flex
+      justify-content: flex-start
+      flex-direction: column
+      align-items: center
+      width: 80%
+      gap: 10px
+      height: auto
+      padding: 0
+      li:nth-child(2n + 1)
+            animation: fadeRight 2s ease-in-out forwards
+      li:nth-child(2n)
+            animation: fadeLeft 2s ease-in-out forwards
 
 .containerGitProject
       display: flex
@@ -88,15 +117,18 @@
       gap: 10px
       margin-top: 25px
       padding: 0
+      margin: 0
       span
             display: flex
-            width: 100%
+            width: 100vw
+            justify-content: flex-start
             z-index: 10
             color: #fff
 
 @media screen and ( max-width: 630px )
       .Title
-            margin-top: 150px
+            margin-top: 180px
+            margin: 15px
       .containerIcons
             ul
                   justify-content: center

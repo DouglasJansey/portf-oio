@@ -1,4 +1,11 @@
 @import '../../../../styles/_variables'
+@import '../../../../styles/_animation'
+
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: buttonFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.3)
+
 
 .container
       width: 100%
@@ -115,4 +122,5 @@
       .card
             width: 350px
             height: 220px
+            
       
