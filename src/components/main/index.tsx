@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import style from "./Main.module.sass";
-import { Button } from "../buttons/button";
+import { ButtonLink } from "../buttons/button";
 import { facebook, instagram, linkedin, github, arrowRight } from '../../../imports/reactIcons'
 
 
@@ -63,17 +63,17 @@ export default function Main() {
               </p>
             </div>
             <div className={style.containerLinks}>
-              <Button
+              <ButtonLink
                 to={`https://wa.me//55${phoneNumber}?text=`}
                 target="blank"
               > 
                   <p>Vamos bater um papo!</p>
-              </Button>
+              </ButtonLink>
               <span className={style.containerPortfolio}>
-                <Button to={curriculo}>
+                <ButtonLink to={curriculo}>
                   <p>Baixar Curriculo</p>
                   {arrowRight}
-                </Button>
+                </ButtonLink>
                 {download && <iframe src={download} style={{ display: 'none' }}></iframe>}
               </span>
             </div>
