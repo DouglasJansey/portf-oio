@@ -1,6 +1,6 @@
 import style from './card.module.sass';
 import { changeState } from '../../../../state'
-import {  useEffect, useMemo, useRef, useState } from 'react';
+import {  useEffect, useRef } from 'react';
 
 interface CardProps {
     value: {

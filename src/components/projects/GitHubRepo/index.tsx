@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import style from './githubRepo.module.sass';
 import { arrowRight } from '../../../../imports/reactIcons'
-import { Button } from '@/components/buttons/button';
+import { ButtonLink } from '@/components/buttons/button';
 import CardGit from './cardGitIcons'
 interface GitProjectProps {
     name: string;
@@ -88,7 +88,7 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                 <aside>
                     <div className={style.containerDesc}>
                         <p className={style.text}>{desc}</p>
-                        <Button to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> { arrowRight } </Button>
+                        <ButtonLink to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> { arrowRight } </ButtonLink>
                     </div>
                     <div className={style.flex} style={{ gap: '15px', justifyContent: 'flex-end', width: '98%' }}>
                         <div className={style.containerGitIcons}>
