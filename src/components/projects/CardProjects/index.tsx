@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import style from './cardProject.module.sass';
 import LanguageCard from './languagesCards'
-import { Button } from '@/components/buttons/button';
+import { ButtonLink } from '@/components/buttons/button';
 
 
 interface CardProjectProps {
@@ -56,9 +56,9 @@ export default function CardProjects({ value }: CardProjectProps) {
                     }
                 </span>
                 <div className={style.containerButton}>
-                        <Button to={value.url} target='_blank'>
+                        <ButtonLink to={value.url} target='_blank'>
                             Visite o site
-                        </Button>
+                        </ButtonLink>
                 </div>
             </aside>
         </article>
