@@ -82,7 +82,7 @@ export default function Main() {
         <div className={style.containerRight}>
           <div className={style.containerImage}>
             <div className={style.containerPhoto}>
-              {/* <img src="/images/foto1.png" alt="" /> */}
+               {/* <img src="/images/foto1.png" alt="" /> */}
             </div>
             <img src="/images/forma.png" alt="" />
           </div>

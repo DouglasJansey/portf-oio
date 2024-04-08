@@ -20,9 +20,11 @@
     @keyframes #{$animationName}
         0%
             height: $heightFrom
+            opacity: 1
 
         100%
             height: $heightTo
+            opacity: 1
 @mixin gradientBg($nameAnimation)
     @keyframes #{$nameAnimation}
         0%
@@ -31,7 +33,6 @@
             background-position: 100% 50%
         100%
             background-position: 0% 50%
-            
 
 @mixin animation-fade($name, $duration)
     animation: $name $duration ease-in-out forwards

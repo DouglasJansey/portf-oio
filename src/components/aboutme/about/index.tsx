@@ -2,29 +2,43 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { languages, experience } from '../../../../imports'
 import Languages from './languages';
-import Experience from './experience';
 import style from "./Aboutme.module.sass";
 
 
 export default function AboutMe() {
   const [activeLanguage, setActiveLanguage] = useState(false)
   const [activeExperience, setActiveExperience] = useState(false)
-  const scrollAnaimation = () => {
-    scrollY > 0 ? setActiveLanguage(true) : setActiveLanguage(false);
-    scrollY > screen.height * 2 ? setActiveExperience(true) : setActiveExperience(false);
+  const refLang = useRef<HTMLDivElement>(null);
+
+  const scrollAnaimation = (): void => {
+    const scrollY = window.scrollY;
+    handleDivHeight()
+    setActiveLanguage(scrollY > 0);
   }
+  const handleDivHeight = () => {
+    const rect = refLang.current?.getBoundingClientRect();
+    
+    if(rect){
+      if (rect.width && rect.height) {
+        // A div está visível na tela, atualiza a altura
+        const divHeight = refLang.current!
+        scrollY > divHeight?.clientHeight && divHeight?.clientHeight > 0 ? setActiveExperience(true) : setActiveExperience(false)       
+        
+      }
+      
+    }
+  }
+  
   useEffect(() => {
-    // Tempo em milissegundos da sua animação
     window.addEventListener('scroll', scrollAnaimation);
     return () => {
       window.removeEventListener('scroll', scrollAnaimation);
     };
-
-
   }, []);
+
   return (
     <section className={style.mainContainer}>
       <div className={style.subContainer}>
@@ -49,8 +63,12 @@ export default function AboutMe() {
           </div>
         </article>
       </div>
+      <div ref={refLang}>
         {activeLanguage && languages}
-        {activeExperience && <Experience />}
+      </div>
+      <div>
+        {activeExperience && experience}
+      </div>
     </section>
   );
 }

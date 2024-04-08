@@ -15,21 +15,24 @@
       justify-content: flex-start
       align-items: center
       width: 100%
-      height: auto
+      height: 100%
+      overflow: hidden
       color: #fff
-      background: #000
+      background: #000 65px
       &::after
             content: ""
             width: 100%
             height: 100%
             background: linear-gradient(to bottom, transparent 60%, #000)
+            background-size: 100% 100%
             position: absolute
             z-index: 1
       &::before
             content: ""
+            background-image: url("/images/workBg.jpg")
             width: 100%
             height: 100%
-            background-image: url("/images/workBg.jpg")
+            opacity: 0.4
             background-position: center
             background-size: 100% 100%
             background-repeat: no-repeat
@@ -41,10 +44,9 @@
       display: flex
       justify-content: center
       align-items: flex-start
-      flex: none
       width: 100%
-      height: auto
-      position: relative
+      height: 100%
+      z-index: 2
 
 .containerImg
       width: 20%
@@ -56,55 +58,11 @@
             height: 100%
             filter: invert(100%)
 
-.containerText
-      display: flex
-      justify-content: flex-start
-      align-items: center
-      width: 60%
-      height: auto
-      z-index: 2
-      position: relative
-      &::after
-            content: ''
-            width: 5px
-            height: 0%
-            background: #fff
-            top: 0
-            left: 0
-            margin: auto
-            position: absolute
-            animation: borderHeight 2s ease-in-out forwards
-            animation-delay: 2.4s
-            z-index: -1
-      &::before
-            content: ""
-            width: 60px
-            height: 75px
-            background-image: url("/images/marker.png")
-            background-position: center
-            background-size: 100% 100%
-            background-repeat: no-repeat
-            position: absolute
-            opacity: 0
-            animation: iconFade 1s ease-in-out forwards
-            animation-delay: 1.5s
-            top: -60px
-            left: -27.4px
-      div
-            display: flex
-            flex-direction: column
-            align-items: flex-start
-            justify-content: flex-start
-            margin: 0
-            width: 100%
-            height: 98%
-            padding: 20px
-
 .containerTitle
       display: flex
       align-items: center
       justify-content: flex-end
-      width: 100%
+      width: 100vw
       height: 40px
       background: $dark-gray
       margin-top: 55px
@@ -115,41 +73,55 @@
             width: 55%
 
 .containerExp
+      display: flex
+      flex-direction: column
+      width: 100%
+      height: auto
+      position: relative
+      padding: 10px
       div
-            display: flex
-            flex-wrap: wrap
-            margin-bottom: 5px
-            width: 100%
-            height: auto
             position: relative
-      ul
-            margin: 2px
-            width: auto
-            height: auto
-
-      li
-            margin: 0
-            padding: 0
-            animation: fadeLeft 2s ease-in-out forwards
+      &::before
+            content: ''
+            width: 5px
+            height: 0%
+            top: 0
+            left: 0
+            background: #fff
+            position: absolute
+            animation: borderHeight 2s ease-in forwards
+            animation-delay: 2.4s
+            z-index: 1
+            ul
+                  display: flex
+                  justify-content: flex-start
+                  flex-wrap: wrap
+                  white-space: break-spaces
+            li
+                  margin: 0
+                  flex-wrap: wrap
+                  animation: fadeLeft 2s ease-in-out forwards
 
 .floatYear
       position: absolute
-      left: -20px
+      width: auto
+      top: 5px
+      left: -15px
       opacity: 0
-      top: 50px
-      bottom: 0
-      margin: auto
+      margin: 0
       animation: fadeFloatYear 2s ease-in-out forwards
       animation-delay: 2.7s
+
 
 .subTitle
       display: flex
       font-size: 1.5rem
       width: auto
-      white-space: break-spaces
-      position: relative
+      flex-wrap: wrap
       margin-left: 10px
+      position: relative
       animation: fadeLeft 2s ease-in-out forwards
+      z-index: 2
       &::before
             content: ""
             border-radius: 100%
@@ -160,12 +132,11 @@
             margin: auto
             top: 0
             bottom: 0
-            left: -58px
+            left: -28px
 
 .subText
       position: relative
       width: 100%
-      padding: 5px
       margin: 2px 15px 0px
       font-size: 1rem
       animation: fadeLeft 2.5s ease-in-out forwards
@@ -173,46 +144,28 @@
 .text
       position: relative
       width: auto
-      padding: 5px
       margin: 15px 35px 0px
       font-size: 0.8rem
       animation: fadeLeft 2.3s ease-in-out forwards
 
 @media screen and ( max-width: 800px )
-      .margin
-            margin: 0
-            padding: 0
-      .mainContainer
-            @extend .margin
-      .subContainer
-            align-items: center
-      .floatYear
-            display: none
-      .containerText
-            width: 80%
-            padding: 0
-            &::before
-                  display: none
-            div
-                  width: 100%
-                  padding: 0
       .containerTitle
+            padding: 5px
+            margin-left: 2px
             justify-content: flex-start
-            h1
-                  margin-left: 15px
-
       .containerImg
             display: none
-      .containerExp
-            width: 100%
-            div
-                  margin-bottom: 25px
-                  padding: 10px
-            ul
-                  width: auto
-                  li
-                        height: auto
-                        white-space: break-spaces
+      .floatYear
+            display: none
       .subTitle
+            width: 100%
+      .containerExp
+            width: 90%
+            padding: 10px
             &::before
-                  left: -27px
+                  left: 0
+      .subContainer
+            div
+                  display: flex
+                  width: 100%
+                  justify-content: flex-end

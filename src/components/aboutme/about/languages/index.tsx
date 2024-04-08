@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import style from "./languages.module.sass";
 
 export default function Languages() {

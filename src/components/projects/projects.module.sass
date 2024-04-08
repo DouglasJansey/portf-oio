@@ -96,9 +96,9 @@
 .containerUl
       display: flex
       justify-content: flex-start
-      flex-direction: column
+      flex-wrap: wrap
       align-items: center
-      width: 80%
+      width: 90%
       gap: 10px
       height: auto
       padding: 0
@@ -126,9 +126,17 @@
             color: #fff
 
 @media screen and ( max-width: 630px )
+      .mainContainer
+            span
+                  margin-top: 170px
       .Title
             margin-top: 180px
             margin: 15px
+      .containerUl
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            width: 100%
       .containerIcons
             ul
                   justify-content: center
