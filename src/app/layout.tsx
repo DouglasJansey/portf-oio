@@ -3,6 +3,7 @@
 'use client'
 import '../../styles/globals.sass'
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 import {
   QueryClient,
   QueryClientProvider,
@@ -20,6 +21,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           <Header />
           {children}
+          <Footer />
         </QueryClientProvider>
       </body>
     </html>

@@ -21,6 +21,30 @@ export default function Main() {
     }
     return hours[hour as keyof typeof hours]
   }
+  const filterFirstWord = (word: string) => {
+    const wordArr = word.split(' ')
+    return (
+      <div>
+        {wordArr.map((value, index) => (
+          <span key={index + 3}>
+            <h3 style={{ color: '#ffc979' }}>
+              {value.substring(0, 1)}
+            </h3>
+            {value.substring(1, value.length)}
+          </span>
+        ))}
+      </div>
+    )
+  }
+  const changeColor = (word: string) => {
+    return (
+      <>
+        <p style={{ color: '#ffc979' }}>
+          {word}
+        </p>
+      </>
+    )
+  }
   const handleDonwload = () => {
     setDownload(curriculo)
     setTimeout(() => {
@@ -48,26 +72,33 @@ export default function Main() {
           </div>
           <div className={style.containerMainText}>
             <div className={style.containerTextDesc}>
-              <p className={style.textTitle}>{handleTextIntro()}</p>
+              <p className={style.textTitle} style={{ color: "#ffc979" }}>{handleTextIntro()}</p>
             </div>
             <div className={style.containerTextMiddle}>
-              <p className={style.textMiddle}>
-                Me chamo Douglas Jansey e sou um Desenvolvedor Full Stack
-              </p>
+              <div className={style.textMiddle}>
+                <div>
+                  Me chamo
+
+                  {filterFirstWord('Douglas Jansey')}
+
+                  Sou um Desenvolvedor Full Stack
+                </div>
+              </div>
             </div>
             <div className={style.containerTextDesc}>
-              <p className={style.textDesc}>
-                Sou um desenvolvedor full stack com conhecimento em linguagens de
-                front-end e back-end, além de modelagem de dados, bancos
-                relacionais e não relacionais
+              <p>
+                Sou um desenvolvedor com conhecimento em linguagens como: <span className={style.colorSpan}>Javascript, Typescript, C# e Java</span>,
+                além de alguns frameworks como: <span className={style.colorSpan}>ReactJS, NextJS, Express, Spring Boot, Entity framework</span>,
+                além de modelagem de dados e banco de dados como: <span className={style.colorSpan}>Mysql, PostgreSql e MongoDB</span>, 
+                entre outras ferramentas como: <span className={style.colorSpan}>Jest, Redux, Zustand, Lombok, Api Rest, Sass e Styled-Components</span>.
               </p>
             </div>
             <div className={style.containerLinks}>
               <ButtonLink
                 to={`https://wa.me//55${phoneNumber}?text=`}
                 target="blank"
-              > 
-                  <p>Vamos bater um papo!</p>
+              >
+                <p>Vamos bater um papo!</p>
               </ButtonLink>
               <span className={style.containerPortfolio}>
                 <ButtonLink to={curriculo}>
@@ -82,11 +113,10 @@ export default function Main() {
         <div className={style.containerRight}>
           <div className={style.containerImage}>
             <div className={style.containerPhoto}>
-               {/* <img src="/images/foto1.png" alt="" /> */}
+              <img src="/images/developerIcon.png" alt="" />
             </div>
-            <img src="/images/forma.png" alt="" />
           </div>
-          <span className={style.containerSocial}>
+          <div className={style.containerSocial}>
             <p>Confira e me siga</p>
             <div className={style.containerLinkSocial}>
               <span>
@@ -94,7 +124,7 @@ export default function Main() {
                   href={"https://www.instagram.com/doug.jansey/"}
                   target="blank"
                 >
-                  {instagram}
+                  {instagram(25)}
                 </Link>
                 <Link
                   href={"https://www.linkedin.com/in/douglasjansey/"}
@@ -106,7 +136,7 @@ export default function Main() {
                   href={"https://github.com/DouglasJansey"}
                   target="blank"
                 >
-                  {github}
+                  {github(25)}
                 </Link>
                 <Link
                   href={"https://www.facebook.com/douglas.jansey"}
@@ -116,10 +146,10 @@ export default function Main() {
                 </Link>
               </span>
             </div>
-          </span>
+          </div>
         </div>
 
-      </div>
+      </div >
     </>
   );
 }

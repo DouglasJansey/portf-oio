@@ -122,7 +122,7 @@ export default function Skills() {
   }, [imgIndex]);
   return (
     <section className={style.mainContainer}>
-      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '120px' }}>
+      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '150px' }}>
         <h1>Habilidades</h1>
       </span>
       <article className={style.subContainer}>

@@ -1,0 +1,78 @@
+@import '../../../styles/_typography'
+@import '../../../styles/_variables'
+
+.flex
+    display: flex
+    justify-content: center
+    align-items: center
+    color: #fff
+    font-size: .8rem
+    padding: 0
+    margin: 0
+    width: 100%
+    height: 100%
+
+.mainContainer
+    @extend .flex
+    flex-direction: column
+    background: $dark-blue
+    font-family: $Montserrat
+    align-items: flex-start
+    justify-content: flex-start
+    padding: 0
+    margin: 0
+    z-index: 99
+    aside
+        @extend .flex
+        padding: 10px
+        div
+            @extend .flex
+            align-items: flex-start
+            justify-content: flex-start
+            width: 60%
+            height: 100%
+            margin-left: 45px
+    aside:nth-child(1)
+        background: $light-blue
+        align-items: center
+        white-space: break-spaces
+        height: 10%
+        span
+            display: flex
+            height: 100%
+            align-items: center
+            justify-content: space-between
+            width: 10%
+            margin-left: 20px
+            div
+                margin-bottom: 1.8px
+
+.containerInfo
+    @extend .flex
+    justify-content: flex-start
+    align-items: flex-start
+    flex-direction: column
+    width: 20%
+    p
+        font-size: 1rem
+        font-weight: bold
+    li
+        list-style: none
+        padding: 2px
+        margin: 5px
+        a
+            text-decoration: none
+            color: #fff
+@media screen and ( max-width: 830px )
+    .mainContainer
+        aside:nth-child(1)
+            background: $light-blue
+            align-items: center
+            flex-direction: column
+            span
+                display: flex
+                height: 100%
+                align-items: center
+                justify-content: space-between
+                width: 5%
+                margin-left: 20px
