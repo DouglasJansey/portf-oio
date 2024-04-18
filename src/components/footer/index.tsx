@@ -25,7 +25,7 @@ export default function Footer() {
             return linkKeys.includes(links) ? linkUrl[links as keyof typeof linkUrl] : links
         }
         return (
-            <div>
+            <div className={style.containerLinks}>
                 {newArray.map((name, index) => (
                     <div key={index + 2} className={style.containerInfo}>
                         <p>
@@ -60,6 +60,9 @@ export default function Footer() {
             </aside>
             <aside>
                 {mapNamesArray(divNames)}
+            </aside>
+            <aside className={style.footer}>
+                <p>Desenvolvido por Douglas Jansey - NextJs</p>
             </aside>
         </div>
     )

@@ -17,21 +17,12 @@
     flex-direction: column
     background: $dark-blue
     font-family: $Montserrat
-    align-items: flex-start
-    justify-content: flex-start
     padding: 0
     margin: 0
     z-index: 99
     aside
         @extend .flex
-        padding: 10px
-        div
-            @extend .flex
-            align-items: flex-start
-            justify-content: flex-start
-            width: 60%
-            height: 100%
-            margin-left: 45px
+        padding: 0
     aside:nth-child(1)
         background: $light-blue
         align-items: center
@@ -42,17 +33,27 @@
             height: 100%
             align-items: center
             justify-content: space-between
-            width: 10%
+            width: auto
+            gap: 10px
             margin-left: 20px
             div
                 margin-bottom: 1.8px
-
+.containerLinks
+    @extend .flex
+    align-items: flex-start
+    justify-content: center
+    flex-wrap: wrap
+    width: 100%
+    height: 100%
+    gap: 55px
 .containerInfo
     @extend .flex
     justify-content: flex-start
     align-items: flex-start
     flex-direction: column
-    width: 20%
+    width: auto
+    padding: 0
+    margin: 0
     p
         font-size: 1rem
         font-weight: bold
@@ -63,16 +64,30 @@
         a
             text-decoration: none
             color: #fff
-@media screen and ( max-width: 830px )
-    .mainContainer
+.footer
+    @extend .flex
+    height: 5%
+    background: $light-blue
+    p
+        padding: 0
+        margin: 0
+
+@media screen and ( max-width: 730px )
+    .mainContainer        
         aside:nth-child(1)
             background: $light-blue
             align-items: center
-            flex-direction: column
+            flex-wrap: wrap
             span
                 display: flex
                 height: 100%
                 align-items: center
-                justify-content: space-between
-                width: 5%
-                margin-left: 20px
+                justify-content: center
+                width: 100%
+                gap: 10px
+    .containerInfo
+        align-items: center
+    .containerLinks
+        padding: 0
+        justify-content: space-around
+        gap: 20px
