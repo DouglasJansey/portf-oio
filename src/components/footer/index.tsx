@@ -33,7 +33,7 @@ export default function Footer() {
                         </p>
                         {menuNames[index as keyof typeof menuNames] !== 'Contato' && name.map((name, i) => (
                             <li key={i * 3}>
-                                <Link href={filterLinks(name.replace(' ', '').toLowerCase())}>
+                                <Link href={filterLinks(name.replace(' ', '').toLowerCase())} target='_blank'>
                                     {name}
                                 </Link>
                             </li>
@@ -62,7 +62,7 @@ export default function Footer() {
                 {mapNamesArray(divNames)}
             </aside>
             <aside className={style.footer}>
-                <p>Desenvolvido por Douglas Jansey - NextJs</p>
+                <p>Desenvolvido por Douglas Jansey</p>
             </aside>
         </div>
     )

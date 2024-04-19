@@ -16,12 +16,13 @@
     position: relative
     overflow: hidden
     font-family: $Roboto
-    padding: 5px
     &::after
         content: ""
         width: 100%
         height: 100%
         background: linear-gradient(to top, transparent 50%, #000)
+        background-position: center
+        background-size: cover
         position: absolute
         z-index: -1
         padding: 0
@@ -32,7 +33,7 @@
         width: 100%
         height: 100%
         background-position: center
-        background-size: 100% 100%
+        background-size: cover
         background-repeat: no-repeat
         position: absolute
         animation: fadeBackground 1s ease-in-out forwards
@@ -62,7 +63,6 @@
         width: 100%
         min-height: 400px
         padding-top: 10px
-        
 
 .containerRight
     display: flex
@@ -135,7 +135,7 @@
     display: flex
     justify-content: flex-end
     align-items: center
-    width: 43%
+    width: 50%
     margin-top: 100px
     p
         animation: fadeRight 1s ease-in-out forwards
@@ -143,9 +143,9 @@
         &::before
             content: ''
             background: #fff
-            width: 65%
+            width: 100%
             height: 2px
-            left: -70%
+            left: -105%
             top: 0
             bottom: 0
             margin: auto
@@ -158,7 +158,7 @@
     align-items: flex-start
     height: auto
     width: 95%
-    margin-left: 25px
+    margin-left: 5px
 .textTitle
     display: flex
     font-size: 5rem
@@ -219,7 +219,9 @@
     align-items: center
     width: 100%
     animation: fadeRight 2.5s ease-in-out forwards
-
+    margin-top: 10px
+    margin-bottom: 20px
+    gap: 10px
     a
         text-decoration: none
 
@@ -277,7 +279,7 @@
         justify-content: center
         align-items: center
     .containerDeveloperWeb
-        margin-top: 130px
+        margin-top: 60px
     .containerMainText
         width: 90%
     .containerPortfolio
@@ -309,7 +311,9 @@
         margin-top: 25px
     .containerLinks
         width: 100%
-        justify-content: space-between
+        flex-wrap: wrap
+        justify-content: center
+
 
     .containerContato
         width: 200px

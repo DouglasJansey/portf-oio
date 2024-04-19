@@ -9,7 +9,7 @@
     font-size: .8rem
     padding: 0
     margin: 0
-    width: 100%
+    width: 100vw
     height: 100%
 
 .mainContainer
@@ -20,14 +20,20 @@
     padding: 0
     margin: 0
     z-index: 99
+    overflow: hidden
     aside
         @extend .flex
         padding: 0
     aside:nth-child(1)
         background: $light-blue
         align-items: center
+        justify-content: center
         white-space: break-spaces
-        height: 10%
+        height: 15%
+        padding: 10px
+        p
+            margin: 0
+            padding: 0
         span
             display: flex
             height: 100%
@@ -67,16 +73,16 @@
 .footer
     @extend .flex
     height: 5%
+    flex-wrap: wrap
     background: $light-blue
     p
-        padding: 0
+        padding: 5px
+        font-size: .7rem
         margin: 0
 
 @media screen and ( max-width: 730px )
     .mainContainer        
         aside:nth-child(1)
-            background: $light-blue
-            align-items: center
             flex-wrap: wrap
             span
                 display: flex
@@ -85,6 +91,7 @@
                 justify-content: center
                 width: 100%
                 gap: 10px
+                margin: 2px
     .containerInfo
         align-items: center
     .containerLinks
