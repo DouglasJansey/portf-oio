@@ -23,12 +23,12 @@ export default function Contact() {
         console.log(name)
         setFormData({ ...formData, [name]: value })
     }
-    
+    console.log(window.location.href)
     const handleSubmit = (ev: FormEvent) => {
         ev.preventDefault()
         try {
             setIsloading(true)
-            fetch(`${process.env.NEXT_PUBLIC_URL}/api/send`, {
+            fetch(`/api/send`, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
