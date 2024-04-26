@@ -32,7 +32,8 @@ export default function Contact() {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
                 }
             }).then(response => {
                 console.log(response)
