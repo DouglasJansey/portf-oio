@@ -70,7 +70,10 @@ export default function Projects() {
                 { value: repos.repo.stargazers_count, name: 'star' },
                 { value: repos.contributors.length, name: 'contributors' }]}
               />}</li>
-            )) : loading}
+            )) : <div className={style.containerLoading}>
+              {loading}
+            </div>
+            }
           </ul>
         </aside>
       </article>

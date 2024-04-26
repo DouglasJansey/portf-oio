@@ -10,10 +10,11 @@ import {
     FaCodeBranch
 } from "react-icons/fa";
 import { RiInstagramLine } from "react-icons/ri";
+import { HiOutlineMail } from "react-icons/hi";
 
 import { GrMysql } from "react-icons/gr";
 import { VscIssues } from "react-icons/vsc";
-import { HiOutlineUsers } from "react-icons/hi2";
+import { HiOutlineUsers, HiPhone  } from "react-icons/hi2";
 
 
 import { BsArrowRight, BsStarFill } from "react-icons/bs";
@@ -26,6 +27,8 @@ export const contributors = < HiOutlineUsers size={Githeight} />;
 export const issues = < VscIssues size={Githeight} />;
 export const forks = < FaCodeBranch size={Githeight} />;
 export const star = <BsStarFill size={Githeight} />;
+export const email = <HiOutlineMail size={17}/>
+export const phone = <HiPhone size={13}/>
 //============== language icons ===============
 export const nextjs = < SiNextdotjs size={height} />;
 export const typescript = <SiTypescript size={height} />;

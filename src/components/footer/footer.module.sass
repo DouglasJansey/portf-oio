@@ -10,7 +10,7 @@
     padding: 0
     margin: 0
     width: 100vw
-    height: 100%
+    height: auto
 
 .mainContainer
     @extend .flex
@@ -64,6 +64,9 @@
         font-size: 1rem
         font-weight: bold
     li
+        @extend .flex
+        width: auto
+        gap: 5px
         list-style: none
         padding: 2px
         margin: 5px

@@ -1,16 +1,16 @@
 'use client'
 import style from './footer.module.sass';
-import { instaFooter, facebookF, linkedIn, github } from '../../../imports/reactIcons'
+import { instaFooter, facebookF, linkedIn, github, email, phone } from '../../../imports/reactIcons'
 import Link from 'next/link';
 export default function Footer() {
-    const social = ['Instagram', 'Facebook', 'Linkedin', 'github']
+    const social = ['Instagram', 'Facebook', 'Linkedin', 'Github']
     const navegation = ['Sobre mim', 'Projetos', 'Habilidades', 'Contato']
     const contact = ['(21) 98084-6797', 'douglas.jansey@gmail.com']
     const divNames = [navegation, social, contact]
     const mapNamesArray = (arr: string[][]) => {
         const newArray = arr
         const menuNames = {
-            0: 'Navegação',
+            0: 'Mapa do Site',
             1: 'Redes Sociais',
             2: 'Contato'
         }
@@ -20,8 +20,9 @@ export default function Footer() {
             linkedin: 'https://www.linkedin.com/in/douglasjansey',
             github: 'https://www.github.com/douglasjansey',
         }
+        const linkKeys = Object.keys(linkUrl)
+
         const filterLinks = (links: string) => {
-            const linkKeys = Object.keys(linkUrl)
             return linkKeys.includes(links) ? linkUrl[links as keyof typeof linkUrl] : links
         }
         return (
@@ -33,12 +34,13 @@ export default function Footer() {
                         </p>
                         {menuNames[index as keyof typeof menuNames] !== 'Contato' && name.map((name, i) => (
                             <li key={i * 3}>
-                                <Link href={filterLinks(name.replace(' ', '').toLowerCase())} target='_blank'>
+                                <Link href={filterLinks(name.replace(' ', '').toLowerCase())} target={linkKeys.includes(name.toLocaleLowerCase()) ? '_blank' : ''}>
                                     {name}
                                 </Link>
                             </li>
                         )) || contact.map((name, index) => (
                             <li key={index + 5}>
+                                {name === 'douglas.jansey@gmail.com' && email || phone}
                                 {name}
                             </li>
                         ))}
@@ -62,7 +64,7 @@ export default function Footer() {
                 {mapNamesArray(divNames)}
             </aside>
             <aside className={style.footer}>
-                <p>Desenvolvido por Douglas Jansey</p>
+                <p>&#9400; 2024 - Desenvolvido por Douglas Jansey </p>
             </aside>
         </div>
     )

@@ -8,7 +8,12 @@
 @include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
 @include animateFade($animationName: iconFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
 @include borderAnimateHeight($animationName: borderHeight, $heightFrom: 0%, $heightTo: 100%)
-
+.flex
+      display: flex
+      width: 100%
+      height: 100%
+      justify-content: center
+      align-items: center
 .mainContainer
       display: flex
       flex-direction: column
@@ -46,7 +51,10 @@
             justify-content: flex-start
             width: 100vw
             height: auto
-
+.containerLoading
+      @extend .flex
+      width: 50px
+      height: 50px
 .containerIcons
       display: flex
       flex: none
