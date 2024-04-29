@@ -2,6 +2,7 @@ import style from './contact.module.sass'
 import { Button } from '../buttons/button'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { loading } from '../../../imports/componentsimport'
+import { setTimeout } from 'timers';
 
 interface formProps {
     name: string;
@@ -12,6 +13,7 @@ interface formProps {
 
 export default function Contact() {
     const [isLoading, setIsloading] = useState(false)
+    const [status, setStatus] = useState(0)
     const [formData, setFormData] = useState<formProps>({
         name: '',
         email: '',
@@ -20,10 +22,21 @@ export default function Contact() {
     })
     const formHandler = ({ target }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = target
-        console.log(name)
+
         setFormData({ ...formData, [name]: value })
     }
-    console.log(window.location.href)
+    const ClearMensage = () => {
+        setTimeout(() => {
+            setStatus(0)
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                mensage: ''
+            })
+        }, 5000)
+
+    }
     const handleSubmit = (ev: FormEvent) => {
         ev.preventDefault()
         try {
@@ -36,13 +49,15 @@ export default function Contact() {
                     'Access-Control-Allow-Origin': '*',
                 }
             }).then(response => {
-                console.log(response)
+                const { status } = response
+                setStatus(status)
                 setIsloading(false)
+                ClearMensage()
             })
         } catch (err) {
-
+            throw Error("Falha no envio!")
         }
-        console.log(ev.target)
+
     }
     return (
         <div className={style.container}>
@@ -56,25 +71,29 @@ export default function Contact() {
                     <h3 style={{ color: '#fff' }}>ENTRAR EM CONTATO</h3>
                     <label className={style.containerLabel}>
                         <input className={style.inputText} type='text' name='name' placeholder='Seu nome'
-                            onChange={(e) => formHandler(e)} />
+                            onChange={(e) => formHandler(e)} value={formData.name} />
                     </label>
                     <label className={style.containerLabel}>
                         <input className={style.inputText} type='email' name='email' placeholder='Endereço de email'
-                            onChange={(e) => formHandler(e)} />
+                            onChange={(e) => formHandler(e)} value={formData.email} />
                     </label>
                     <label className={style.containerLabel}>
                         <input className={style.inputText} type='text' name='subject' placeholder='Assunto'
-                            onChange={(e) => formHandler(e)} />
+                            onChange={(e) => formHandler(e)} value={formData.subject} />
                     </label>
                     <label className={style.containerLabel}>
                         <textarea className={style.textArea} name='mensage' placeholder='Sua mensagem'
-                            onChange={(e) => formHandler(e)} />
+                            onChange={(e) => formHandler(e)} value={formData.mensage} />
                     </label>
                     <Button type='submit' style={{ width: '250px', height: '45px' }}>
                         <div className={style.flex}>
                             {!isLoading && <p>Enviar</p> || <div className={style.containerLoading}>{loading}</div>}
                         </div>
                     </Button>
+                    <div style={{ display: status ? 'block' : 'none' }}>
+                        {status === 200 && <p>Mensagem enviada com sucesso!</p>}
+                        {status !== 200 && <p>Falha no envio da mensagem</p>}
+                    </div>
                 </form>
             </div>
 
