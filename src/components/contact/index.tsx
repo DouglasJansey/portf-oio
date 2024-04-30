@@ -74,7 +74,7 @@ export default function Contact() {
                             onChange={(e) => formHandler(e)} value={formData.name} />
                     </label>
                     <label className={style.containerLabel}>
-                        <input className={style.inputText} type='email' name='email' placeholder='Endereço de email'
+                        <input className={style.inputText} type='email' name='email' placeholder='Endereço de email válido'
                             onChange={(e) => formHandler(e)} value={formData.email} />
                     </label>
                     <label className={style.containerLabel}>
