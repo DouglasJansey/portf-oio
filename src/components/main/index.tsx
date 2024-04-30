@@ -101,12 +101,7 @@ export default function Main() {
                 <p>Vamos bater um papo!</p>
               </ButtonLink>
               <span className={style.containerPortfolio}>
-                {/* <ButtonLink to={curriculo}>
-                  <p>Baixar Curriculo</p>
-                  {arrowRight}
-                </ButtonLink>
-                {download && <iframe src={download} style={{ display: 'none' }}></iframe>} */}
-                 <ButtonLink to='/curriculo/DouglasJansey.pdf' download="DouglasJansey">
+                 <ButtonLink to='./DouglasJansey.pdf' download="CV_Douglas" target="_blank">
                   <p>Baixar Curriculo</p>
                   {arrowRight}
                 </ButtonLink>
