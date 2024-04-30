@@ -83,7 +83,6 @@ export default function Skills() {
     }
   }
   const scrollAnaimation = () => {
-     console.log(scrollY)
      scrollY > 10 ? setActive(true) : setActive(false)
   }
   useEffect(() => {
