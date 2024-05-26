@@ -66,9 +66,7 @@ export default function AboutMe() {
       <div ref={refLang}>
         {activeLanguage && languages}
       </div>
-      <div>
         {activeExperience && experience}
-      </div>
     </section>
   );
 }
