@@ -135,7 +135,7 @@ export default function Skills() {
           <h1 className={style.Title}>
             Experiência: {exp}
           </h1>
-          <h3>{time}</h3>
+          <h3 className={style.text}>Tempo de uso: {time}</h3>
           <p className={style.text}>{description} </p>
           <div className={style.containerButton}>
             <button className={style.button}

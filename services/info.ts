@@ -207,7 +207,7 @@ export const skills = [
   {
     name: "Jest",
     exp: "Básico",
-    time: "0.5 ano",
+    time: "0.5 anos",
     description:`Jest é um framework de teste unitário de código aberto
     em JavaScript criado pelo Facebook, baseado framework Jasmine.
     Seu diferencial para o concorrente Jasmine seria 
