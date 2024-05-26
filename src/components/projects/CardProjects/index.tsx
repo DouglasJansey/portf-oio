@@ -34,7 +34,7 @@ export default function CardProjects({ value }: CardProjectProps) {
                 <p className={style.text}>
                     {value.desc}
                 </p>
-                <span className={style.containerLanguages}
+                <div className={style.containerLanguages}
                     style={{ display: value.languages.frontend.length > 0 ? 'flex' : 'none' }}
                 >
                     {value.languages.frontend.length > 0 &&
@@ -44,8 +44,8 @@ export default function CardProjects({ value }: CardProjectProps) {
                             </li>
                         )))
                     }
-                </span>
-                <span className={style.containerLanguages}
+                </div>
+                <div className={style.containerLanguages}
                     style={{ display: value.languages.backend.length > 0 ? 'flex' : 'none' }}>
                     {value.languages.backend.length > 0 &&
                         (value.languages.backend.map((name, index) => (
@@ -54,7 +54,7 @@ export default function CardProjects({ value }: CardProjectProps) {
                             </li>
                         )))
                     }
-                </span>
+                </div>
                 <div className={style.containerButton}>
                     <ButtonLink to={value.url} target='_blank'>
                         Visite o site
