@@ -100,7 +100,7 @@ export const skills = [
     description:`CSS3 é a terceira mais nova versão das famosas Cascading Style Sheets (ou simplesmente CSS), 
     onde se define estilos para seu projeto web.Com efeitos de transição, imagem,imagem de fundo/Background e outros,
     que dão um estilo novo e elegante a seus projetos web.
-    Tenho conhecimento na utilização de flex, grid, positions, pseudo elementos entre outros.`,
+    Tenho conhecimento na utilização de flex, grid, positions, pseudo-elementos, e etc...`,
   },
   {
     name: "html5",
