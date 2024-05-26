@@ -21,7 +21,7 @@ interface CardProjectProps {
 
 export default function CardProjects({ value }: CardProjectProps) {
     const cardName = value.name.toLowerCase().replace(/[^a-z]/, '').replace(' ', '')
-
+    console.log(value.languages.frontend)
     return (
         <article className={style.container}>
             <aside className={style.containerImg}>
@@ -34,31 +34,31 @@ export default function CardProjects({ value }: CardProjectProps) {
                 <p className={style.text}>
                     {value.desc}
                 </p>
-                <span className={style.containerLanguages} 
-                style={{display: value.languages.frontend.length > 0 ? 'flex' : 'none'}}
+                <span className={style.containerLanguages}
+                    style={{ display: value.languages.frontend.length > 0 ? 'flex' : 'none' }}
                 >
                     {value.languages.frontend.length > 0 &&
                         (value.languages.frontend.map((name, index) => (
                             <li key={index + 3}>
-                               {<LanguageCard value={{name, index}}/>}
+                                {<LanguageCard value={{ name, index }} />}
                             </li>
                         )))
                     }
                 </span>
-                <span className={style.containerLanguages} 
-                style={{display: value.languages.backend.length > 0 ? 'flex' : 'none'}}>
+                <span className={style.containerLanguages}
+                    style={{ display: value.languages.backend.length > 0 ? 'flex' : 'none' }}>
                     {value.languages.backend.length > 0 &&
                         (value.languages.backend.map((name, index) => (
                             <li key={index + 2}>
-                                   {<LanguageCard value={{name, index}}/>}
+                                {<LanguageCard value={{ name, index }} />}
                             </li>
                         )))
                     }
                 </span>
                 <div className={style.containerButton}>
-                        <ButtonLink to={value.url} target='_blank'>
-                            Visite o site
-                        </ButtonLink>
+                    <ButtonLink to={value.url} target='_blank'>
+                        Visite o site
+                    </ButtonLink>
                 </div>
             </aside>
         </article>

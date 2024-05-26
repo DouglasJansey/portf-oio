@@ -27,6 +27,6 @@ export const GetLanguageData = async (data: []) => {
 export const GetDataRepository = async (urlData: string) => {
   const response = await fetch(urlData);
   const data = await response.json();
-  const newData = await GetLanguageData(data); // Supondo que você deseja chamar GetLanguageData aqui
-  return newData; // Defina isPending como false, já que os dados foram carregados
+  const newData = await GetLanguageData(data); 
+  return newData;
 };

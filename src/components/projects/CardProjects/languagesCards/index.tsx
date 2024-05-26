@@ -26,7 +26,7 @@ export default function LanguageCards({ value }: CardProjectProps) {
             mouseover: true,
             mouseleaver: false,
         }
-        setModalLanguage(openModal[typeEvent as keyof typeof openModal])
+       return setModalLanguage(openModal[typeEvent as keyof typeof openModal])
     }
     return (
         <article>

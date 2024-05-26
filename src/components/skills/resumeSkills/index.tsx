@@ -25,7 +25,7 @@ export default function Skills() {
   const [imgIndex, setIndexImage, cardPosition, setCardPosition] = changeState((state) => [state.imgIndex,
   state.setIndexImage, state.cardPosition, state.setCardPosition])
   const ref = useRef<HTMLDivElement>(null)
-  const { name, exp, time } = skills[imgIndex]
+  const { name, exp, time, description } = skills[imgIndex]
 
 
 
@@ -83,7 +83,7 @@ export default function Skills() {
     }
   }
   const scrollAnaimation = () => {
-     scrollY > 10 ? setActive(true) : setActive(false)
+    scrollY > 10 ? setActive(true) : setActive(false)
   }
   useEffect(() => {
     const handleResize = () => {
@@ -99,7 +99,7 @@ export default function Skills() {
       window.removeEventListener('resize', handleResize);
     };
   }, [])
-  //redimensiona o lista caso haja um espaço vazio
+  //redimensiona a lista caso haja um espaço vazio
   useEffect(() => {
     CalcEmptySpace()
   }, [bodyWidth])
@@ -109,14 +109,14 @@ export default function Skills() {
 
     const animationTimeout = setTimeout(() => {
       setAnimation(style.animation);
-    }, 0); // Tempo em milissegundos da sua animação
+    }, 0); // Tempo em milissegundos da animação
 
     window.addEventListener('scroll', scrollAnaimation);
     return () => {
       window.removeEventListener('scroll', scrollAnaimation);
       clearTimeout(animationTimeout);
     };
-    
+
 
   }, [imgIndex]);
   return (
@@ -135,13 +135,8 @@ export default function Skills() {
           <h1 className={style.Title}>
             Experiência: {exp}
           </h1>
-          <p className={style.text}>Lorem ipsum dolor,
-            sit amet consectetur adipisicing elit.
-            Possimus distinctio vitae corrupti asperiores itaque nam
-            reiciendis unde numquam, architecto,
-            eum recusandae non quia voluptas illum at
-            consequatur sit pariatur voluptatum?
-          </p>
+          <h3>{time}</h3>
+          <p className={style.text}>{description} </p>
           <div className={style.containerButton}>
             <button className={style.button}
               type="button"
