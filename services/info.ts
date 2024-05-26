@@ -17,7 +17,7 @@ export const profile = {
     para a área da programação, onde me formei e aprendi a utilizar alguns frameworks e linguagens novas
     sendo uma grande parte autodidata.
     Atualmente as linguagens e frameworks que utilizo são: NextJS, Typescript, Java e NodeJs,e também
-    estou estudando cyber security para me aprofundar em DevSecOps e em penteste e futuramente também
+    estou estudando cyber security para me aprofundar em DevSecOps e em pentest e futuramente também
     poder atuar na área de segurança. 
     `,
 };
