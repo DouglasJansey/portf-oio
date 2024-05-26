@@ -97,13 +97,20 @@ export const skills = [
     name: "Css3",
     exp: "Intermediário",
     time: "2 anos",
-    description:``,
+    description:`CSS3 é a terceira mais nova versão das famosas Cascading Style Sheets (ou simplesmente CSS), 
+    onde se define estilos para seu projeto web.Com efeitos de transição, imagem,imagem de fundo/Background e outros,
+    que dão um estilo novo e elegante a seus projetos web.
+    Tenho conhecimento na utilização de flex, grid, positions, pseudo elementos entre outros.`,
   },
   {
     name: "html5",
     exp: "Intermediário",
     time: "2 anos",
-    description:``,
+    description:`HTML é uma linguagem de marcação utilizada na construção de páginas na Web. 
+    Documentos HTML podem ser interpretados por navegadores. 
+    A tecnologia é fruto da junção entre os padrões HyTime e SGML. 
+    HyTime é um padrão para a representação estruturada de hipermídia e conteúdo baseado em tempo.
+    tenho conhecimento em sua semântica.`,
   },
   {
     name: "Next.js",
