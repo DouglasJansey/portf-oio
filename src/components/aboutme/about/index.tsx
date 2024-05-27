@@ -12,7 +12,7 @@ import style from "./Aboutme.module.sass";
 export default function AboutMe() {
   const [activeLanguage, setActiveLanguage] = useState(false)
   const [activeExperience, setActiveExperience] = useState(false)
-  const proileDesc = profile.desc
+  const profileDesc = profile.desc
   const refLang = useRef<HTMLDivElement>(null);
 
   const scrollAnaimation = (): void => {
@@ -55,7 +55,7 @@ export default function AboutMe() {
             <p className={style.subTitle}>Douglas Jansey</p>
             <p className={style.text}>Desenvolvedor Full Stack</p>
             <p>
-              {proileDesc}
+              {profileDesc}
             </p>
           </div>
         </article>
