@@ -4,6 +4,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react';
 import { languages, experience } from '../../../../imports'
+import { profile } from '../../../../services/info'
 import Languages from './languages';
 import style from "./Aboutme.module.sass";
 
@@ -11,6 +12,7 @@ import style from "./Aboutme.module.sass";
 export default function AboutMe() {
   const [activeLanguage, setActiveLanguage] = useState(false)
   const [activeExperience, setActiveExperience] = useState(false)
+  const proileDesc = profile.desc
   const refLang = useRef<HTMLDivElement>(null);
 
   const scrollAnaimation = (): void => {
@@ -53,12 +55,7 @@ export default function AboutMe() {
             <p className={style.subTitle}>Douglas Jansey</p>
             <p className={style.text}>Desenvolvedor Full Stack</p>
             <p>
-              Sou formado em Análise e Desenvolvimento de Sistemas,
-              tenho 33 anos e sou um apaixonado por tecnologia e programação desde meus 14 anos,
-              atuei 8 anos como designer gráfico tendo uma ampla noção no uso de ferramentas como Photoshop e CorelDraw.
-              Atualmente estou fazendo uma transição de carreira para o desenvolvimento web front-end e back-end,
-              conheci a programação em 2007,
-              onde programei utilizando C# e action script, onde aprendi OOP e seus fundamentos.
+              {proileDesc}
             </p>
           </div>
         </article>
