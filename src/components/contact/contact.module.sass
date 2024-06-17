@@ -61,7 +61,6 @@
     margin: 10px
     color: #fff
     font-size: .8rem
-    text-align: left
 
 .containerImage
     display: flex
@@ -90,6 +89,7 @@
     height: 80%
     padding: 0
     z-index: 2
+
 .inputText
     width: 70%
     height: 25px
@@ -109,6 +109,10 @@
 .textArea
     @extend .inputText
     height: 120px
+
+.inputError
+    @extend .inputText
+    border: 2px solid $error
 @media screen and ( max-width:  830px)
     .containerImage
         display: none
