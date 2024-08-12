@@ -40,7 +40,6 @@ export default function Contact() {
 
         setFormData({ ...formData, [name]: value })
     }
-    console.log(checkInput)
     const ClearMensage = () => {
         setTimeout(() => {
             setStatus(0)
