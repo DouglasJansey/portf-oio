@@ -21,14 +21,7 @@ export default function AboutMe() {
     handleDivHeight()
     setActiveLanguage(scrollY > 0);
   }
-  const handleSeeMore = (): {} => {
-    const seeMoreValue = {
-      overflow: 'hidden',
-      maxHeight: '340px',
-      textOverflow: 'ellipisis'
-    }
-  return !seeMore && seeMoreValue || {}
-}
+
 const handleDivHeight = () => {
   const rect = refLang.current?.getBoundingClientRect();
 
@@ -64,11 +57,11 @@ return (
           <p className={style.subTitle}>Douglas Jansey</p>
           <p className={style.text}>Desenvolvedor Full Stack</p>
         </div>
-        <div className={style.cardText}>
-          <p style={handleSeeMore()}>
+        <div>
+          <p className={seeMore ? '' : style.cardText } style={{maxHeight: seeMore ? 'none': ''}}>
             {profileDesc}
           </p>
-          <button onClick={() => setSeeMore(!seeMore)}>ver mais</button>
+          <input type='checkbox' onChange={() => setSeeMore(!seeMore)} className={style.btnCheck}/>
         </div>
       </article>
     </div>
