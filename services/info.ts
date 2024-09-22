@@ -8,17 +8,15 @@ export const info = {
     "Atualmente tenho conhecimento autodidata em alguns idiomas, como Inglês e Francês, e busco aprender outros idiomas...",
 };
 export const profile = {
-  desc: ` Sou formado em análise e desenvolvimento de sistemas, também sou
-    apaixonado por tecnologia desde os meus 14 anos, porém não pude
-    dar continuidade na area. Meu primeiro contato com a programação
-    foi programando jogos em C# onde aprendi sobre programação orientada a objetos,
-    também programei no antigo flash utilizando o action script 3.0.
-    Atuei 8 anos como designer gráfico utilizando photoshop e coreldraw, em 2021 resolvi retornar
-    para a área da programação, onde me formei e aprendi a utilizar alguns frameworks e linguagens novas
-    sendo uma grande parte autodidata.
-    Atualmente as linguagens e frameworks que utilizo são: NextJS, Typescript, Java e NodeJs,e também
-    estou estudando cyber security para me aprofundar em DevSecOps e em pentest e futuramente também
-    poder atuar na área de segurança. 
+  desc: `Sou Douglas Jansey Ferreira Dantas, um desenvolvedor Full Stack apaixonado por tecnologia e especializado em construir soluções web robustas e escaláveis. Tenho formação em Análise e Desenvolvimento de Sistemas pela Universidade Cruzeiro do Sul e uma sólida experiência em desenvolvimento front-end e back-end, aplicando meus conhecimentos em NextJS, ReactJS, NodeJS e Typescript para criar experiências de usuário intuitivas e eficientes.
+
+Minha jornada na tecnologia começou em 2004, quando comecei a programar jogos web em ActionScript 3 e C# XNA. Porém, precisei pausar minha carreira por um tempo e retomei a programação em 2020, voltando ao campo com uma nova perspectiva e renovada paixão.
+
+Além de minha experiência técnica, iniciei minha carreira como designer gráfico, o que me proporcionou um olhar apurado para UI/UX, algo que continuo a aplicar nos projetos em que trabalho. Como freelancer, já desenvolvi e implementei várias aplicações completas, utilizando tecnologias modernas como Zustand, Axios, Prisma, SASS, PostgresSQL, Sequelize e MySQL. Entre os projetos que me orgulho de ter realizado, destaco a criação de uma aplicação web para gestão de pedidos e inventário e uma plataforma de e-commerce desenvolvida do zero, que resultou em um aumento significativo de tráfego e uma experiência de usuário aprimorada.
+
+Também tenho uma vasta experiência na criação de designs gráficos e na colaboração com equipes multifuncionais, o que me permite adaptar soluções técnicas para atender às necessidades específicas dos clientes.
+
+Estou sempre em busca de novas tecnologias e práticas para aperfeiçoar minhas habilidades e contribuir de forma efetiva para o sucesso dos projetos em que me envolvo. 
     `,
 };
 

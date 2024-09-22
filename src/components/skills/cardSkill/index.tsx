@@ -40,7 +40,7 @@ export default function CardSkill({ value, index }: CardProps) {
                         {value.name}
                     </p>
                     <figure >
-                        <img src={`https://cdn.simpleicons.org/${skillName}/blue`} />
+                        <img src={`https://cdn.simpleicons.org/${skillName === 'csharp' ? 'c' : skillName}/blue`} />
                     </figure>
                 </label>
             </li>

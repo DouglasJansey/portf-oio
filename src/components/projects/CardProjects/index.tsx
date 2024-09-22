@@ -21,7 +21,6 @@ interface CardProjectProps {
 
 export default function CardProjects({ value }: CardProjectProps) {
     const cardName = value.name.toLowerCase().replace(/[^a-z]/, '').replace(' ', '')
-    console.log(value.languages.frontend)
     return (
         <article className={style.container}>
             <aside className={style.containerImg}>
