@@ -26,7 +26,6 @@ export default function CardSkill({ value, index }: CardProps) {
         }
     }, [index, imgIndex, cardPosition, setCardPosition]);
 
-
     return (
         <>
             <li className={style.list}>

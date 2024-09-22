@@ -1,4 +1,4 @@
-import { SiNextdotjs, SiTypescript, SiPrisma } from "react-icons/si";
+import { SiNextdotjs, SiTypescript, SiPrisma, SiCsharp } from "react-icons/si";
 import {
     FaSass, FaNodeJs,
     FaFacebookSquare,
@@ -36,6 +36,7 @@ export const sass = <FaSass size={height} />;
 export const nodejs = < FaNodeJs size={height} />;
 export const prisma = <SiPrisma size={height} />;
 export const mysql = <GrMysql size={height} />;
+export const csharp = <SiCsharp size={height} />;
 //===============arrow icon ===============================
 export const arrowRight = <BsArrowRight size={20} />;
 //================== social media icons sem retangulo =================

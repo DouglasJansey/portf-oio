@@ -26,7 +26,7 @@ export default function Skills() {
   state.setIndexImage, state.cardPosition, state.setCardPosition])
   const ref = useRef<HTMLDivElement>(null)
   const { name, exp, time, description } = skills[imgIndex]
-
+  const skillName = name.toLowerCase().replace('-', '')
 
 
   const handleButtonPosition = (e: any, increment: number) => {
@@ -71,10 +71,12 @@ export default function Skills() {
       'dotnet': '6b028b',
     }
     const changed: string = changeColor[name as keyof typeof changeColor] &&
-      changeColor[name as keyof typeof changeColor] ||
-      ''
+      changeColor[name as keyof typeof changeColor]
     return changed
   }
+//mudando imagem csharp que não tem no simple icons
+const cardImage = skillName !== 'csharp' ? `https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}` 
+                : '/images/icons/csharp.png'
 
   const CalcEmptySpace = () => {
     const emptySpace = ((positionX + (2 * -positionX)) - listWidth!) + bodyWidth
@@ -119,6 +121,7 @@ export default function Skills() {
 
 
   }, [imgIndex]);
+  console.log(skillName)
   return (
     <section className={style.mainContainer}>
       <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '150px' }}>
@@ -128,7 +131,7 @@ export default function Skills() {
         <aside className={style.containerImg}>
           <h1 className={animation}>{name}</h1>
           <figure className={animation}>
-            <img src={`https://cdn.simpleicons.org/${name.toLocaleLowerCase().replace('-', '')}/${changeColorImage(name.toLocaleLowerCase().replace('-', ''))}`} />
+            <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} />
           </figure>
         </aside>
         <aside className={style.containerText}>
