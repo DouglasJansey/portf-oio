@@ -1,6 +1,7 @@
 import style from './card.module.sass';
 import { changeState } from '../../../../state'
-import {  useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { csharp } from '../../../../imports/reactIcons';
 
 interface CardProps {
     value: {
@@ -33,14 +34,19 @@ export default function CardSkill({ value, index }: CardProps) {
                     name="icons"
                     onChange={(e) => setIndexImage(index)}
                     checked={index === imgIndex}
-                    
+
                 />
                 <label className={style.icon} htmlFor={skillName} ref={refCard}>
                     <p className={style.textIcon}>
                         {value.name}
                     </p>
                     <figure >
-                        <img src={`https://cdn.simpleicons.org/${skillName === 'csharp' ? 'c' : skillName}/blue`} />
+                        {skillName === 'csharp' ? (<div>
+                            {csharp({color:'blue', size: 40})}
+                        </div>
+                        ) : (
+                            <img src={`https://cdn.simpleicons.org/${skillName}/blue`} />
+                        )}
                     </figure>
                 </label>
             </li>

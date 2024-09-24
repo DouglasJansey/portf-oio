@@ -5,7 +5,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import { useEffect, useRef, useState } from "react";
-import { arrowRight } from '../../../../imports/reactIcons';
+import { arrowRight, csharp } from '../../../../imports/reactIcons';
 import { skills } from '../../../../services/info'
 import { Card } from '../../../../imports/componentsimport'
 import { usePathname } from "next/navigation";
@@ -74,9 +74,8 @@ export default function Skills() {
       changeColor[name as keyof typeof changeColor]
     return changed
   }
-//mudando imagem csharp que não tem no simple icons
-const cardImage = skillName !== 'csharp' ? `https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}` 
-                : '/images/icons/csharp.png'
+
+
 
   const CalcEmptySpace = () => {
     const emptySpace = ((positionX + (2 * -positionX)) - listWidth!) + bodyWidth
@@ -131,7 +130,11 @@ const cardImage = skillName !== 'csharp' ? `https://cdn.simpleicons.org/${skillN
         <aside className={style.containerImg}>
           <h1 className={animation}>{name}</h1>
           <figure className={animation}>
-            <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} />
+            {skillName === 'csharp' ? (
+             csharp({color:'purple', size: 300})            
+            ) : (
+              <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} />
+            )}
           </figure>
         </aside>
         <aside className={style.containerText}>
