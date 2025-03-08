@@ -13,16 +13,18 @@ interface AboutMeProps {
 }
 
 export default function AboutMe({ params }: { params: AboutMeProps}) {
-  const { path } = params 
+  const { path } = params
+  const filterPath = path.replace("%C3%B3", "o")
   const pathname = {
-    sobremim: < About params={path} />,
-    habilidades: < Skills params={path} />,
-    projetos: <Projects />, 
+    sobremim: < About params={filterPath} />,
+    skills: < Skills params={filterPath} />,
+    portfolio: <Projects />, 
     contato: <Contact />
     }
+    console.log(filterPath)
   return (
     <>
-      {path && pathname[path as keyof typeof pathname]}
+      {path && pathname[filterPath as keyof typeof pathname]}
     </>
   )
 }

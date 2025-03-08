@@ -5,27 +5,23 @@ import style from "./Header.module.sass";
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const menu = ["Sobre mim", "Projetos", "Habilidades", "Contato"];
+  const menu = ["sobre mim", "portfólio", "skills", "Contato"];
   const pathname = usePathname()
 
   const handleLinkMenu = (menu: string) => {
-    const menuValue = menu.replace(' ', '').toLowerCase()
+    const menuValue = menu.replace(' ', '').replace("%C3%B3", "o").toLowerCase()
+    
     return `/${menuValue}`;
   }
   const handleLinkClass = (value: string) => {
-    const filterPath = pathname.replace('/', '')
-    const menuName = value.replace(' ', '').toLowerCase()
+    const filterPath = pathname.replace('/', '').replace("%C3%B3", "ó").toLowerCase()
+    const menuName = value.replace(' ', '')
 
     return filterPath === menuName ? style.activePath : style.li
   }
 
   return (
     <div className={style.containerMenu}>
-      <figure className={style.containerImg}>
-        <Link href={'/'}>
-          <img src='/images/douglasjansey.png' alt='' />
-        </Link>
-      </figure>
       <nav className={style.containerNav}>
         <ul className={style.ul}>
           {menu.map((item, index) => (

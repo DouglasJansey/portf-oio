@@ -10,20 +10,23 @@
     display: flex
     justify-content: center
     align-items: center
-    width: 100vw
-    height: 100%
+    width: 100%
+    height: 100vh
     color: #fff
     position: relative
     overflow: hidden
-    font-family: $Roboto
+    font-family: var(--font-loft)
     &::after
         content: ""
-        width: 100%
+        width: 130%
         height: 100%
-        background: linear-gradient(to top, transparent 50%, #000)
+        background-image: url("/images/background1.png")
         background-position: center
         background-size: cover
+        background-repeat: no-repeat
         position: absolute
+        mix-blend-mode: screen
+        opacity: 0.1
         z-index: -1
         padding: 0
     &::before
@@ -39,88 +42,17 @@
         animation: fadeBackground 1s ease-in-out forwards
         z-index: -2
         padding: 0
-    img
-        transform: scaleX(-1) rotate(5deg)
-        width: 100%
-        height: 100%
+
 .textshadow
     text-shadow: 2px 2px 4px rgba(0,0 ,0 , 0.5 )
-
-.containerPhoto
-    display: flex
-    justify-content: center
-    align-items: center
-    height: 100%
-    width: auto
-    margin-top: 30px
-    overflow: hidden
-    border-bottom-left-radius: 40%
-    border-bottom-right-radius: 40%
-    padding: 0
-    img
-        transform: rotate(0deg)
-        height: 100%
-        width: 100%
-        min-height: 400px
-        padding-top: 10px
 
 .containerRight
     display: flex
     flex-direction: column
-    margin-top: 35px
-    width: 50%
-    height: auto
-    animation: fadeLeft 1s ease-in-out forwards
-
-.containerSocial
-    display: flex
-    justify-content: space-around
+    justify-content: space-evenly
     align-items: center
-    flex-wrap: wrap
-    width: 80%
-    height: auto
-    position: relative
-    margin-top: 10px
-    p
-        font-size: 1.2rem
-        margin-right: 20px
-        padding: 0
-        position: relative
-        animation: fadeLeft 1.5s ease-in-out forwards
-        &::before
-            animation: fadeLeft 3.5s ease-in-out forwards
-            content: ''
-            background: #fff
-            width: 100%
-            height: 2px
-            position: absolute
-            right: -50%
-            bottom: -10px
-            margin: auto
-
-.containerLinkSocial
-    display: flex
-    width: 20%
-    mergin-right: 10px
-    align-items: center
-    justify-content: flex-end
-    animation: fadeLeft 2s ease-in-out forwards
-    span
-        display: flex
-        gap: 3%
-        width: auto
-        position: relative
-        a
-            text-decoration: none
-            color: #fff
-
-.containerImage
-    display: flex
-    justify-content: center
-    align-items: center
-    height: 10%
-    width: auto
-    margin-top: 25px
+    width: 100%
+    height: 100%
     position: relative
 
 .containerText
@@ -130,197 +62,211 @@
     color: #fff
     width: 50%
     height: 100%
+    position: relative
 
-.containerDeveloperWeb
-    display: flex
-    justify-content: flex-end
-    align-items: center
-    width: 50%
-    margin-top: 100px
-    p
-        animation: fadeRight 1s ease-in-out forwards
-        position: relative
-        &::before
-            content: ''
-            background: #fff
-            width: 100%
-            height: 2px
-            left: -105%
-            top: 0
-            bottom: 0
-            margin: auto
-            animation: fadeRight 2s ease-in-out forwards
-            position: absolute
+.containerPhoto
+    margin: 0
+    height: 100%
+    img
+        height: 100%
+        left: 0
+        position: absolute
+        mix-blend-mode: exclusion
 
 .containerMainText
     display: flex
     flex-direction: column
-    align-items: flex-start
-    height: auto
-    width: 95%
-    margin-left: 45px
-.textTitle
-    display: flex
-    font-size: 5rem
-    flex-wrap: wrap
-    margin: 0
-    animation: fadeRight 2.7s ease-in-out forwards
+    width: auto
+    padding-top: 5%
     @extend .textshadow
-
-.containerTextMiddle
-    display: flex
-    justify-content: flex-start
-    align-items: center
-    width: 100%
-
-.textMiddle
-    font-size: 2.5rem
-    margin: 0
-    padding: 0
-    animation: fadeRight 1.8s ease-in-out forwards
-    @extend .textshadow
+    font-family: var(--font-bebas)
     div
-        div
-            display: flex
-            justify-content: flex-start
-            margin: 0
-            padding: 0
-            gap: 15px
-            width: auto
+        position: relative
+        width: 100%
+    h1
+        font-size: 12.5rem
+        font-weight: normal
+        color: $cyan
+        flex-grow: 1
+        margin: 0
+        padding: 0
+    h3
+        font-size: 5.5rem
+        white-space: nowrap
+        font-family: var(--font-loft)
+        color: white
+        letter-spacing: -10px
+        margin: 0px 0px -65px 0px
+    h2
+        color: white
+        font-size: 7.5rem
+        position: absolute
+        white-space: nowrap
+        right: 0
+        bottom: -22%
+        margin: 0
+
+.containerLinkSocial
+    display: flex
+    width: 100%
+    height: 140px
+    position: relative
     span
-        width: auto
         display: flex
-        align-items: flex-end
-        flex-wrap: wrap
-    h3 , p
-        margin: 0
-        padding: 0
-.colorSpan
-    color: #ffc979
-    animation: fadeRight 2.1s ease-in-out forwards
-.containerTextDesc
+        position: absolute
+        right: 0
+        bottom: 0
+        a
+            text-decoration: none
+            color: #fff
+.containerName
     display: flex
-    flex-wrap: wrap
-    width: 100%
+    flex-direction: column
+    width: auto
+    position: absolute
     margin: 0
-    padding: 0
-    animation: fadeRight 1.5s ease-in-out forwards
-    p
-        width: auto
+    bottom: 2%
+    left: -2%
+    p:nth-child(1)
+        font-family: var(--font-bebas)
+        font-size: 4.9rem
+        margin: 0px 0px -35px 3px
+    p:nth-child(2)
+        font-family: var(--font-loft)
+        font-size: 5rem
+        color: $cyan
         margin: 0
-        padding: 0
-.textDesc
-    font-size: 1.2rem
-    @extend .textshadow
-
-.containerLinks
-    display: flex
-    justify-content: space-around
-    align-items: center
-    width: 100%
-    animation: fadeRight 2.5s ease-in-out forwards
-    margin-top: 10px
-    margin-bottom: 20px
-    gap: 10px
-    a
-        text-decoration: none
-
+    p:nth-child(3)
+        font-family: var(--font-loft)
+        font-size: 3rem
+        opacity: 0.2
+        margin: -20px 0px 0px 3px
+        letter-spacing: 19px
 .containerPortfolio
     display: flex
-    justify-content: space-between
+    justify-content: flex-end
     align-items: center
-    width: auto
+    width: 100%
     height: auto
-    gap: 5%
-    color: #fff
-    animation: fadeRight 2s ease-in-out forwards
-    p
-        white-space: nowrap
-        margin: 10px
-    button
-        background: none
-        border: none
-        @extend .containerPortfolio
-        cursor: pointer
-    a
+    margin-bottom: 15%
+    figure
         display: flex
         justify-content: center
-        width: 100%
-        margin: 0
-        padding: 10px 25px
-
-.containerContato
-    display: flex
-    align-items: center
-    justify-content: center
-    background: #fff
-    color: #000
-    width: 250px
-    height: 70px
-    font-weight: bold
-    position: relative
-    &::after
-        content: ''
-        position: absolute
-        background: transparent
-        border: 2px solid #000
-        border-radius: 5px
-        width: 85%
-        height: 60%
-        top: 0
-        bottom: 0
-        left: 0
-        right: 0
-        margin: auto
-
-@media screen and ( max-width: 630px )
-    .containerText
-        width: 100%
-        justify-content: center
         align-items: center
-    .containerDeveloperWeb
-        margin-top: 60px
-    .containerMainText
-        width: 90%
-        margin: 0
-    .containerPortfolio
-        padding: 0
+        flex: none
+        border: none
+        width: 110px
+        height: 110px
+        background: $cyan
+        border-radius: 100%
+        position: relative
+        margin-right: 20%
         a
-            padding: 15px 10px
+            width: 100%
+            height: 100%
+        &::before
+            content: ''
             display: flex
             justify-content: center
-    .containerTextDesc
-        width: 100%
-        display: flex
-    .containerTextMiddle
-        display: flex
-        width: 100%
-    .containerImage
-        display: none
-    .containerMain
-        flex-direction: column
-        margin-top: 140px
-    .containerLinkSocial
-        width: auto
-        height: 100%
-    .containerSocial
-        white-space: nowrap
-        justify-content: space-between
-        width: 100%
-        margin-top: -50px
-    .containerRight
-        width: 80%
-        height: 100%
-        margin-top: 25px
-    .containerLinks
-        width: 100%
-        flex-direction: column
-        align-items: center
-        justify-content: center
-        a
-            margin: 0
+            align-items: center
+            background: $dark-gray-2
+            position: absolute
+            width: 0%
+            height: 90%
+            z-index: -1
+        img
+            height: 65%
+            width: 60%
+            position: absolute
+            inset: 0
+            bottom: 15%
+            margin: auto
+            filter: invert(100%) drop-shadow(5px 5px 0px rgba(0,0 ,0 , 0.5))
+        &:hover
+            &::before
+                content: "download \A CV"
+                white-space: pre-wrap
+                font-size: 1.3rem
+                text-align: center
+                display: flex
+                width: 160%
+                height: 90%
+                left: 70%
+                border-radius: 0px 45px 45px 0px
+                padding-left: 20px
+                z-index: -1
+                transition: .5s ease-in-out
 
-    .containerContato
-        width: 200px
-        &::after
-            padding: 2px
+@media screen and ( max-width: 780px )
+    .containerMainText
+        justify-content: center
+        position: absolute
+        right: 10%
+        top: 10%
+        h1
+            font-size: 7.5rem
+        h2
+            font-size: 4.5rem
+            margin: 0px 0px -5px 0px
+        h3
+            font-size: 2.5rem
+            letter-spacing: 2px
+            margin: 0px 0px -30px 0px
+    .containerPortfolio
+        height: auto
+        width: 100%
+        align-items: flex-end
+        flex-direction: column
+    .containerLinkSocial
+        height: 100px
+        margin-left: 10px
+        span
+            width: 69%
+            justify-content: space-evenly
+            svg
+                width: 45px
+                margin-left: 2px
+    .containerRight
+        height: 90%
+        width: 100%
+        justify-content: flex-end
+        position: relative
+    .containerPhoto
+        opacity: .5
+        height: 100%
+        mix-blend-mode: exclusion
+        img
+            left: -100%
+            position: absolute
+    .containerText
+        position: relative
+        width: 30%
+    .containerName
+        align-items: flex-end
+        padding: 10px
+        width: 90%
+        position: relative
+        p:nth-child(1)
+            font-family: var(--font-bebas)
+            font-size: 2.9rem
+            text-align: right
+            margin: 0px 163px -20px 3px
+        p:nth-child(2)
+            font-family: var(--font-loft)
+            font-size: 3rem
+            color: $cyan
+            margin: 0
+        p:nth-child(3)
+            font-family: var(--font-loft)
+            font-size: 1.5rem
+            opacity: 0.2
+            margin: -10px -9px 0px 0px
+            letter-spacing: 15px
+@media screen and ( max-width: 500px )
+    .containerPhoto
+        opacity: .5
+        height: 100%
+        mix-blend-mode: exclusion
+        img
+            left: -300px
+            position: absolute

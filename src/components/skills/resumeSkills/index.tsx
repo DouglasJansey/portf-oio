@@ -25,7 +25,7 @@ export default function Skills() {
   const [imgIndex, setIndexImage, cardPosition, setCardPosition] = changeState((state) => [state.imgIndex,
   state.setIndexImage, state.cardPosition, state.setCardPosition])
   const ref = useRef<HTMLDivElement>(null)
-  const { name, exp, time, description } = skills[imgIndex]
+  const { name, exp, time } = skills[imgIndex]
   const skillName = name.toLowerCase().replace('-', '')
 
 
@@ -120,74 +120,39 @@ export default function Skills() {
 
 
   }, [imgIndex]);
-  console.log(skillName)
+  const handleSkill = (type: string) => {
+    return (
+      <ul>
+        {skills.map((value, index) => (
+          value.type === type ? (
+            <li key={index + 2}>
+              {
+                Card({ value, index })
+              }
+            </li>
+          ) : ""
+        ))}
+      </ul>
+    )
+  }
   return (
     <section className={style.mainContainer}>
-      <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '150px' }}>
-        <h1>Habilidades</h1>
-      </span>
       <article className={style.subContainer}>
-        <aside className={style.containerImg}>
-          <h1 className={animation}>{name}</h1>
-          <figure className={animation}>
-            {skillName === 'csharp' ? (
-             csharp({color:'purple', size: 300})            
-            ) : (
-              <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} />
-            )}
-          </figure>
-        </aside>
-        <aside className={style.containerText}>
-          <h1 className={style.Title}>
-            Experiência: {exp}
-          </h1>
-          <h3 className={style.text}>Tempo de uso: {time}</h3>
-          <p className={style.text}>{description} </p>
-          <div className={style.containerButton}>
-            <button className={style.button}
-              type="button"
-              name="back"
-              onClick={(e) => handleNextAndBackButton(-1, e)}
-            >Voltar</button>
-            <button className={style.button}
-              type="button"
-              name="next"
-              onClick={(e) => handleNextAndBackButton(+1, e)}
-            >Próximo</button>
+        <div className={style.containerIcons}>
+          <h2>Linguagens & Frameworks</h2>
+          <div>
+            {handleSkill("backend")}
           </div>
-        </aside>
-      </article>
-      <div className={style.containerIcons}>
-        <button className={style.containerArrow}
-          type="button"
-          style={{ rotate: '180deg', left: 0 }}
-          name="left"
-          onClick={(e) => handleButtonPosition(e, -90)}
-        >
-          {arrowRight}
-        </button>
-        <button className={style.containerArrow}
-          type="button"
-          style={{ right: 0 }}
-          name="right"
-          onClick={(e) => handleButtonPosition(e, +90)}
-        >
-          {arrowRight}
-        </button>
-        <div style={{ translate: positionX, transition: 'all 0.5s ease-in-out' }} ref={ref}>
-          <ul>
-            {skills.map((value, index) => (
-              <div key={index + 2}>
-                {
-                  Card({ value, index })
-                }
-              </div>
-            ))}
-          </ul>
+          <h2>Bibliotecas & Ferramentas</h2>
+          <div>
+            {handleSkill("biblioteca&frontend")}
+          </div>
+          <h2>Testes</h2>
+          <div>
+            {handleSkill("teste&frontend")}
+          </div>
         </div>
-      </div>
-      {(active && pathname === '/habilidades') ? <Course /> : ''}
-
+      </article>
     </section>
   );
 

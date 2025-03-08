@@ -1,4 +1,5 @@
-import { SiNextdotjs, SiTypescript, SiPrisma, SiCsharp } from "react-icons/si";
+import { SiNextdotjs, SiTypescript, SiPrisma, SiReact , SiCsharp, SiTestinglibrary  } from "react-icons/si";
+import Image from "next/image";
 import {
     FaSass, FaNodeJs,
     FaFacebookSquare,
@@ -21,7 +22,7 @@ interface PropsCsharp {
 }
 
 import { BsArrowRight, BsStarFill } from "react-icons/bs";
-
+import zustandImage from '../../public/images/cardProject/zustand.png'
 
 const Githeight = 15
 const height = 80
@@ -40,6 +41,8 @@ export const nodejs = < FaNodeJs size={height} />;
 export const prisma = <SiPrisma size={height} />;
 export const mysql = <GrMysql size={height} />;
 export const csharp= ({color, size}: PropsCsharp) => <SiCsharp size={size} color={color} />;
+export const contextApi= ({color, size}: PropsCsharp) => <SiReact size={size} color={color} />;
+export const zustandIcon = <Image src={zustandImage} alt="Zustand Icon" width={35} color="cyan"/>;
 //===============arrow icon ===============================
 export const arrowRight = <BsArrowRight size={20} />;
 //================== social media icons sem retangulo =================
@@ -48,7 +51,7 @@ export const linkedIn = <FaLinkedinIn size={20} />;
 export const instaFooter = <RiInstagramLine size={20} />;
 
 //================== social media icons =================
-export const facebook = <FaFacebookSquare size={25} />;
-export const linkedin = <FaLinkedin size={25} />;
+export const facebook =  (value: number) => <FaFacebookSquare size={value} />;
+export const linkedin =  (value: number) =><FaLinkedin size={value} />;
 export const instagram = (value: number) => <FaInstagram size={value} />;
 export const github = (value: number) => <FaGithub size={value} />;

@@ -12,6 +12,7 @@ export default function Main() {
   const data = new Date(Date.now()).getHours()
   const [hour, setHour] = useState('')
   const [download, setDownload] = useState("")
+  const iconsSize = 87
 
   const handleTextIntro = () => {
     const hours = {
@@ -65,90 +66,68 @@ export default function Main() {
   }, [data])
   return (
     <>
-      <div className={style.containerMain}>
+      <section className={style.containerMain}>
         <div className={style.containerText}>
-          <div className={style.containerDeveloperWeb}>
-            <p>Desenvolvedor Full Stack</p>
-          </div>
-          <div className={style.containerMainText}>
-            <div className={style.containerTextDesc}>
-              <p className={style.textTitle} style={{ color: "#ffc979" }}>{handleTextIntro()}</p>
-            </div>
-            <div className={style.containerTextMiddle}>
-              <div className={style.textMiddle}>
-                <div>
-                  Me chamo
-
-                  {filterFirstWord('Douglas Jansey')}
-
-                  Sou um Desenvolvedor Full Stack
-                </div>
-              </div>
-            </div>
-            <div className={style.containerTextDesc}>
-              <p>
-                Sou um desenvolvedor com conhecimento em linguagens como: <span className={style.colorSpan}>Javascript, Typescript, C# e Java</span>,
-                além de alguns frameworks como: <span className={style.colorSpan}>ReactJS, NextJS, Express, Spring Boot, Entity framework</span>,
-                além de modelagem de dados e banco de dados como: <span className={style.colorSpan}>Mysql, PostgreSql e MongoDB</span>, 
-                entre outras ferramentas como: <span className={style.colorSpan}>Jest, Redux, Zustand, Lombok, Api Rest, Sass e Styled-Components</span>.
-              </p>
-            </div>
-            <div className={style.containerLinks}>
-              <ButtonLink
-                to={`https://wa.me//55${phoneNumber}?text=`}
-                target="blank"
-              >
-                <p>Vamos bater um papo!</p>
-              </ButtonLink>
-              <span className={style.containerPortfolio}>
-                 <ButtonLink to='./DouglasJansey.pdf' download="CV_Douglas" target="_blank">
-                  <p>Baixar Curriculo</p>
-                  {arrowRight}
-                </ButtonLink>
-              </span>
-            </div>
-          </div>
+          <figure className={style.containerPhoto}>
+            <img src="/images/rosto.png" alt="foto" />
+          </figure>
         </div>
         <div className={style.containerRight}>
-          <div className={style.containerImage}>
-            <div className={style.containerPhoto}>
-              <img src="/images/developerIcon.png" alt="" />
+          <div className={style.containerMainText}>
+            <div>
+              <h3>EU SOU</h3>
+              <h1>Douglas</h1>
+              <h2>FERREIRA</h2>
             </div>
-          </div>
-          <div className={style.containerSocial}>
-            <p>Confira e me siga</p>
             <div className={style.containerLinkSocial}>
               <span>
                 <Link
                   href={"https://www.instagram.com/doug.jansey/"}
                   target="blank"
                 >
-                  {instagram(25)}
+                  {instagram(iconsSize)}
                 </Link>
                 <Link
                   href={"https://www.linkedin.com/in/douglasjansey/"}
                   target="blank"
                 >
-                  {linkedin}
+                  {linkedin(iconsSize)}
                 </Link>
                 <Link
                   href={"https://github.com/DouglasJansey"}
                   target="blank"
                 >
-                  {github(25)}
+                  {github(iconsSize)}
                 </Link>
                 <Link
                   href={"https://www.facebook.com/douglas.jansey"}
                   target="blank"
                 >
-                  {facebook}
+                  {facebook(iconsSize)}
                 </Link>
               </span>
             </div>
           </div>
+          {/* <ButtonLink
+            to={`https://wa.me//55${phoneNumber}?text=`}
+            target="blank"
+          >
+            <p>Vamos bater um papo!</p>
+          </ButtonLink> */}
+          <span className={style.containerPortfolio}>
+            <figure>
+              <a href='./DouglasJansey.pdf' download="CV_Douglas" target="_blank">
+                <img src="/images/download.png" alt="imagem seta download" />
+              </a>
+            </figure>
+            <div className={style.containerName}>
+              <p>fullstack</p>
+              <p>developer</p>
+              <p>freelancer</p>
+            </div>
+          </span>
         </div>
-
-      </div >
+      </section>
     </>
   );
 }

@@ -5,7 +5,12 @@ import { about, skills, main } from '../../imports';
 export default function Home() {
   return (
     <>
-      {main}
+      {/* <article>
+        {main}
+      </article> */}
+      <article>
+        {skills}
+      </article>
     </>
   )
 }
