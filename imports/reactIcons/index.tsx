@@ -42,7 +42,7 @@ export const prisma = <SiPrisma size={height} />;
 export const mysql = <GrMysql size={height} />;
 export const csharp= ({color, size}: PropsCsharp) => <SiCsharp size={size} color={color} />;
 export const contextApi= ({color, size}: PropsCsharp) => <SiReact size={size} color={color} />;
-export const zustandIcon = <Image src={zustandImage} alt="Zustand Icon" width={35} color="cyan"/>;
+export const zustandIcon = <Image src={zustandImage} alt="Zustand Icon" width={35} height={35} color="cyan"/>;
 //===============arrow icon ===============================
 export const arrowRight = <BsArrowRight size={20} />;
 //================== social media icons sem retangulo =================

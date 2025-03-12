@@ -9,6 +9,18 @@
             transform: translateX($to)
             opacity: $opacityTo
 
+@mixin animateFadeName($animationName, $fromX, $fromY, $toX, $toY, $fontSizeFrom,$fontSizeTo, $opacityFrom, $opacityTo)
+    @keyframes #{$animationName}
+        0%
+            transform: translate($fromX, $fromY)
+            opacity: $opacityFrom
+            font-size: $fontSizeFrom
+
+        100%
+            transform: translate($toX, $toY)
+            opacity: $opacityTo
+            font-size: $fontSizeTo
+
 @mixin borderAnimate($animationName, $widthFrom, $widthTo)
     @keyframes #{$animationName}
         0%

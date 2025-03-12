@@ -1,4 +1,8 @@
 @import '../../../../styles/_variables'
+@import '../../../../styles/_animation'
+
+@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+
 .subContainer
       display: flex
       justify-content: center

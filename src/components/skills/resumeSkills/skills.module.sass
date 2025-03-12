@@ -37,30 +37,44 @@
             z-index: 1
 
 .animation
-      animation: fadeRight 2s ease-in-out forwards
+      animation: fadeRight ease-in-out forwards
 
 .subContainer
       display: flex
       flex-direction: column
       justify-content: center
-      align-items: center
+      align-items: flex-start
+      padding: 10px
       flex: none
-      border: 5px solid red
       width: 80%
       height: 80%
       z-index: 2
 
 .containerText
       display: flex
-      flex-direction: column
-      justify-content: flex-start
-      align-items: flex-start
-      width: 60%
-      height: 90%
+      justify-content: center
+      align-items: center
+      width: 100%
+      height: auto
       z-index: 2
-      padding: 5px
       position: relative
-      margin-left: 30px
+      div
+            display: flex
+            justify-content: flex-start
+            align-items: flex-start
+            width: 100%
+            text-align: left
+            p
+                  width: 80%
+                  font-size: 1.4rem
+      &::before
+            content: ""
+            width: 80%
+            height: 10px
+            position: absolute
+            background: #fff
+            top: 0
+            margin: auto
 
 .containerIcons
       display: flex
@@ -77,6 +91,9 @@
             display: flex
             align-items: flex-start
             width: 100%
+            height: auto
+            margin: 0
+            padding: 0
       ul
             display: flex
             flex-wrap: wrap
@@ -85,111 +102,40 @@
             padding: 0
             margin: 0
             flex-grow: 1
+            gap: .5%
             li
-                  margin: 10px
                   list-style: none
-
-.icon
-      display: flex
-      flex: none
-      justify-content: center
-      align-items: center
-      overflow: hidden
-      background: $dark-blue
-      width: 90px
-      height: 90%
-      border-top-left-radius: 25px
-      cursor: pointer
-      margin: 0
-      padding: 0
-      figure
-            display: flex
-            img
-                  width: 40px
-                  height: 100%
-
-.containerButton
-      display: flex
-      justify-content: flex-end
-      margin-top: 35px
-      width: 100%
-      animation: buttonFade 4s ease-in-out forwards
-
-.button
-      padding: 10px 25px
-      background: $light-blue
-      border: none
-      color: #fff
-      margin: 5px 15px 5px 0px
-      cursor: pointer
-
-.containerImg
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      margin: 0
-      width: 40%
-      height: 100%
-      z-index: 2
-      position: relative
-      animation: fadeRight 1s ease-in-out forwards
-      &::before
-            content: ""
-            background: #1c20f9
-            width: 100%
-            height: 100%
-            min-width: 320px
-            position: absolute
-            z-index: -1
-            left: 0
-            opacity: 0.2
-            border-top-right-radius: 50px
-      figure
-            display: flex
-            justify-content: center
-            align-items: center
-            width: 100%
-            height: 100%
-            opacity: 0
-      img, div
-            max-width: 300px
-            z-index: 5
-      h1
-            display: flex
-            justify-content: center
-            align-items: center
-            font-size: 2.2rem
-            width: auto
-            white-space: nowrap
-            margin: 30px 0px 0px 0px
-            z-index: 5
-
-.floatYear
-      position: absolute
-      left: -80px
-      top: 25px
-      bottom: 0
-      margin: auto
 
 .Title
       display: flex
-      justify-content: center
+      justify-content: flex-start
       align-items: center
-      font-size: 2.2rem
-      width: auto
-      white-space: nowrap
-      margin: 30px 0px 0px 0px
+      width: 90%
+      height: 35%
       z-index: 5
-      animation: fadeLeft 2s ease-in-out forwards
-
-.text
       position: relative
-      width: 80%
-      padding: 5px
-      margin: 15px 35px 0px
-      font-size: 1.4rem
-      animation: fadeLeft 1.8s ease-in-out forwards
+      span
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 100%
+            width: 40%
+            position: relative
+            &::before
+                  content: "skills"
+                  font-family: var(--font-bebas)
+                  font-size: 17rem
+                  margin: 0
+                  position: absolute
+                  opacity: .2
+                  width: 100%
+.text
+      font-family: var(--font-loft)
+      filter: drop-shadow(3px 3px 0px rgba(0,0,0,.3))
+      position: absolute
+      transition: all 0.5s ease-in-out
+      cursor: pointer
+      white-space: nowrap
 
 @media screen and ( max-width: 700px )
       .mainContainer

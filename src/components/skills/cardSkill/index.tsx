@@ -13,20 +13,20 @@ interface CardProps {
 }
 
 export default function CardSkill({ value, index }: CardProps) {
-    const skillName = value.name.toLowerCase().replace(' ', '').replace('-', '')
+    const skillName = value.name.toLowerCase().replace(/( )+/g, "").replace('-', '')
     const refCard = useRef<HTMLLabelElement>(null);
     const [setCardPosition, cardPosition] = changeState((state) => [state.setCardPosition, state.cardPosition])
 
     const [setIndexImage, imgIndex] = changeState((state) => [state.setIndexImage, state.imgIndex])
-    console.log(skillName)
     const noImage = (names: string) => {
         const filterName = names.replace(' ', '')
         const namesLanguage = {
             csharp: csharp({ color: 'cyan', size: 30 }),
             contextapi: contextApi({ color: 'cyan', size: 30 }),
             zustand: zustandIcon,
+            java: <img src='/images/cardProject/java.svg' alt='' style={{fill: '#00f0ff'}}/>
         }
-            return (skillName !== 'csharp') && (skillName !== 'contextapi') && (skillName !== 'zustand') ? (<>
+            return (skillName !== 'csharp') && (skillName !== 'contextapi') && (skillName !== 'zustand') &&(skillName !== 'java') ? (<>
                 <img src={`https://cdn.simpleicons.org/${skillName}/cyan`} />
             </>
             ) : (<>

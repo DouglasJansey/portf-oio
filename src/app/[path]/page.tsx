@@ -21,7 +21,6 @@ export default function AboutMe({ params }: { params: AboutMeProps}) {
     portfolio: <Projects />, 
     contato: <Contact />
     }
-    console.log(filterPath)
   return (
     <>
       {path && pathname[filterPath as keyof typeof pathname]}

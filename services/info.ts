@@ -117,6 +117,12 @@ export const skills = [
     type:"backend",
   },
   {
+    name: "Java",
+    exp: "Intermediário",
+    time: "1 ano",
+    type:"backend",
+  },
+  {
     name: "Node.js",
     exp: "Intermediário",
     time: "2 anos",
@@ -144,7 +150,7 @@ export const skills = [
     name: "JUnit5",
     exp: "Básico",
     time: "1 ano",
-    type:"teste",
+    type:"teste&backend",
   },
   {
     name: "Sass",
@@ -156,7 +162,19 @@ export const skills = [
     name: "Prisma",
     exp: "Básico",
     time: "1 ano",
-    type:"biblioteca",
+    type:"biblioteca&backend",
+  },
+  {
+    name: "Sequelize",
+    exp: "Básico",
+    time: "1 ano",
+    type:"biblioteca&backend",
+  },
+  {
+    name: "Json Web Tokens",
+    exp: "Básico",
+    time: "1 ano",
+    type:"biblioteca&backend",
   },
   {
     name: "Gulp",
@@ -180,7 +198,7 @@ export const skills = [
     name: "Docker",
     exp: "Básico",
     time: "1 ano",
-    type:"biblioteca",
+    type:"biblioteca&backend",
   },
   {
     name: "Styled-Components",
