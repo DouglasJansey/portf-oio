@@ -5,8 +5,8 @@ import { ReactNode } from 'react'
 
 interface GitCardIconProps {
     item: any
-
 }
+
 export default function CardGitIcon({ item }: GitCardIconProps) {
     const { value, name } = item
     const filterImageIcon = (name: string): ReactNode => {

@@ -6,53 +6,99 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import style from "./projects.module.sass";
-import { CardProjects, GitProjects, loading } from '../../../imports/componentsimport'
-import { projects } from '../../../services/info'
-import { useEffect, useState } from "react";
-import { GetDataRepository } from "../../../services/getData";
-
-interface ProjectProps {
-  repo: any,
-  languages: any
-  contributors: []
-}
+import { CardProjects } from '../../../imports/componentsimport';
+import { projects } from '../../../services/info';
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Projects() {
-  const [repoData, setRepoData] = useState<ProjectProps[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data: ProjectProps[] = await GetDataRepository('https://api.github.com/users/DouglasJansey/repos');
-        setRepoData(data); // Define o estado com os dados obtidos da requisição
-      } catch (error) {
-        console.error('Erro ao buscar os dados:', error);
-        // Lidar com erros
-      }
-    };
+  const [current, setCurrent] = useState(0);
+  const totalProjects = projects.length;
 
-    fetchData(); // Chama a função para buscar os dados quando o componente monta
-  }, []);
+  const handleNext = () => setCurrent((prev) => (prev + 1) % totalProjects);
+  const handlePrev = () => setCurrent((prev) => (prev - 1 + totalProjects) % totalProjects);
+
+  const handleLanguages = (name: string) => {
+    const languagesList = {
+      "frontend": projects[current].languages.frontend,
+      "backend": projects[current].languages.backend,
+    }
+    const sizeList = languagesList[name as keyof typeof languagesList].length - 1
+    return (
+      <>
+      <h5>{languagesList[name as keyof typeof languagesList].length > 0 ? name.toUpperCase()  : ''}</h5>
+        {languagesList[name as keyof typeof languagesList].map((name, index) => (
+          <h4 key={index * 2}>
+            {index !== sizeList ? `${name},` : name}
+          </h4>
+        ))}
+      </>
+    )
+  }
+
   return (
     <>
-      <section className={style.mainContainer}>
-        <span>
-          <p className={style.Title}>Projetos</p>
-        </span>
-        <div className={style.containerIcons}>
-          <ul>
-            {projects.map((value, index) => (
-              <div key={index + 2}>
-                <li>
-                  {
-                    CardProjects({ value })
-                  }
-                </li>
+      <article className={style.mainContainer}>
+        <div className={style.containerBackground}>
+          <div className={style.containerDesc}>
+            <div>
+              <h1>
+                PORTFÓLIO
+              </h1>
+              <div>
+                <h3>
+                  {projects[current].type}
+                </h3>
+                <h2>
+                  {projects[current].name.replace(/( )+/g, "")}
+                </h2>
+                <div>
+                  <p>
+                    tecnologias:
+                  </p>
+                  <div className={style.containerLanguages}>
+                    {handleLanguages('frontend')}
+                  </div>
+                  <div className={style.containerLanguages}>
+                    {handleLanguages('backend')}
+                  </div>
+                </div>
               </div>
-            ))}
-          </ul>
+            </div>
+          </div>
+          <div className={style.containerBackgroundImage} >
+            <iframe src={projects[current].url} />
+          </div>
         </div>
-      </section>
-      <article>
+        <div className={style.carouselContainer}>
+          <div className={style.carouselTrack}>
+            <div className={style.carousel}>
+              {projects.map((value, index) => {
+                const isCenter = index === current;
+                return (
+                  <motion.div
+                    key={index}
+                    className={`${isCenter ? style.itemCenter : style.itemSide}`}
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: isCenter ? 1.2 : .9, zIndex: isCenter ? 9 : 1 }}
+                    exit={{ scale: 0.9 }}
+                    transition={{ duration: 0.5 }}
+                    onClick={() => !isCenter && setCurrent(index)}
+                  >
+                    {CardProjects({ value })}
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+          <div style={{ display: "flex" }}>
+            <button onClick={handlePrev} className={style.arrowLeft}>&lt;</button>
+            <button onClick={handleNext} className={style.arrowRight}>&gt;</button>
+          </div>
+        </div>
+      </article>
+
+      {/* <article>
         <aside className={style.containerGitProject}>
           <span>
             <p className={style.Title}>Repositórios GitHub</p>
@@ -76,7 +122,7 @@ export default function Projects() {
             }
           </ul>
         </aside>
-      </article>
+      </article> */}
     </>
   );
 

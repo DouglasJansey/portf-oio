@@ -14,12 +14,12 @@ const queryClient = new QueryClient()
 const bebas = localFont({
   src: './fonts/BebasNeue-Regular.ttf',
   variable: '--font-bebas',
-  weight: '400',
+  weight: 'normal',
 })
 const loft = localFont({
   src: './fonts/Loft-Bold.otf',
   variable: '--font-loft',
-  weight: '400',
+  weight: 'normal',
 })
 
 export default function RootLayout({

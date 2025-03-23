@@ -1,5 +1,6 @@
 
-import { about, skills, main } from '../../imports';
+import { about, skills, main,  } from '../../imports';
+import Projects from "../components/projects"
 
 
 export default function Home() {
@@ -8,8 +9,11 @@ export default function Home() {
       {/* <article>
         {main}
       </article> */}
-      <article>
+      {/* <article>
         {skills}
+      </article> */}
+      <article>
+        <Projects />
       </article>
     </>
   )

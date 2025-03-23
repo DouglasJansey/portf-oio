@@ -7,9 +7,9 @@ const options = {
   headers: new Headers({
     Authorization: `token ${TOKEN_GIT}`,
     "Content-Type": "application/x-www-form-urlencoded",
+    Accept: "application/vnd.github+json",
   }),
 };
-
 export const GetLanguageData = async (data: []) => {
   const listObject = Object.values(data);
   const urlLoad = listObject.map(async (repo: any) => {

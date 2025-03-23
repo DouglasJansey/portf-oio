@@ -264,6 +264,7 @@ export const course = [
 export const projects = [
   {
     name: "Torquato Açaí",
+    type:"site de vendas",
     url: "https://torquatoacai.vercel.app/",
     situation: "Andamento",
     role: "Desenvolvedor fullstack freelancer",
@@ -275,7 +276,24 @@ export const projects = [
     },
   },
   {
+    name: "Aniversario Lais",
+    type:"LandingPage",
+    url: "https://aniversario-lais.vercel.app/",
+    situation: "Concluído",
+    role: "Desenvolvedor freelancer",
+    desc: `Aplicação web para cadastrar clientes e produtos, efetuar pedidos e salvar carrinho de compras, calculo de frete para todo o brasil 
+    `,
+    languages: {
+      frontend: [
+        "Typescript",
+        "Sass",
+      ],
+      backend: [],
+    },
+  },
+  {
     name: "CleyShow Store",
+    type:"E-comerce",
     url: "https://douglasjansey.github.io/EcomerceRoupas/",
     situation: "Interrompido",
     role: "Desenvolvedor fullstack freelancer",
@@ -301,6 +319,7 @@ export const projects = [
   },
   {
     name: "Calculador de Frete",
+    type:"Front-end",
     url: "https://douglasjansey.github.io/CalFrete/",
     situation: "Concluído",
     role: "Desenvolvedor front-end freelancer",
@@ -319,6 +338,7 @@ export const projects = [
   },
   {
     name: "MKS Sistemas",
+    type:"Front-end",
     url: "https://teste-front-navy.vercel.app/",
     situation: "Concluído",
     role: "Desenvolvedor frontEnd",

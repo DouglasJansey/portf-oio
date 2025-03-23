@@ -26,18 +26,26 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
         const arraySort = valueLanguage.sort((a, b) => b - a)
         const totalValue = arraySort.reduce((acc, curr) => acc + curr, 0);
         const totalPercent = valueLanguage.map(lang => lang / totalValue);
-        const widths = totalPercent.map(percent => percent * spanWidth);
-        return widths
+        const width = totalPercent.map(percent => percent * spanWidth);
+        return width
     }
     const setImageLanguage = (name: string) => {
         const imgLanguage = {
             HTML: 'html5',
             CSS: 'css3',
-            'C#': 'csharp',
-            Java: 'openjdk',
+            'C#': '/images/cardProject/csharp.svg',
+            Java: '/images/cardProject/javaOriginal.svg',
         };
-
-        return (name === 'HTML' || name === 'CSS' || name === 'C#' || name === 'Java') && imgLanguage[name as keyof typeof imgLanguage] || name
+        return (name !== 'csharp') && (name !== 'HTML') && (name !== 'C#') && (name !== 'Java') ? (
+        <>
+            <img src={`https://cdn.simpleicons.org/${name}`} />
+        </>
+        ) : (<>
+          {name !== 'C#' && name !== 'Java' ?  <img src={`https://cdn.simpleicons.org/${imgLanguage[name as keyof typeof imgLanguage]}`}/> 
+          : <img src={`${imgLanguage[name as keyof typeof imgLanguage]}`}/>
+          }
+        </>
+        )
     }
     const languagesSpanWidth = () => {
         const width = calculateWidth()
@@ -80,16 +88,16 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                 <aside className={style.containerTitle}>
                     <div className={style.Title}>
                         <h1>{name}</h1>
+                        <div className={style.containerDesc}>
+                            <p className={style.text}>{desc}</p>
+                            {/* <ButtonLink to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> {arrowRight} </ButtonLink> */}
+                        </div>
                     </div>
                     <figure className={style.containerImg}>
                         <img src='https://avatars.githubusercontent.com/u/87612240?v=4' alt='' />
                     </figure>
                 </aside>
                 <aside>
-                    <div className={style.containerDesc}>
-                        <p className={style.text}>{desc}</p>
-                        <ButtonLink to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> { arrowRight } </ButtonLink>
-                    </div>
                     <div className={style.flex} style={{ gap: '15px', justifyContent: 'flex-end', width: '98%' }}>
                         <div className={style.containerGitIcons}>
                             <ul>
@@ -102,7 +110,7 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                         </div>
                         {nameLanguage.map((lang, index) => (
                             <figure className={style.containerLanguageImg} key={index + 4}>
-                                <img src={`https://cdn.simpleicons.org/${setImageLanguage(lang)}`} />
+                                {setImageLanguage(lang)}
                             </figure>
                         ))}
                     </div>

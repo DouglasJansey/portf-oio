@@ -3,7 +3,7 @@
 @import '../../../styles/_animation'
 
 @include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
-@include animateFade($animationName: fadeLeft, $from: 100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
+@include animateFade($animationName: fadeLeft, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
 @include animateFade($animationName: fadeFloatYear, $from: 0%, $to: -60px, $opacityFrom: 0, $opacityTo: 1)
 @include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
 @include animateFade($animationName: iconFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
@@ -14,72 +14,219 @@
       height: 100%
       justify-content: center
       align-items: center
+
 .mainContainer
       display: flex
       flex-direction: column
       justify-content: center
       align-items: center
-      width: 100vw
-      height: 100%
+      width: 100%
+      height: 100vh
       color: #fff
       position: relative
-      overflow: hidden
       padding: 0
-      &::before
-            content: ""
-            width: 100%
-            height: 100%
-            position: absolute
-            background-image: url("/images/bgProject.jpg")
-            background-size: cover
-            background-position: center
-            background-repeat: no-repeat
-            animation: bgFade 2s ease-in-out forwards
-            position: absolute
-            opacity: 0.4
-            z-index: 1
-      &::after
-            content: ""
-            width: 100%
-            height: 100%
-            background: linear-gradient(to bottom, transparent 60%, #000)
-            position: absolute
-            z-index: 2
       span
             display: flex
             align-items: center
             justify-content: flex-start
             width: 100vw
             height: auto
+
 .containerLoading
       @extend .flex
       width: 50px
       height: 50px
+
+.containerBackgroundImage
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      width: 100%
+      height: 100%
+      z-index: 10
+      background: transparent
+      &::before
+            content: ""
+            width: 100%
+            height: 100%
+            background: #000
+            position: absolute
+            opacity: 0.6
+            z-index: 2
+      &::after
+            content: ""
+            width: 20%
+            height: 100%
+            background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,.65),rgba(0,0,0,.35), transparent)
+            position: absolute
+            z-index: 1
+      iframe
+            border: none
+            height: 80%
+            width: 100%
+            position: relative
+            
+.containerLanguages
+      display: flex
+      align-items: center
+      flex-wrap: wrap
+      width: 100%
+      height: auto
+      margin: 0
+      padding: 0
+      h5
+            margin: 2px
+            padding: 0
+            font-size: 1.5rem
+            color: $cyan
+      h4
+            margin: 5px
+            padding: 0
+            font-size: 1.2rem
+            font-family: Arial, Helvetica, sans-serif
+            font-weight: normal
+
+.containerBackground
+      display: flex
+      height: 100vh
+      width: 100%
+      justify-content: center
+
+.containerDesc
+      display: flex
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-end
+      width: 40%
+      height: 100%
+      position: relative
+      z-index: 11
+      h1,h2,h3, p
+            margin: 0
+            padding: 0
+            white-space: nowrap
+      h1, h2, p
+            font-family: var(--font-bebas)
+            font-weight: normal
+      p
+            font-size: 2.8rem
+      div:nth-child(1)
+            width: 100%
+            height: auto
+            margin-top: 30%
+            h2
+                  font-size: 8rem
+                  color: $cyan
+            h3
+                  font-size: 2.5rem
+                  font-family: var(--font-loft)
+      h1
+            font-size: 10rem
+            position: absolute
+            top: 0
+            left: 0
+            letter-spacing: 5px
+            opacity: .15
+            filter: drop-shadow(3px 3px 1px #000)
+
+      &::before
+            content: ""
+            position: absolute
+            width: 40%
+            height: 100%
+            background: linear-gradient(to left, #000, #000, transparent)
+            z-index: -1
+.itemCenter
+      display: flex
+      overflow: hidden
+      justify-content: center
+      align-items: center
+      position: relative
+      background: transparent
+      max-width: 300px
+      max-height: 300px
+      border-radius: 10px
+      box-shadow: 0 0 10px rgba(0, 229, 255, .6)
+
+.itemSide
+      box-shadow: none
+      animation: none
+      border: 2px solid $gray
+      border-radius: 10px
+      max-width: 250px
+      max-height: 250px
+      width: 100%
+      height: 100%
+      overflow: hidden
+      cursor: pointer
+
+.carouselContainer
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      position: absolute
+      width: 100%
+      height: auto
+      z-index: 12
+      bottom: 0
+      button
+            border: none
+            color: $cyan
+            font-size: 2rem
+            cursor: pointer
+            transition: color 0.2s
+            &:hover
+                  color: $cyan
+.carouselTrack
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 100% // Vai fazer todos os itens se ajustarem ao tamanho total
+
+.carousel
+      display: flex
+      align-items: center
+      margin: 0
+      padding: 0
+
+.carouselItem
+      width: auto // Faz com que cada item ocupe 100% da largura do contêiner
+      display: block
+      align-items: center
+      justify-content: center
+
+.arrowLeft, .arrowRight
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 50px
+      height: 50px
+      background: #292929
+      border-radius: 50%
+      margin: 10px
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3)
+
 .containerIcons
       display: flex
       flex: none
       justify-content: center
       align-items: center
-      width: 100vw
+      width: 100%
       height: auto
       z-index: 10
-      margin-top: 35px
       overflow: hidden
       padding: 0
       position: relative
       ul
             display: flex
-            justify-content: flex-start
-            flex-wrap: wrap
+            justify-content: center
+            flex-wrap: nowrap
             align-items: center
             width: 80%
             gap: 10px
             height: auto
             padding: 0
-            div:nth-child(2n)
-                  animation: fadeLeft 2s ease-in-out forwards
-            div:nth-child(2n + 1)
-                  animation: fadeRight 2s ease-in-out forwards
             li
                   list-style: none
 
@@ -111,6 +258,8 @@
       gap: 10px
       height: auto
       padding: 0
+      li
+            list-style: none
       li:nth-child(2n + 1)
             animation: fadeRight 2s ease-in-out forwards
       li:nth-child(2n)
