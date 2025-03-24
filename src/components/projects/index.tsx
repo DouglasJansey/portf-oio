@@ -9,7 +9,7 @@ import style from "./projects.module.sass";
 import { CardProjects, GitProjects, loading } from '../../../imports/componentsimport'
 import { projects } from '../../../services/info'
 import { useEffect, useState } from "react";
-import { GetDataRepository } from "../../../services/getData";
+import { GetDataRepository } from "../../app/api/getData/route";
 
 interface ProjectProps {
   repo: any,

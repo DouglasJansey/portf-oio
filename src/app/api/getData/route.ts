@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import { env } from "process";
 
 const TOKEN_GIT = process.env.NEXT_PUBLIC_GIT_TOKEN 
 
@@ -13,10 +11,25 @@ const options = {
 export const GetLanguageData = async (data: []) => {
   const listObject = Object.values(data);
   const urlLoad = listObject.map(async (repo: any) => {
-    const languages = await fetch(repo.languages_url, options).then((res) => res.json());
-    const contributors = await fetch(repo.contributors_url, options).then((res) => res.json());
+    try {
+      const [languagesRes, contributorsRes] = await Promise.all([
+        fetch(repo.languages_url, options).then((res) => res.json()),
+        fetch(repo.contributors_url, options).then((res) => res.json())
+      ]);
 
-    return { repo, languages, contributors };
+      return {
+        repo,
+        languages: languagesRes,
+        contributors: contributorsRes,
+      };
+    } catch (error) {
+      console.error(`Erro ao buscar dados do repositório ${repo.name}: `, error);
+      return {
+        repo,
+        languages: [],
+        contributors: [],
+      };
+    }
   });
   const results = await Promise.all(urlLoad);
 
