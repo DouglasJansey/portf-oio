@@ -9,7 +9,6 @@ import style from "./projects.module.sass";
 import { CardProjects, GitProjects, loading } from '../../../imports/componentsimport'
 import { projects } from '../../../services/info'
 import { useEffect, useState } from "react";
-import { GetDataRepository } from "../../app/api/getData/route";
 
 interface ProjectProps {
   repo: any,
@@ -22,16 +21,16 @@ export default function Projects() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data: ProjectProps[] = await GetDataRepository('https://api.github.com/users/DouglasJansey/repos');
+        const res = await fetch(`/api/get-repo-data?urlData=https://api.github.com/users/DouglasJansey/repos`)
+        const {data} = await res.json();
         setRepoData(data); // Define o estado com os dados obtidos da requisição
       } catch (error) {
-        console.error('Erro ao buscar os dados:', error);
-        // Lidar com erros
       }
     };
-
+    
     fetchData(); // Chama a função para buscar os dados quando o componente monta
   }, []);
+  console.log(repoData)
   return (
     <>
       <section className={style.mainContainer}>
@@ -52,7 +51,7 @@ export default function Projects() {
           </ul>
         </div>
       </section>
-      <article className={style.flex}>
+      <article>
         <aside className={style.containerGitProject}>
           <span>
             <p className={style.Title}>Repositórios GitHub</p>

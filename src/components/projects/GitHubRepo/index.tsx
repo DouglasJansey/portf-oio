@@ -6,14 +6,17 @@ import style from './githubRepo.module.sass';
 import { arrowRight } from '../../../../imports/reactIcons'
 import { ButtonLink } from '@/components/buttons/button';
 import CardGit from './cardGitIcons'
+interface GitIcon {
+    value: number;
+    name: string;
+}
 interface GitProjectProps {
     name: string;
     url: string;
-    language: {};
+    language: { [key: string]: number }; // Tipando o objeto de linguagens
     desc: string;
     created_at: string;
-    gitIcons: any[]
-
+    gitIcons: GitIcon[];
 }
 
 export default function GitHubProjects({ name, url, language, desc, created_at, gitIcons }: GitProjectProps) {
@@ -88,7 +91,7 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                 <aside>
                     <div className={style.containerDesc}>
                         <p className={style.text}>{desc}</p>
-                        <ButtonLink to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> { arrowRight } </ButtonLink>
+                        <ButtonLink to={url} target='_blank' style={{ padding: '10px 20px', margin: '0px 10px 0px 0px' }}> {arrowRight} </ButtonLink>
                     </div>
                     <div className={style.flex} style={{ gap: '15px', justifyContent: 'flex-end', width: '98%' }}>
                         <div className={style.containerGitIcons}>

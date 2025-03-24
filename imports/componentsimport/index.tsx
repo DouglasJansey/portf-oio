@@ -40,14 +40,17 @@ export const CardProjects = ({value}: CardProjectProps) =>{
         <CardProject value={value} />
     )
 }
-
+interface GitIcon {
+    value: number;
+    name: string;
+}
 interface GitProjectProps {
     name: string;
     url: string;
-    language: {};
+    language: { [key: string]: number }; // Tipando o objeto de linguagens
     desc: string;
     created_at: string;
-    gitIcons: any[]
+    gitIcons: GitIcon[];
 
 }
 

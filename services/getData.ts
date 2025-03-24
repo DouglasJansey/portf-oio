@@ -1,14 +1,4 @@
-
-const TOKEN_GIT = process.env.NEXT_PUBLIC_GIT_TOKEN 
-
-const options = {
-  headers: new Headers({
-    Authorization: `Bearer ${TOKEN_GIT}`,
-    "Content-Type": "application/x-www-form-urlencoded",
-  }),
-};
-
-export const GetLanguageData = async (data: []) => {
+const GetLanguageData = async (data: [], options: {}) => {
   const listObject = Object.values(data);
   const urlLoad = listObject.map(async (repo: any) => {
     try {
@@ -35,11 +25,9 @@ export const GetLanguageData = async (data: []) => {
 
   return results;
 };
-
-
-export const GetDataRepository = async (urlData: string) => {
-  const response = await fetch(urlData);
+export const GetDataRepository = async (urlData: string, options: {}) => {
+  const response = await fetch(urlData, options);
   const data = await response.json();
-  const newData = await GetLanguageData(data); 
+  const newData = await GetLanguageData(data, options); 
   return newData;
 };

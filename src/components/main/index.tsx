@@ -11,7 +11,6 @@ export default function Main() {
   const curriculo: string = process.env.NEXT_PUBLIC_CURRICULO!;
   const data = new Date(Date.now()).getHours()
   const [hour, setHour] = useState('')
-  const [download, setDownload] = useState("")
 
   const handleTextIntro = () => {
     const hours = {
@@ -36,21 +35,7 @@ export default function Main() {
       </div>
     )
   }
-  const changeColor = (word: string) => {
-    return (
-      <>
-        <p style={{ color: '#ffc979' }}>
-          {word}
-        </p>
-      </>
-    )
-  }
-  const handleDonwload = () => {
-    setDownload(curriculo)
-    setTimeout(() => {
-      setDownload('')
-    }, 3000)
-  }
+
   useEffect(() => {
 
     if (data >= 0 && data < 12) {
