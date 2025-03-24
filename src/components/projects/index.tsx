@@ -30,7 +30,6 @@ export default function Projects() {
     
     fetchData(); // Chama a função para buscar os dados quando o componente monta
   }, []);
-  console.log(repoData)
   return (
     <>
       <section className={style.mainContainer}>
