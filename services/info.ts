@@ -47,7 +47,7 @@ export const experience = [
     title: "W10 Logística & Transporte",
     ano: "Fev 2023 - Freelancer",
     funcao: [
-      "Front-end: ReaCriação de formulário.",
+      "Front-end: Criação de formulário.",
       "Calculo do frete nos distritos de Portugal.",
       "Consumo de Api de códigos postais de Portugal.",
       "ReactJS.",

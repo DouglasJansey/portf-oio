@@ -19,12 +19,10 @@
 @mixin borderAnimateHeight($animationName, $heightFrom, $heightTo)
     @keyframes #{$animationName}
         0%
-            height: $heightFrom
-            opacity: 1
+            transform: scaleY(0)
 
         100%
-            height: $heightTo
-            opacity: 1
+            transform: scaleY(1)
 @mixin gradientBg($nameAnimation)
     @keyframes #{$nameAnimation}
         0%

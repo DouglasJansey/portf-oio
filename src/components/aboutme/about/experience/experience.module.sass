@@ -16,6 +16,7 @@
       align-items: center
       width: 100%
       height: 100%
+      min-height: 100vh
       color: #fff
       background: #000 65px
       &::after
@@ -76,7 +77,7 @@
       display: flex
       flex-direction: column
       width: 100%
-      height: auto
+      height: 100%
       position: relative
       padding: 10px
       div
@@ -84,23 +85,25 @@
       &::before
             content: ''
             width: 5px
-            height: 0%
+            height: 100%
             top: 0
             left: 0
             background: #fff
+            transform-origin: top
+            transform: scaleY(0)
             position: absolute
-            animation: borderHeight 2s ease-in forwards
+            animation: borderHeight 3s ease-in forwards
             animation-delay: 2.4s
             z-index: 1
-            ul
-                  display: flex
-                  justify-content: flex-start
-                  flex-wrap: wrap
-                  white-space: break-spaces
-            li
-                  margin: 0
-                  flex-wrap: wrap
-                  animation: fadeLeft 2s ease-in-out forwards
+      ul
+            display: flex
+            justify-content: flex-start
+            flex-wrap: wrap
+            white-space: break-spaces
+      li
+            margin: 0
+            flex-wrap: wrap
+            animation: fadeLeft 2s ease-in-out forwards
 
 .floatYear
       position: absolute
@@ -111,7 +114,6 @@
       margin: 0
       animation: fadeFloatYear 2s ease-in-out forwards
       animation-delay: 2.7s
-
 
 .subTitle
       display: flex
@@ -148,7 +150,7 @@
       font-size: 0.8rem
       animation: fadeLeft 2.3s ease-in-out forwards
 
-@media screen and ( max-width: 800px )
+@media screen and ( max-width: 630px )
       .containerTitle
             margin-left: 2px
             justify-content: flex-start
@@ -156,11 +158,19 @@
             display: none
       .floatYear
             display: none
+      .subText
+            margin: 0
+            padding: 0
+            align-items: center
       .subTitle
             width: 100%
+            font-size: 1.5rem
       .containerExp
-            width: 90%
-            padding: 10px
+            gap: 10px
+            div
+                  flex-wrap: wrap
+                  display: flex
+                  flex-direction: column
             &::before
                   left: 0
       .subContainer

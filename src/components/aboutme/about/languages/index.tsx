@@ -8,7 +8,7 @@ import style from "./languages.module.sass";
 export default function Languages() {
 
   return (
-    <section className={style.mainContainer}>
+    <div className={style.mainContainer}>
       <div className={style.subContainer}>
         <article className={style.containerText}>
           <div>
@@ -36,6 +36,6 @@ export default function Languages() {
           </figure>
         </article>
       </div>
-    </section>
+    </div>
   );
 }

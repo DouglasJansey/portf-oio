@@ -74,7 +74,13 @@ export default function Skills() {
       changeColor[name as keyof typeof changeColor]
     return changed
   }
-
+  const handleDivWidth = (): object =>{
+    const styleDiv = {
+      translate: positionX,
+      transition: 'all 0.5s ease-in-out',
+    }
+    return {width: "100%", justifyContent: "center", background: "red"}
+  }
 
 
   const CalcEmptySpace = () => {
@@ -120,7 +126,6 @@ export default function Skills() {
 
 
   }, [imgIndex]);
-  console.log(skillName)
   return (
     <section className={style.mainContainer}>
       <span className={style.containerTitle} style={{ marginTop: pathname === '/' ? '60px' : '150px' }}>
@@ -160,7 +165,7 @@ export default function Skills() {
       <div className={style.containerIcons}>
         <button className={style.containerArrow}
           type="button"
-          style={{ rotate: '180deg', left: 0 }}
+          style={{ rotate: '180deg', left: 0, display: listWidth! && listWidth! > bodyWidth ? 'flex' : 'none' }}
           name="left"
           onClick={(e) => handleButtonPosition(e, -90)}
         >
@@ -168,13 +173,17 @@ export default function Skills() {
         </button>
         <button className={style.containerArrow}
           type="button"
-          style={{ right: 0 }}
+          style={{ right: 0, display: listWidth! && listWidth! > bodyWidth ? 'flex' : 'none' }}
           name="right"
           onClick={(e) => handleButtonPosition(e, +90)}
         >
           {arrowRight}
         </button>
-        <div style={{ translate: positionX, transition: 'all 0.5s ease-in-out' }} ref={ref}>
+        <div style={{ translate: listWidth! && listWidth! > bodyWidth ? positionX : '',
+          width: listWidth! && listWidth! < bodyWidth ? '100%' : undefined, 
+          justifyContent: listWidth! && listWidth! < bodyWidth ? 'center' : undefined, 
+          display: listWidth! && listWidth! < bodyWidth ? 'flex' : undefined, 
+          transition: 'all 0.5s ease-in-out' }} ref={ref}>
           <ul>
             {skills.map((value, index) => (
               <div key={index + 2}>

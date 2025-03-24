@@ -19,7 +19,7 @@ export default function Languages() {
   }
 
   return (
-    <section className={style.mainContainer}>
+    <div className={style.mainContainer}>
       <article className={style.containerTitle}>
         <h1>Experiências</h1>
       </article>
@@ -28,9 +28,9 @@ export default function Languages() {
           <img src="/images/menu.png" alt="" />
         </figure>
         <div>
-          <aside className={style.containerExp}>
+          <div className={style.containerExp}>
             {experience.map((item, index) => (
-              <span key={index + 1}>
+              <div key={index + 1}>
                 <div>
                   <p className={style.floatYear}>
                     {filterYear(item.ano)}
@@ -43,11 +43,11 @@ export default function Languages() {
                     <li key={index + 10}>{func}</li>
                   ))}
                 </ul>
-              </span>
+              </div>
             ))}
-          </aside>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -14,8 +14,7 @@ export default function About({params}: AboutMeProps) {
   return(
     <>
     {params && <AboutMe/> }
-    {!params && <Resume /> }
-    
+    {!params && <Resume /> } 
     </>
   )
 }

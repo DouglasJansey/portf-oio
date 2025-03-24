@@ -52,7 +52,7 @@ export default function Projects() {
           </ul>
         </div>
       </section>
-      <article>
+      <article className={style.flex}>
         <aside className={style.containerGitProject}>
           <span>
             <p className={style.Title}>Repositórios GitHub</p>

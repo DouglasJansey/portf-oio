@@ -24,18 +24,17 @@ export default function AboutMe() {
 
 const handleDivHeight = () => {
   const rect = refLang.current?.getBoundingClientRect();
-
   if (rect) {
     if (rect.width && rect.height) {
       // A div está visível na tela, atualiza a altura
-      const divHeight = refLang.current!
-      scrollY > divHeight?.clientHeight && divHeight?.clientHeight > 0 ? setActiveExperience(true) : setActiveExperience(false)
+      const divHeight = rect.height / 2
+      scrollY > divHeight ? setActiveExperience(true) : setActiveExperience(false)
 
     }
 
   }
 }
-
+console.log(activeExperience)
 useEffect(() => {
   window.addEventListener('scroll', scrollAnaimation);
   return () => {
