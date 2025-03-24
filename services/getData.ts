@@ -5,7 +5,7 @@ const TOKEN_GIT = process.env.NEXT_PUBLIC_GIT_TOKEN
 
 const options = {
   headers: new Headers({
-    Authorization: `token ${TOKEN_GIT}`,
+    Authorization: `Bearer ${TOKEN_GIT}`,
     "Content-Type": "application/x-www-form-urlencoded",
   }),
 };
