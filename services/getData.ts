@@ -13,7 +13,6 @@ const GetLanguageData = async (data: [], options: {}) => {
         contributors: contributorsRes,
       };
     } catch (error) {
-      console.error(`Erro ao buscar dados do repositório ${repo.name}: `, error);
       return {
         repo,
         languages: [],
