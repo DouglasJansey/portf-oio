@@ -16,6 +16,7 @@ const bebas = localFont({
   variable: '--font-bebas',
   weight: 'normal',
 })
+
 const loft = localFont({
   src: './fonts/Loft-Bold.otf',
   variable: '--font-loft',
