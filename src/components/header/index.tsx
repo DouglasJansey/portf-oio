@@ -1,5 +1,4 @@
 'use client'
-import { useEffect, useState } from 'react'
 import Link from "next/link";
 import style from "./Header.module.sass";
 import { usePathname } from 'next/navigation';
