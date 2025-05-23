@@ -6,12 +6,12 @@ import Projects from "../components/projects"
 export default function Home() {
   return (
     <>
-      {/* <article>
+      <article>
         {main}
-      </article> */}
-      {/* <article>
+      </article>
+      <article>
         {skills}
-      </article> */}
+      </article>
       <article>
         <Projects />
       </article>

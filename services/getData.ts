@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { env } from "process";
 
-const TOKEN_GIT = process.env.NEXT_PUBLIC_GIT_TOKEN 
+const TOKEN_GIT = process.env.GIT_TOKEN 
 
 const options = {
   headers: new Headers({
