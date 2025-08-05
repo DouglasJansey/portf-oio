@@ -49,7 +49,7 @@ export default function Skills() {
               initial={false}
               animate={{
                 top: isSwapped ? "75%" : "0%", // Troca de posição
-                left: isSwapped ? "217%" : "8%", // Troca de posição
+                left: isSwapped ? "200%" : "8%", // Troca de posição
                 fontSize: isSwapped ? "1rem" : "3rem", // Tamanho do texto
               }}
               transition={{ duration: 0.2 }}
@@ -66,7 +66,7 @@ export default function Skills() {
               initial={false}
               animate={{
                 top: isSwapped ? "0%" : "75%", // Troca de posição
-                left: isSwapped ? "5%" : "88%", // Troca de posição
+                left: isSwapped ? "5%" : "80%", // Troca de posição
                 fontSize: isSwapped ? "3rem" : "1rem", // Tamanho do texto
               }}
               transition={{ duration: 0.2 }}

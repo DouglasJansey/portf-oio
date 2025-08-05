@@ -65,16 +65,8 @@
             width: 100%
             text-align: left
             p
-                  width: 80%
+                  width: 100%
                   font-size: 1.4rem
-      &::before
-            content: ""
-            width: 80%
-            height: 10px
-            position: absolute
-            background: #fff
-            top: 0
-            margin: auto
 
 .containerIcons
       display: flex
@@ -112,6 +104,7 @@
       align-items: center
       width: 90%
       height: 35%
+      min-height: 200px
       z-index: 5
       position: relative
       span
@@ -129,6 +122,14 @@
                   position: absolute
                   opacity: .2
                   width: 100%
+      &::before
+            content: ""
+            width: 95%
+            height: 10px
+            position: absolute
+            background: #fff
+            bottom: -10px
+            margin: auto
 .text
       font-family: var(--font-loft)
       filter: drop-shadow(3px 3px 0px rgba(0,0,0,.3))
@@ -137,7 +138,7 @@
       cursor: pointer
       white-space: nowrap
 
-@media screen and ( max-width: 700px )
+@media screen and ( max-width: 350px )
       .mainContainer
             flex-wrap: wrap
       .subContainer
