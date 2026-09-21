@@ -116,7 +116,7 @@ export default function Main() {
           </ButtonLink> */}
           <span className={style.containerPortfolio}>
             <figure>
-              <a href='./DouglasJansey.pdf' download="CV_Douglas" target="_blank">
+              <a href='/DouglasJansey.pdf' download="CV_Douglas" target="_blank">
                 <img src="/images/download.png" alt="imagem seta download" />
               </a>
             </figure>

@@ -4,7 +4,7 @@ import { instaFooter, facebookF, linkedIn, github, email, phone } from '../../..
 import Link from 'next/link';
 export default function Footer() {
     const social = ['Instagram', 'Facebook', 'Linkedin', 'Github']
-    const navegation = ['Sobre mim', 'Portfólio', 'Skills', 'Contato']
+    const navegation = ['Início', 'Sobre mim', 'Portfólio', 'Skills', 'Contato']
     const contact = ['(21) 98084-6797', 'douglas.jansey@gmail.com']
     const divNames = [navegation, social, contact]
     const mapNamesArray = (arr: string[][]) => {
@@ -23,8 +23,10 @@ export default function Footer() {
         const linkKeys = Object.keys(linkUrl)
 
         // Sem a barra inicial o href era relativo e mudava conforme a pagina atual.
+        const routes: Record<string, string> = { 'início': '/' }
         const filterLinks = (links: string) => {
-            return linkKeys.includes(links) ? linkUrl[links as keyof typeof linkUrl] : `/${links}`
+            if (linkKeys.includes(links)) return linkUrl[links as keyof typeof linkUrl]
+            return routes[links] ?? `/${links}`
         }
         return (
             <div className={style.containerLinks}>
