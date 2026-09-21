@@ -1,300 +1,285 @@
 @import '../../../styles/_variables'
 
-@import '../../../styles/_animation'
-
-@include animateFade($animationName: fadeRight, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
-@include animateFade($animationName: fadeLeft, $from: -100%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
-@include animateFade($animationName: fadeFloatYear, $from: 0%, $to: -60px, $opacityFrom: 0, $opacityTo: 1)
-@include animateFade($animationName: bgFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 0.5)
-@include animateFade($animationName: iconFade, $from: 0%, $to: 0%, $opacityFrom: 0, $opacityTo: 1)
-@include borderAnimateHeight($animationName: borderHeight, $heightFrom: 0%, $heightTo: 100%)
-.flex
-      display: flex
-      width: 100%
-      height: 100%
-      justify-content: center
-      align-items: center
-
-.mainContainer
+// Alturas: 100svh evita o "pulo" causado pela barra do navegador no celular,
+// com 100vh como fallback para navegadores sem suporte.
+.stage
+      position: relative
       display: flex
       flex-direction: column
-      justify-content: center
-      align-items: center
+      justify-content: flex-end
       width: 100%
-      height: 100vh
+      min-height: 100vh
+      min-height: 100svh
+      overflow: hidden
       color: #fff
-      position: relative
-      padding: 0
-      span
-            display: flex
-            align-items: center
-            justify-content: flex-start
-            width: 100vw
-            height: auto
+      background: #000
+      isolation: isolate
 
-.containerLoading
-      @extend .flex
-      width: 50px
-      height: 50px
-
-.containerBackgroundImage
-      display: flex
-      align-items: center
-      justify-content: flex-start
-      width: 100%
-      height: 100%
-      z-index: 10
-      background: transparent
-      &::before
-            content: ""
-            width: 100%
-            height: 100%
-            background: #000
-            position: absolute
-            opacity: 0.6
-            z-index: 2
-      &::after
-            content: ""
-            width: 20%
-            height: 100%
-            background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,.65),rgba(0,0,0,.35), transparent)
-            position: absolute
-            z-index: 1
-      iframe
-            border: none
-            height: 80%
-            width: 100%
-            position: relative
-            
-.containerLanguages
-      display: flex
-      align-items: center
-      flex-wrap: wrap
-      width: 100%
-      height: auto
-      margin: 0
-      padding: 0
-      h5
-            margin: 2px
-            padding: 0
-            font-size: 1.5rem
-            color: $cyan
-      h4
-            margin: 5px
-            padding: 0
-            font-size: 1.2rem
-            font-family: Arial, Helvetica, sans-serif
-            font-weight: normal
-
-.containerBackground
-      display: flex
-      height: 100vh
-      width: 100%
-      justify-content: center
-
-.containerDesc
-      display: flex
-      flex-direction: column
-      justify-content: flex-start
-      align-items: flex-end
-      width: 40%
-      height: 100%
-      position: relative
-      z-index: 11
-      h1,h2,h3, p
-            margin: 0
-            padding: 0
-            white-space: nowrap
-      h1, h2, p
-            font-family: var(--font-bebas)
-            font-weight: normal
-      p
-            font-size: 2.8rem
-      div:nth-child(1)
-            width: 100%
-            height: auto
-            margin-top: 30%
-            h2
-                  font-size: 8rem
-                  color: $cyan
-            h3
-                  font-size: 2.5rem
-                  font-family: var(--font-loft)
-      h1
-            font-size: 10rem
-            position: absolute
-            top: 0
-            left: 0
-            letter-spacing: 5px
-            opacity: .15
-            filter: drop-shadow(3px 3px 1px #000)
-
-      &::before
-            content: ""
-            position: absolute
-            width: 40%
-            height: 100%
-            background: linear-gradient(to left, #000, #000, transparent)
-            z-index: -1
-.itemCenter
-      display: flex
-      overflow: hidden
-      justify-content: center
-      align-items: center
-      position: relative
-      background: transparent
-      max-width: 300px
-      max-height: 300px
-      border-radius: 10px
-      box-shadow: 0 0 10px rgba(0, 229, 255, .6)
-
-.itemSide
-      box-shadow: none
-      animation: none
-      border: 2px solid $gray
-      border-radius: 10px
-      max-width: 250px
-      max-height: 250px
-      width: 100%
-      height: 100%
-      overflow: hidden
-      cursor: pointer
-
-.carouselContainer
-      display: flex
-      flex-direction: column
-      align-items: center
-      justify-content: center
+.ghostTitle
       position: absolute
-      width: 100%
-      height: auto
-      z-index: 12
-      bottom: 0
-      button
-            border: none
-            color: $cyan
-            font-size: 2rem
-            cursor: pointer
-            transition: color 0.2s
-            &:hover
-                  color: $cyan
-.carouselTrack
-      display: flex
-      justify-content: center
-      align-items: center
-      width: 100% // Vai fazer todos os itens se ajustarem ao tamanho total
-
-.carousel
-      display: flex
-      align-items: center
+      top: clamp(70px, 12vh, 130px)
+      left: clamp(12px, 4vw, 64px)
       margin: 0
-      padding: 0
+      z-index: 3
+      font-family: var(--font-bebas)
+      font-size: clamp(3.5rem, 13vw, 11rem)
+      line-height: .9
+      letter-spacing: clamp(2px, .6vw, 8px)
+      color: rgba(255, 255, 255, .13)
+      filter: drop-shadow(3px 3px 1px #000)
+      pointer-events: none
+      user-select: none
 
-.carouselItem
-      width: auto // Faz com que cada item ocupe 100% da largura do contêiner
-      display: block
-      align-items: center
-      justify-content: center
+// ---------- mídia ----------
 
-.arrowLeft, .arrowRight
-      display: flex
-      align-items: center
-      justify-content: center
-      width: 50px
-      height: 50px
-      background: #292929
-      border-radius: 50%
-      margin: 10px
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3)
+.viewport
+      position: absolute
+      inset: 0
+      z-index: 1
 
-.containerIcons
-      display: flex
-      flex: none
-      justify-content: center
-      align-items: center
-      width: 100%
-      height: auto
-      z-index: 10
-      overflow: hidden
-      padding: 0
-      position: relative
-      ul
-            display: flex
-            justify-content: center
-            flex-wrap: nowrap
-            align-items: center
-            width: 80%
-            gap: 10px
-            height: auto
-            padding: 0
-            li
-                  list-style: none
-
-.Title
-      display: flex
-      justify-content: center
-      align-items: center
-      font-size: 2.2rem
-      width: auto
-      white-space: nowrap
-      margin: 80px 0px 0px 0px
-      z-index: 5
-      position: relative
-      padding-top: 25px
-      &::after
-            content: ""
-            background: #fff
-            width: 50%
-            height: 4.5px
-            position: absolute
-            bottom: -10px
-            left: 0
-.containerUl
-      display: flex
-      justify-content: flex-start
-      flex-wrap: wrap
-      align-items: center
-      width: 90%
-      gap: 10px
-      height: auto
-      padding: 0
-      li
-            list-style: none
-      li:nth-child(2n + 1)
-            animation: fadeRight 2s ease-in-out forwards
-      li:nth-child(2n)
-            animation: fadeLeft 2s ease-in-out forwards
-
-.containerGitProject
-      display: flex
-      justify-content: center
-      align-items: center
-      flex-wrap: wrap
-      width: 100%
-      height: auto
-      gap: 10px
-      margin-top: 25px
-      padding: 0
-      margin: 0
-      span
-            display: flex
-            width: 100vw
-            justify-content: flex-start
-            z-index: 10
-            color: #fff
-
-@media screen and ( max-width: 630px )
-      .mainContainer
-            span
-                  margin-top: 170px
-      .Title
-            margin-top: 180px
-            margin: 15px
-      .containerUl
-            flex-direction: column
-            justify-content: center
-            align-items: center
+.media
+      position: absolute
+      inset: 0
+      cursor: grab
+      &:active
+            cursor: grabbing
+      img, iframe
             width: 100%
-      .containerIcons
-            ul
-                  justify-content: center
+            height: 100%
+            border: none
+            display: block
+      img
+            object-fit: cover
+            object-position: top center
+
+.scrim
+      position: absolute
+      inset: 0
+      z-index: 2
+      pointer-events: none
+      background: linear-gradient(to top, rgba(0,0,0,.97) 0%, rgba(0,0,0,.9) 28%, rgba(0,0,0,.55) 52%, rgba(0,0,0,.3) 70%, rgba(0,0,0,.72) 100%), linear-gradient(to right, rgba(0,0,0,.92), rgba(0,0,0,.6) 38%, rgba(0,0,0,.15) 70%, transparent 100%)
+
+// ---------- texto ----------
+
+.info
+      position: relative
+      z-index: 4
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      gap: clamp(6px, 1vh, 14px)
+      width: 100%
+      box-sizing: border-box
+      padding: 0 clamp(12px, 4vw, 64px) clamp(12px, 2vh, 24px)
+
+.kicker
+      font-family: var(--font-loft)
+      font-size: clamp(.85rem, 2.4vw, 1.35rem)
+      letter-spacing: 3px
+      text-transform: uppercase
+      color: $cyan
+
+.name
+      margin: 0
+      max-width: 100%
+      font-family: var(--font-bebas)
+      font-weight: normal
+      // Sem nowrap: era isso que estourava a tela em celular
+      font-size: clamp(2.4rem, 9vw, 6rem)
+      line-height: .95
+      color: #fff
+      text-wrap: balance
+
+.desc
+      margin: 0
+      max-width: min(54ch, 100%)
+      font-size: clamp(.86rem, 2.2vw, 1rem)
+      line-height: 1.55
+      color: rgba(231, 230, 230, .82)
+      display: -webkit-box
+      -webkit-line-clamp: 3
+      -webkit-box-orient: vertical
+      overflow: hidden
+
+.chips
+      display: flex
+      flex-wrap: wrap
+      max-width: min(640px, 100%)
+      gap: 6px
+      margin: 4px 0 0 0
+      padding: 0
+      list-style: none
+      li
+            padding: 4px 11px
+            font-size: clamp(.68rem, 1.7vw, .8rem)
+            letter-spacing: .4px
+            border: 1px solid rgba(0, 240, 255, .38)
+            border-radius: 999px
+            background: rgba(0, 240, 255, .07)
+            color: $cyan
+            white-space: nowrap
+            backdrop-filter: blur(6px)
+
+.actions
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      gap: clamp(12px, 3vw, 24px)
+      margin-top: clamp(8px, 1.6vh, 18px)
+
+.ghostBtn
+      padding: 10px 18px
+      font-family: inherit
+      font-size: clamp(.75rem, 2vw, .88rem)
+      letter-spacing: .5px
+      color: $cyan
+      background: transparent
+      border: 1px solid rgba(0, 240, 255, .45)
+      border-radius: 6px
+      cursor: pointer
+      transition: background .25s ease, border-color .25s ease
+      &:hover
+            background: rgba(0, 240, 255, .12)
+            border-color: $cyan
+      &:focus-visible
+            outline: 2px solid $cyan
+            outline-offset: 3px
+
+.counter
+      font-family: var(--font-bebas)
+      font-size: clamp(1rem, 2.6vw, 1.4rem)
+      letter-spacing: 2px
+      color: rgba(231, 230, 230, .55)
+      strong
+            color: $cyan
+            font-weight: normal
+
+// ---------- controles ----------
+
+.controls
+      position: relative
+      z-index: 4
+      display: flex
+      align-items: center
+      gap: clamp(8px, 2vw, 18px)
+      width: 100%
+      padding: clamp(12px, 2.4vh, 28px) clamp(12px, 4vw, 64px)
+      box-sizing: border-box
+
+.arrowGroup
+      flex: 0 0 auto
+      display: flex
+      gap: 10px
+
+.arrow
+      flex: 0 0 auto
+      display: flex
+      align-items: center
+      justify-content: center
+      width: clamp(38px, 9vw, 48px)
+      height: clamp(38px, 9vw, 48px)
+      font-size: clamp(1rem, 3vw, 1.3rem)
+      color: $cyan
+      background: rgba(255, 255, 255, .06)
+      border: 1px solid rgba(0, 240, 255, .3)
+      border-radius: 50%
+      cursor: pointer
+      backdrop-filter: blur(8px)
+      transition: background .25s ease, border-color .25s ease, transform .25s ease
+      &:hover
+            background: rgba(0, 240, 255, .16)
+            border-color: $cyan
+            transform: scale(1.08)
+      &:focus-visible
+            outline: 2px solid $cyan
+            outline-offset: 3px
+
+.thumbs
+      display: flex
+      align-items: center
+      gap: clamp(8px, 1.6vw, 14px)
+      flex: 1
+      margin: 0
+      padding: 4px
+      list-style: none
+      overflow-x: auto
+      scrollbar-width: none
+      scroll-snap-type: x mandatory
+      &::-webkit-scrollbar
+            display: none
+      li
+            flex: 0 0 auto
+            scroll-snap-align: center
+
+.thumb, .thumbActive
+      position: relative
+      display: block
+      width: clamp(88px, 17vw, 150px)
+      height: clamp(56px, 10vw, 88px)
+      padding: 0
+      overflow: hidden
+      border-radius: 10px
+      cursor: pointer
+      background: #0b0b0b
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .3s ease
+      img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            object-position: top center
+            display: block
+      &:focus-visible
+            outline: 2px solid $cyan
+            outline-offset: 3px
+
+.thumb
+      border: 1px solid rgba(231, 230, 230, .28)
+      opacity: .5
+      &:hover
+            opacity: .85
+            transform: translateY(-3px)
+
+.thumbActive
+      border: 1px solid $cyan
+      opacity: 1
+      box-shadow: 0 0 14px rgba(0, 240, 255, .55)
+      transform: translateY(-4px)
+
+.thumbName
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      padding: 10px 6px 4px
+      font-size: clamp(.55rem, 1.4vw, .68rem)
+      text-align: center
+      color: #fff
+      background: linear-gradient(to top, rgba(0,0,0,.92), transparent)
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+// ---------- telas pequenas ----------
+
+@media screen and (max-width: 860px)
+      .stage
+            justify-content: flex-end
+      .ghostTitle
+            top: clamp(64px, 10vh, 96px)
+      .desc
+            -webkit-line-clamp: 2
+
+@media screen and (max-width: 560px)
+      .thumbs
+            gap: 8px
+      .thumbName
+            display: none
+      .actions
+            width: 100%
+            justify-content: space-between
+
+@media (prefers-reduced-motion: reduce)
+      .arrow, .thumb, .thumbActive
+            transition: none
+            &:hover
+                  transform: none

@@ -1,10 +1,16 @@
 @import '../styles/_typography'
 @import '../styles/_variables'
 
+html
+    // Rede de seguranca: nenhum elemento deve gerar rolagem lateral
+    overflow-x: hidden
+
 body
     background: #000
     margin: 0
     padding: 0
+    overflow-x: hidden
+    max-width: 100%
     font-family: $Roboto
     &::-webkit-scrollbar
         width: 10px

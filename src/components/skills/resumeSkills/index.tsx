@@ -15,6 +15,22 @@ import style from "./skills.module.sass";
 
 export default function Skills() {
   const [isSwapped, setIsSwapped] = useState(false);
+  // Os rotulos sao posicionados por estilo inline (framer-motion), entao o CSS
+  // nao consegue sobrepo-los: a adaptacao para telas pequenas vem daqui.
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 780px)');
+    const sync = () => setCompact(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+
+  const big = compact ? '1.75rem' : '3rem';
+  const small = compact ? '.8rem' : '1rem';
+  const parked = compact ? '62%' : '80%';
+  const offscreen = compact ? '115%' : '200%';
 
   const handleClick = () => {
     // Troca de lugar somente ao clicar no texto menor
@@ -49,8 +65,8 @@ export default function Skills() {
               initial={false}
               animate={{
                 top: isSwapped ? "75%" : "0%", // Troca de posição
-                left: isSwapped ? "200%" : "8%", // Troca de posição
-                fontSize: isSwapped ? "1rem" : "3rem", // Tamanho do texto
+                left: isSwapped ? offscreen : "8%", // Troca de posição
+                fontSize: isSwapped ? small : big, // Tamanho do texto
               }}
               transition={{ duration: 0.2 }}
               onClick={() => isSwapped && handleClick()}
@@ -66,8 +82,8 @@ export default function Skills() {
               initial={false}
               animate={{
                 top: isSwapped ? "0%" : "75%", // Troca de posição
-                left: isSwapped ? "5%" : "80%", // Troca de posição
-                fontSize: isSwapped ? "3rem" : "1rem", // Tamanho do texto
+                left: isSwapped ? "5%" : parked, // Troca de posição
+                fontSize: isSwapped ? big : small, // Tamanho do texto
               }}
               transition={{ duration: 0.2 }}
               onClick={() => !isSwapped && handleClick()}

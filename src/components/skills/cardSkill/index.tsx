@@ -2,6 +2,7 @@ import style from './card.module.sass';
 import { changeState } from '../../../../state'
 import { useEffect, useRef } from 'react';
 import { csharp, contextApi, zustandIcon } from '../../../../imports/reactIcons';
+import { iconSlug } from '../iconSlug';
 
 interface CardProps {
     value: {
@@ -13,7 +14,7 @@ interface CardProps {
 }
 
 export default function CardSkill({ value, index }: CardProps) {
-    const skillName = value.name.toLowerCase().replace(/( )+/g, "").replace('-', '')
+    const skillName = iconSlug(value.name)
     const refCard = useRef<HTMLLabelElement>(null);
     const [setCardPosition, cardPosition] = changeState((state) => [state.setCardPosition, state.cardPosition])
 
@@ -27,7 +28,7 @@ export default function CardSkill({ value, index }: CardProps) {
             java: <img src='/images/cardProject/java.svg' alt='' style={{fill: '#00f0ff'}}/>
         }
             return (skillName !== 'csharp') && (skillName !== 'contextapi') && (skillName !== 'zustand') &&(skillName !== 'java') ? (<>
-                <img src={`https://cdn.simpleicons.org/${skillName}/cyan`} />
+                <img src={`https://cdn.simpleicons.org/${skillName}/cyan`} alt={value.name} />
             </>
             ) : (<>
                 {namesLanguage[filterName as keyof typeof namesLanguage]}
