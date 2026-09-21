@@ -6,11 +6,18 @@ import { ButtonLink } from "../buttons/button";
 import { facebook, instagram, linkedin, github, arrowRight } from '../../../imports/reactIcons'
 
 
+const greetingKey = (hours: number) => {
+  if (hours >= 0 && hours < 12) return 'dia'
+  if (hours >= 12 && hours < 19) return 'tarde'
+  return 'noite'
+}
+
 export default function Main() {
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-  const curriculo: string = process.env.NEXT_PUBLIC_CURRICULO!;
+  const curriculo = process.env.NEXT_PUBLIC_CURRICULO || '/DouglasJansey.pdf';
   const data = new Date(Date.now()).getHours()
-  const [hour, setHour] = useState('')
+  // Calculado no primeiro render: com useState('') a saudação piscava vazia.
+  const [hour, setHour] = useState(() => greetingKey(data))
 
   const handleTextIntro = () => {
     const hours = {
@@ -37,16 +44,7 @@ export default function Main() {
   }
 
   useEffect(() => {
-
-    if (data >= 0 && data < 12) {
-      setHour('dia');
-    } else if ((data >= 12 && data < 19)) {
-      setHour('tarde');
-    } else {
-      setHour('noite')
-    }
-
-
+    setHour(greetingKey(data))
   }, [data])
   return (
     <>
@@ -80,13 +78,13 @@ export default function Main() {
             </div>
             <div className={style.containerLinks}>
               <ButtonLink
-                to={`https://wa.me//55${phoneNumber}?text=`}
+                to={`https://wa.me/55${phoneNumber}`}
                 target="blank"
               >
                 <p>Vamos bater um papo!</p>
               </ButtonLink>
               <span className={style.containerPortfolio}>
-                 <ButtonLink to='./DouglasJansey.pdf' download="CV_Douglas" target="_blank">
+                 <ButtonLink to={curriculo} download="CV_Douglas" target="_blank">
                   <p>Baixar Curriculo</p>
                   {arrowRight}
                 </ButtonLink>

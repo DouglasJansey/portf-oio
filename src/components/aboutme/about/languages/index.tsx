@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import { RefObject, useEffect, useState } from "react";
 import style from "./languages.module.sass";

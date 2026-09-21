@@ -1,8 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import { useEffect, useRef, useState } from "react";
 import { arrowRight, csharp } from '../../../../imports/reactIcons';
@@ -83,12 +78,6 @@ export default function Skills() {
   }
 
 
-  const CalcEmptySpace = () => {
-    const emptySpace = ((positionX + (2 * -positionX)) - listWidth!) + bodyWidth
-    if (emptySpace > 20) {
-      setPositionX(positionX + emptySpace);
-    }
-  }
   const scrollAnaimation = () => {
     scrollY > 10 ? setActive(true) : setActive(false)
   }
@@ -108,8 +97,12 @@ export default function Skills() {
   }, [])
   //redimensiona a lista caso haja um espaço vazio
   useEffect(() => {
-    CalcEmptySpace()
-  }, [bodyWidth])
+    // Reposiciona a lista quando sobra espaço vazio à direita após um resize.
+    setPositionX((current) => {
+      const emptySpace = -current - (listWidth ?? 0) + bodyWidth
+      return emptySpace > 20 ? current + emptySpace : current
+    })
+  }, [bodyWidth, listWidth])
 
   useEffect(() => {
     setAnimation('');
@@ -138,7 +131,7 @@ export default function Skills() {
             {skillName === 'csharp' ? (
              csharp({color:'purple', size: 300})            
             ) : (
-              <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} />
+              <img src={`https://cdn.simpleicons.org/${skillName}/${changeColorImage(skillName)}`} alt={skillName} />
             )}
           </figure>
         </aside>

@@ -45,7 +45,7 @@ export default function CardSkill({ value, index }: CardProps) {
                             {csharp({color:'blue', size: 40})}
                         </div>
                         ) : (
-                            <img src={`https://cdn.simpleicons.org/${skillName}/blue`} />
+                            <img src={`https://cdn.simpleicons.org/${skillName}/blue`} alt={skillName} />
                         )}
                     </figure>
                 </label>

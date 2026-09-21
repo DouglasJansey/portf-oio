@@ -1,8 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-duplicate-props */
 'use client'
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { info } from '../../../../services/info'
 import style from "./Aboutme.module.sass";
@@ -14,21 +11,20 @@ export default function About() {
   const [infoIndex, setIndexValue] = useState(0)
   const infoValues = Object.values(info)
 
-  const changeIndexInfo = () => {
-    var count = (infoIndex === 0) ? 1 : -1;
-    const indexInfo = Math.max(0, infoIndex + count)
-    setIndexValue(indexInfo)
+  const changeIndexInfo = useCallback(() => {
+    setIndexValue((current) => Math.max(0, current + (current === 0 ? 1 : -1)))
     // Adiciona a classe para iniciar a animação
     setAnimationClass(style.animation);
     setTimeout(() => {
       setAnimationClass('')
     }, 3000)
-  }
-  const scrollAnaimation = () => {
-    if (scrollY >= 157) {
+  }, [])
+
+  const scrollAnaimation = useCallback(() => {
+    if (window.scrollY >= 157) {
       setAnimation(true)
     }
-  }
+  }, [])
   const setAnimationAbout = (bool: boolean) => {
     return bool ? style.animation : '';
   }
@@ -40,7 +36,7 @@ export default function About() {
       window.removeEventListener('scroll', scrollAnaimation);
       clearInterval(intervalId);
     };
-  }, [infoIndex])
+  }, [changeIndexInfo, scrollAnaimation])
 
   return (
     <div className={style.mainContainer}>

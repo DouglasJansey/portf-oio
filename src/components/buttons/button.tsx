@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from "react"
+import { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react"
 import styled from './button.module.sass'
 import Link from "next/link"
 
@@ -7,22 +7,30 @@ interface ButtonLinkProps {
     to: string
     target?: string
     download?: string
-    style?: {}
+    style?: CSSProperties
 }
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
-    style?: {}
 }
-export const ButtonLink = ({children, to, target, download, style}:ButtonLinkProps) => {
+
+export const ButtonLink = ({ children, to, target, download, style }: ButtonLinkProps) => {
     return (
-        <Link className={styled.button} href={to} target={target} style={style} download={download}>
+        <Link
+            className={styled.button}
+            href={to}
+            target={target}
+            rel={target ? 'noopener noreferrer' : undefined}
+            style={style}
+            download={download}
+        >
             {children}
         </Link>
     )
 }
-export const Button = ({children,type, style}:ButtonProps) => {
+
+export const Button = ({ children, type = 'button', ...rest }: ButtonProps) => {
     return (
-        <button type={type} className={styled.button} style={style}>
+        <button type={type} className={styled.button} {...rest}>
             {children}
         </button>
     )

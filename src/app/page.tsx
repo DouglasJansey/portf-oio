@@ -1,11 +1,5 @@
-
-import { about, skills, main } from '../../imports';
-
+import { main } from '../../imports';
 
 export default function Home() {
-  return (
-    <>
-      {main}
-    </>
-  )
+  return <>{main}</>;
 }

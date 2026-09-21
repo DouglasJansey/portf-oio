@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
 'use client'
-import { useEffect, useRef, useState } from 'react';
 import style from './githubRepo.module.sass';
 import { arrowRight } from '../../../../imports/reactIcons'
 import { ButtonLink } from '@/components/buttons/button';
 import CardGit from './cardGitIcons'
+
 interface GitIcon {
     value: number;
     name: string;
@@ -19,63 +17,45 @@ interface GitProjectProps {
     gitIcons: GitIcon[];
 }
 
+const LANGUAGE_COLORS: Record<string, string> = {
+    javascript: '#F7DF1E',
+    typescript: '#3178C6',
+    html: '#E34F26',
+    css: '#1572B6',
+    sass: '#CC6699',
+    scss: '#CC6699',
+    ejs: '#B4CA65',
+    java: '#CC0000',
+    shell: '#ffb300',
+    'c#': '#512BD4',
+    python: '#3776AB',
+    php: '#777BB4',
+    dockerfile: '#2496ED',
+}
+const FALLBACK_COLOR = '#676e7b'
+
+const ICON_SLUGS: Record<string, string> = {
+    HTML: 'html5',
+    CSS: 'css3',
+    'C#': 'csharp',
+    Java: 'openjdk',
+}
+
 export default function GitHubProjects({ name, url, language, desc, created_at, gitIcons }: GitProjectProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [spanWidth, setSpanWidth] = useState(0)
-    const gitIconsList = gitIcons
-    const valueLanguage: any[] = Object.values(language)
-    const nameLanguage: any[] = Object.keys(language)
-    const calculateWidth = () => {
-        const arraySort = valueLanguage.sort((a, b) => b - a)
-        const totalValue = arraySort.reduce((acc, curr) => acc + curr, 0);
-        const totalPercent = valueLanguage.map(lang => lang / totalValue);
-        const widths = totalPercent.map(percent => percent * spanWidth);
-        return widths
-    }
-    const setImageLanguage = (name: string) => {
-        const imgLanguage = {
-            HTML: 'html5',
-            CSS: 'css3',
-            'C#': 'csharp',
-            Java: 'openjdk',
-        };
+    const entries = Object.entries(language ?? {})
+    const total = entries.reduce((acc, [, bytes]) => acc + bytes, 0)
 
-        return (name === 'HTML' || name === 'CSS' || name === 'C#' || name === 'Java') && imgLanguage[name as keyof typeof imgLanguage] || name
-    }
-    const languagesSpanWidth = () => {
-        const width = calculateWidth()
-        const colors = {
-            javascript: '#F7DF1E',
-            html: '#E34F26',
-            css: '#1572B6',
-            typescript: '#3178C6',
-            ejs: '#B4CA65',
-            java: '#CC0000',
-            shell: '#ffb300',
-            sass: '#CC6699',
-            "c#": '#512BD4',
-        }
+    // Percentuais calculados sobre o total de bytes; a largura é relativa ao
+    // container, então não depende de medir o elemento no cliente.
+    const languageBars = entries
+        .sort(([, a], [, b]) => b - a)
+        .map(([lang, bytes]) => ({
+            lang,
+            width: total ? (bytes / total) * 100 : 0,
+            color: LANGUAGE_COLORS[lang.toLowerCase()] ?? FALLBACK_COLOR,
+        }))
 
-        return nameLanguage.map((item, index) => (
-            {
-                width: `${width[index]}%`,
-                height: '5px',
-                background: colors[item.toLowerCase() as keyof typeof colors],
-            }
-        ))
-    }
-    useEffect(() => {
-        const handleResize = () => {
-            const span = ref.current?.clientWidth || 0;
-            setSpanWidth(span)
-        };
-        handleResize()
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [])
+    const iconSlug = (lang: string) => ICON_SLUGS[lang] ?? lang.toLowerCase()
 
     return (
         <article>
@@ -85,7 +65,7 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                         <h1>{name}</h1>
                     </div>
                     <figure className={style.containerImg}>
-                        <img src='https://avatars.githubusercontent.com/u/87612240?v=4' alt='' />
+                        <img src='https://avatars.githubusercontent.com/u/87612240?v=4' alt='Avatar do GitHub' />
                     </figure>
                 </aside>
                 <aside>
@@ -96,22 +76,26 @@ export default function GitHubProjects({ name, url, language, desc, created_at, 
                     <div className={style.flex} style={{ gap: '15px', justifyContent: 'flex-end', width: '98%' }}>
                         <div className={style.containerGitIcons}>
                             <ul>
-                                {gitIconsList && gitIconsList.map((item, index) => (
+                                {gitIcons?.map((item, index) => (
                                     <li key={index + 4}>
                                         <CardGit item={item} />
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        {nameLanguage.map((lang, index) => (
-                            <figure className={style.containerLanguageImg} key={index + 4}>
-                                <img src={`https://cdn.simpleicons.org/${setImageLanguage(lang)}`} />
+                        {languageBars.map(({ lang }) => (
+                            <figure className={style.containerLanguageImg} key={lang}>
+                                <img src={`https://cdn.simpleicons.org/${iconSlug(lang)}`} alt={lang} title={lang} />
                             </figure>
                         ))}
                     </div>
-                    <div className={style.containerLanguages} ref={ref}>
-                        {languagesSpanWidth().map((style: any, index: number) => (
-                            <span key={index} style={style}></span>
+                    <div className={style.containerLanguages}>
+                        {languageBars.map(({ lang, width, color }) => (
+                            <span
+                                key={lang}
+                                title={`${lang} — ${width.toFixed(1)}%`}
+                                style={{ width: `${width}%`, height: '5px', background: color }}
+                            />
                         ))}
                     </div>
                 </aside>

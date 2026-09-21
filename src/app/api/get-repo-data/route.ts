@@ -1,27 +1,47 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
-import { GetDataRepository } from '../../../../services/getData'
+import { GetDataRepository } from "../../../../services/getData";
+
+const ALLOWED_HOST = "api.github.com";
 
 export async function GET(req: Request) {
-    const TOKEN_GIT = process.env.GIT_TOKEN;  // Acessando o token do servidor
+  const urlData = new URL(req.url).searchParams.get("urlData");
 
-    // Obtendo a URL completa da requisição
-    const url = new URL(req.url);
-    
-    // Obtendo os parâmetros de consulta (query parameters)
-    const urlData = url.searchParams.get('urlData');
+  if (!urlData) {
+    return NextResponse.json(
+      { message: "Parâmetro 'urlData' é obrigatório." },
+      { status: 400 }
+    );
+  }
 
-    const options = {
-        headers: new Headers({
-            Authorization: `Bearer ${TOKEN_GIT}`,  // Usando o token no cabeçalho
-            "Content-Type": "application/x-www-form-urlencoded",
-        }),
-    };
-    if (!urlData) {
-        throw new Error("urlData is null");
-    }
-    const data = await GetDataRepository(urlData, options)
-    return  NextResponse.json({
-        data
-    })
+  // Impede que o parâmetro seja usado para a rota buscar qualquer host (SSRF).
+  let target: URL;
+  try {
+    target = new URL(urlData);
+  } catch {
+    return NextResponse.json({ message: "'urlData' inválida." }, { status: 400 });
+  }
+  if (target.protocol !== "https:" || target.hostname !== ALLOWED_HOST) {
+    return NextResponse.json(
+      { message: `Apenas URLs de https://${ALLOWED_HOST} são permitidas.` },
+      { status: 400 }
+    );
+  }
+
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github+json",
+  };
+  if (process.env.GIT_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GIT_TOKEN}`;
+  }
+
+  try {
+    const data = await GetDataRepository(target.toString(), { headers });
+    return NextResponse.json({ data });
+  } catch (err) {
+    console.error("Falha ao consultar a API do GitHub:", err);
+    return NextResponse.json(
+      { message: "Não foi possível carregar os repositórios." },
+      { status: 502 }
+    );
+  }
 }

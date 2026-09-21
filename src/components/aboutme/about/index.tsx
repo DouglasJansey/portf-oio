@@ -1,8 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-duplicate-props */
 'use client'
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { languages, experience } from '../../../../imports'
 import { profile } from '../../../../services/info'
 import Languages from './languages';
@@ -16,31 +13,26 @@ export default function AboutMe() {
   const profileDesc = profile.desc
   const refLang = useRef<HTMLDivElement>(null);
 
-  const scrollAnaimation = (): void => {
-    const scrollY = window.scrollY;
-    handleDivHeight()
-    setActiveLanguage(scrollY > 0);
-  }
-
-const handleDivHeight = () => {
-  const rect = refLang.current?.getBoundingClientRect();
-  if (rect) {
-    if (rect.width && rect.height) {
+  const handleDivHeight = useCallback(() => {
+    const rect = refLang.current?.getBoundingClientRect();
+    if (rect && rect.width && rect.height) {
       // A div está visível na tela, atualiza a altura
       const divHeight = rect.height / 2
-      scrollY > divHeight ? setActiveExperience(true) : setActiveExperience(false)
-
+      setActiveExperience(window.scrollY > divHeight)
     }
+  }, [])
 
-  }
-}
-console.log(activeExperience)
+  const scrollAnaimation = useCallback((): void => {
+    handleDivHeight()
+    setActiveLanguage(window.scrollY > 0);
+  }, [handleDivHeight])
+
 useEffect(() => {
   window.addEventListener('scroll', scrollAnaimation);
   return () => {
     window.removeEventListener('scroll', scrollAnaimation);
   };
-}, []);
+}, [scrollAnaimation]);
 
 return (
   <section className={style.mainContainer}>
